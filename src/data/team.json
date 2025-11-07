@@ -1,0 +1,76 @@
+{
+  "members": [
+    {
+      "name": "Vaibhav Sharma",
+      "role": "Founder & Credit Intelligence Lead",
+      "image": "/images/team/vaibhav.png",
+      "accentColor": "#1f4cf2"
+    },
+    {
+      "name": "Debayan Gupta",
+      "role": "Professor, CS — MIT, Ashoka University",
+      "image": "/images/team/debayan.png",
+      "accentColor": "#f59e0b"
+    },
+    {
+      "name": "Shridhar Sethuram",
+      "role": "Private Equity Veteran, 25+ years",
+      "image": "/images/team/shridhar.png",
+      "accentColor": "#0ea76f"
+    },
+    {
+      "name": "Tushar Jaruhar",
+      "role": "Former Pricing Actuary, Zurich Insurance Co.",
+      "image": "/images/team/tushar.png",
+      "accentColor": "#f97316"
+    },
+    {
+      "name": "Dr. James Lei",
+      "role": "Director, ASTRI Blockchain; HKUST",
+      "image": "/images/team/james.png",
+      "accentColor": "#a855f7"
+    },
+    {
+      "name": "Shauvik Roy",
+      "role": "Brand & Communications Lead",
+      "image": "/images/team/shauvik.png",
+      "accentColor": "#f97316"
+    },
+    {
+      "name": "Agniva Ray",
+      "role": "Design & Operations",
+      "image": "/images/team/agniva.png",
+      "accentColor": "#38bdf8"
+    },
+    {
+      "name": "Pankaj Chaudhary",
+      "role": "Ledger Lead, Blockchain Engineer",
+      "image": "/images/team/pankaj.png",
+      "accentColor": "#facc15"
+    },
+    {
+      "name": "Ayan Gangopadhyay",
+      "role": "Data Science Lead, NLP & Deep Learning",
+      "image": "/images/team/ayan.png",
+      "accentColor": "#c084fc"
+    },
+    {
+      "name": "Kavish Mahajan",
+      "role": "Creative Director, Branding",
+      "image": "/images/team/kavish.png",
+      "accentColor": "#fb7185"
+    },
+    {
+      "name": "Onggo Wahyudi",
+      "role": "Backend Lead, MTech NUS",
+      "image": "/images/team/onggo.png",
+      "accentColor": "#f97316"
+    },
+    {
+      "name": "Yash Yadav",
+      "role": "Founding Engineer, Full-stack",
+      "image": "/images/team/yash.png",
+      "accentColor": "#4ade80"
+    }
+  ]
+}

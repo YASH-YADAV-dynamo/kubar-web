@@ -1,16 +1,19 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import AboutUs from '../components/AboutUs.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Kubar Protocol - Quick Loans for Your Growing Business"
+  description="NavDhan by Kubar Protocol: Get working capital fast with instant approval and flexible repayment. Built for India's small businesses on the ONDC network."
+>
+  <Header />
+  <main>
+  <Hero />
+    <AboutUs />
+  </main>
+  <Footer />
+</BaseLayout>

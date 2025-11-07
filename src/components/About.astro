@@ -1,0 +1,155 @@
+---
+---
+
+<section id="about" class="section about">
+  <div class="container">
+    <div class="about-content">
+      <div class="section-badge">Technology</div>
+      <h2 class="section-title">Ready to Transform MSME Lending?</h2>
+      <p class="about-text">
+        Kubar Protocol fuses Account Aggregator rails, UPI, GST, and marketplace APIs into a unified orchestration layer.
+        NavDhan Seller and NavDhan Buyer run natively on ONDC so partners activate credit without writing new code while
+        retaining superior risk signals from sector-specific AI models.
+      </p>
+
+      <div class="cta-actions">
+        <a href="mailto:partner@navdhan.com" class="btn btn-primary">
+          Partner with Us
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="mailto:demo@navdhan.com" class="btn btn-secondary">Schedule a Demo</a>
+      </div>
+
+      <div class="tech-stack">
+        <div class="tech-item">
+          <div class="tech-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-details">
+            <h4 class="tech-name">Data Orchestration Layer</h4>
+            <p class="tech-desc">Account Aggregator, GST, UPI, marketplace APIs via Apache Kafka</p>
+          </div>
+        </div>
+
+        <div class="tech-item">
+          <div class="tech-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="14" y="3" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="14" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="3" y="14" width="7" height="7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-details">
+            <h4 class="tech-name">ML Credit Intelligence</h4>
+            <p class="tech-desc">XGBoost/LightGBM models with <2s inference on 150+ features</p>
+          </div>
+        </div>
+
+        <div class="tech-item">
+          <div class="tech-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="tech-details">
+            <h4 class="tech-name">Zero-Code Integration</h4>
+            <p class="tech-desc">Partners go live on ONDC without custom development</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--color-background);
+  }
+
+  .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .about-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: 0;
+  }
+
+  .tech-item {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    transition: all var(--transition-base);
+  }
+
+  .tech-item:hover {
+    border-color: rgba(74, 158, 255, 0.3);
+    transform: translateX(4px);
+  }
+
+  .tech-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .tech-details {
+    flex-grow: 1;
+  }
+
+  .tech-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .tech-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-text-tertiary);
+  }
+
+  @media (max-width: 968px) {
+    .about-content {
+      max-width: 100%;
+    }
+  }
+</style>

@@ -1,14 +1,18 @@
 {
-  "name": "ossified-orbit",
+  "name": "kubar-protocol",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.15.3"
+    "@astrojs/check": "^0.9.5",
+    "astro": "^5.15.4",
+    "typescript": "^5.9.3",
+    "patch-package": "^6.4.7"
   }
 }

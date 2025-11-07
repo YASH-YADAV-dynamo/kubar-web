@@ -1,0 +1,332 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="About — Kubar Labs" description="Discover Kubar Labs' mission to connect MSMEs with lenders through NavDhan's credit intelligence protocol.">
+  <Header />
+  <main class="about-page">
+    <section class="about-hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <h1>Kubar Labs is building the credit layer for India's MSMEs.</h1>
+            <p>
+              From embedded LOS/LMS integrations to agentic DSA flows, we orchestrate every step of MSME lending so lenders ship
+              capital faster, with lower risk, across ONDC and major B2B trade platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="container">
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <span class="pillar-index">01</span>
+            <div>
+              <h3>Embedded Credit Ops</h3>
+              <p>Deploy lender-grade workflows inside marketplaces, ERPs, and partner LOS/LMS stacks without rebuilding your stack.</p>
+            </div>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-index">02</span>
+            <div>
+              <h3>Agentic Onboarding</h3>
+              <p>Automate MSME data collection with guided DSA journeys that surface deeper operating telemetry for faster decisions.</p>
+            </div>
+          </article>
+          <article class="pillar-card">
+            <span class="pillar-index">03</span>
+            <div>
+              <h3>Lifecycle Intelligence</h3>
+              <p>Unify underwriting, disbursal, and collections signals so lenders manage risk and growth from the same dashboard.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="credit-engine">
+      <div class="container">
+        <div class="engine-card">
+          <h2>NavDhan Credit Intelligence Engine</h2>
+          <p>
+            NavDhan unifies structured datasets from India Stack, AA, GST, and payment rails with unstructured marketplace operations.
+            The result is a single, verifiable credit view that powers co-lending, supply-chain finance, and embedded checkout lending.
+          </p>
+          <div class="engine-columns">
+            <article class="engine-column">
+              <span class="engine-index">01</span>
+              <div>
+                <h3>Data Inputs</h3>
+                <ul class="engine-list">
+                  <li>Account Aggregator & banking cashflows</li>
+                  <li>GST, e-invoice, logistics manifests</li>
+                  <li>Marketplace & ERP order telemetry</li>
+                  <li>Informal docs captured via agentic DSA</li>
+                </ul>
+              </div>
+            </article>
+            <article class="engine-column">
+              <span class="engine-index">02</span>
+              <div>
+                <h3>Outputs</h3>
+                <ul class="engine-list">
+                  <li>Sector-specific risk scores & pricing tiers</li>
+                  <li>Automated underwriting & decisioning APIs</li>
+                  <li>Lifecycle automation across disbursal & recovery</li>
+                  <li>Faster MSME working capital disbursement</li>
+                </ul>
+              </div>
+            </article>
+            <article class="engine-column">
+              <span class="engine-index">03</span>
+              <div>
+                <h3>Highlights</h3>
+                <ul class="engine-list">
+                  <li>Composable APIs support co-lending, supply-chain, and embedded checkout products.</li>
+                  <li>Shared control center lets lenders, marketplaces, and partners track the same risk posture.</li>
+                  <li>Agentic ops workflows automate document capture, monitoring, and borrower nudges.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-card">
+          <h2>Partner with Kubar Labs</h2>
+          <p>Whether you manage MSME credit, run a marketplace, or build ERP tools, we can activate NavDhan inside your workflow.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/contact#contact-form">Book a Demo</a>
+            <a class="btn btn-secondary" href="mailto:partner@navdhan.com">Partner Enquiries</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    background: var(--color-background);
+  }
+
+  .about-hero {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    background: var(--color-background);
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .hero-content {
+    display: grid;
+    gap: var(--spacing-md);
+    max-width: 720px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+
+  .pillars {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .pillar-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: var(--spacing-md);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .pillar-index {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .pillar-card > div {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .pillar-card h3 {
+    font-size: 1.4rem;
+    color: var(--color-text-primary);
+  }
+
+  .pillar-card p {
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .credit-engine {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .engine-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--spacing-xl);
+  }
+
+  .engine-card h2 {
+    font-size: clamp(2rem, 3.8vw, 2.75rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .engine-card p {
+    max-width: 760px;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .engine-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-xl);
+  }
+
+  .engine-column {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: var(--spacing-md);
+  }
+
+  .engine-index {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .engine-column > div {
+    display: grid;
+    gap: var(--spacing-sm);
+  }
+
+  .engine-column h3 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .engine-list {
+    list-style: none;
+    display: grid;
+    gap: 0.6rem;
+    color: var(--color-text-secondary);
+    padding: 0;
+    margin: 0;
+  }
+
+  .cta {
+    padding: var(--spacing-xl) 0 var(--spacing-xl);
+  }
+
+  .engine-list li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .engine-list li::after {
+    content: '';
+    position: absolute;
+    top: 0.55rem;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .cta-card {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    text-align: left;
+    border: none;
+    display: grid;
+    gap: var(--spacing-md);
+  }
+
+  .cta-card h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin: 0;
+  }
+
+  .cta-card p {
+    max-width: 620px;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pillars-grid,
+    .engine-columns {
+      gap: var(--spacing-lg);
+    }
+
+    .pillar-card {
+      grid-template-columns: 1fr;
+    }
+
+    .pillar-index {
+      width: 40px;
+      height: 40px;
+      justify-self: flex-start;
+    }
+
+    .engine-column {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+  }
+</style>

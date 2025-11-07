@@ -1,0 +1,86 @@
+[
+    [
+        {
+            "name": "Debayan Gupta",
+            "image": "/images/team/debayan.png",
+            "role": "Professor, CS – MIT, Ashoka University",
+            "color": "text-yellow-500"
+        },
+        {
+            "name": "Shridhar Sethuram",
+            "image": "/images/team/shridhar.png",
+            "role": "Seasoned finance veteran, 25+ years in Private Equity",
+            "color": "text-orange-500"
+        },
+        {
+            "name": "Vaibhav Sharma",
+            "image": "/images/team/vaibhav.png",
+            "role": "DeFi security expert, Polkadot Blockchain Academy grad.",
+            "color": "text-[#97E42A]"
+        },
+        {
+            "name": "Tushar Jaruha",
+            "image": "/images/team/tushar.png",
+            "role": "Ex-Pricing Actuary at Zurich Insurance Co.",
+            "color": "text-teal-400"
+        },
+        {
+            "name": "Dr. James Lei",
+            "image": "/images/team/james.png",
+            "role": "HKUST – Director, ASTRI Blockchain Head",
+            "color": "text-purple-500"
+        }
+    ],
+    [
+        {
+            "name": "Aishi Mukherjee",
+            "image": "/images/team/aishi.png",
+            "role": "Sr. Quality Analyst, Custom CRM app and API Testing | 4 YOE | BFSI | Cognizant",
+            "color": "text-indigo-400"
+        },
+        {
+            "name": "Shauvik Roy",
+            "image": "/images/team/shauvik.png",
+            "role": "Content and Copy, Brand Manager | 4 YOE",
+            "color": "text-pink-500"
+        },
+        {
+            "name": "Agniva Ray",
+            "image": "/images/team/agniva.png",
+            "role": "Design and Operations, Visual and UI/UX Design | 4 YOE | Branding for MSMEs",
+            "color": "text-blue-400"
+        }
+    ],
+    [
+        {
+            "name": "Pankaj Chaudhary",
+            "image": "/images/team/pankaj.png",
+            "role": "Ledger Lead, Senior Blockchain Engineer | 6 YOE | PBA Singapore",
+            "color": "text-amber-500"
+        },
+        {
+            "name": "Ayan Gangopadhyay",
+            "image": "/images/team/ayan.png",
+            "role": "Data Science Lead, NLP & Deep Learning Expert | 4 YOE | CUDA and Triton",
+            "color": "text-fuchsia-400"
+        },
+        {
+            "name": "Kavish Mahajan",
+            "image": "/images/team/kavish.png",
+            "role": "Creative Director, Branding and Design Expert | 5 YOE",
+            "color": "text-rose-400"
+        },
+        {
+            "name": "Onggo Wahyudi",
+            "image": "/images/team/onggo.png",
+            "role": "Backend Lead, Senior Blockchain Engineer | 15 YOE | MTech NUS",
+            "color": "text-red-400"
+        },
+        {
+            "name": "Yash Yadav",
+            "image": "/images/team/yash.png",
+            "role": "Application Team, Full-Stack Engineer",
+            "color": "text-lime-500"
+        }
+    ]
+]

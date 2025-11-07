@@ -1,0 +1,115 @@
+<section id="hero" class="hero">
+  <div class="hero-background">
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <!-- hero badge removed per request -->
+
+      <h1 class="hero-title">Kubar Labs</h1>
+
+      <div class="hero-tagline">
+        <p>We are building the Kubar Protocol — a smart, secure way to connect MSMEs with the right banks and NBFCs.</p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="/contact#contact-form" class="btn btn-primary">
+          Book a Demo
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="/products" class="btn btn-secondary">View NavDhan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3xl) 0;
+    overflow: hidden;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(31, 76, 242, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 76, 242, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    /* Removed mask-image radial bubble effect */
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  /* hero badge removed */
+
+  .hero-title {
+    margin-bottom: var(--spacing-lg);
+    animation: fadeIn 0.8s ease-out 0.4s both;
+  }
+
+  .hero-tagline {
+    max-width: 760px;
+    margin: 0 auto var(--spacing-xl);
+    animation: fadeIn 0.8s ease-out 0.5s both;
+  }
+
+  .hero-tagline p {
+    font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-2xl);
+    animation: fadeIn 0.8s ease-out 0.8s both;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: calc(var(--spacing-3xl) + 60px) 0 var(--spacing-3xl);
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

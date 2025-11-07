@@ -1,0 +1,188 @@
+---
+const solutions = [
+  {
+    title: "NavDhan Seller",
+    description: "Embedded capital that appears inside seller workflows, auto-calibrated to order value, fulfilment stage, and marketplace performance.",
+    metrics: [
+      { label: "Go-Live Time", value: "<10 days" },
+      { label: "Decision Time", value: "<5 min" }
+    ]
+  },
+  {
+    title: "NavDhan Buyer",
+    description: "Dynamic repayment plans for bulk buyers with cash-flow linked schedules, automated reminders, and dispute-aware collections.",
+    metrics: [
+      { label: "Repayment Modes", value: "6" },
+      { label: "Early Alerts", value: "<24h" }
+    ]
+  },
+  {
+    title: "ONDC & Marketplaces",
+    description: "Contextual credit built for ONDC, IndiaMart, and GeM nodes, ensuring sellers and buyers see relevant offers without leaving their journeys.",
+    metrics: [
+      { label: "Network Nodes", value: "38+" },
+      { label: "Integration", value: "API/SDK" }
+    ]
+  }
+];
+---
+<section id="solutions" class="section solutions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Solutions</div>
+      <h2 class="section-title">Serving Every MSME Financing Need</h2>
+      <p class="section-description">
+        From working capital to invoice financing, Kubar Protocol's NavDhan platform powers
+        diverse MSME lending solutions with sector-specific intelligence and embedded distribution.
+      </p>
+    </div>
+
+    <div class="solutions-grid">
+      {solutions.map((solution, index) => (
+        <div class="solution-card">
+          <div class="solution-header">
+            <h3 class="solution-title">{solution.title}</h3>
+          </div>
+          <p class="solution-description">{solution.description}</p>
+          <div class="solution-metrics">
+            {solution.metrics.map((metric) => (
+              <div class="metric">
+                <div class="metric-label">{metric.label}</div>
+                <div class="metric-value">{metric.value}</div>
+              </div>
+            ))}
+          </div>
+          <a href="#about" class="solution-link">
+            Learn more
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3.33334 8H12.6667M12.6667 8L8.00001 3.33333M12.6667 8L8.00001 12.6667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .solutions {
+    background: var(--color-surface);
+    position: relative;
+    overflow: hidden;
+  }
+  /* Decorative radial background removed per request */
+
+  .section-header {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto var(--spacing-2xl);
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+  }
+
+  .solution-card {
+    padding: calc(var(--spacing-lg) * 1.1);
+    background: linear-gradient(160deg, rgba(20, 20, 20, 0.96), rgba(10, 10, 10, 0.92));
+    border: 1px solid rgba(74, 158, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
+  }
+
+  .solution-card:hover {
+    border-color: rgba(74, 158, 255, 0.35);
+    transform: translateY(-6px);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.45);
+  }
+
+  .solution-header {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .solution-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .solution-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    flex-grow: 1;
+  }
+
+  .solution-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .metric {
+    text-align: left;
+  }
+
+  .metric-label {
+    font-size: 0.75rem;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+
+  .metric-value {
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  .solution-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+  }
+
+  .solution-link:hover {
+    gap: 0.75rem;
+  }
+
+  .solution-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .solution-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .solutions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

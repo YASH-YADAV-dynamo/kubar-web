@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Contact — Kubar Labs" description="Book a demo or reach the Kubar Labs team.">
+  <Header />
+  <main class="contact-page">
+    <section class="contact-hero">
+      <div class="container">
+        <h1>Book a Demo</h1>
+        <p>Share a few details and our team will reach out with a tailored NavDhan walkthrough.</p>
+      </div>
+    </section>
+
+    <section class="contact-form" id="contact-form">
+      <div class="container">
+        <div class="form-card">
+          <form onSubmit="event.preventDefault();">
+            <div class="field-row">
+              <label class="field">
+                <span>Last Name</span>
+                <input name="lastName" type="text" placeholder="Singh" required />
+              </label>
+              <label class="field">
+                <span>First Name</span>
+                <input name="firstName" type="text" placeholder="Asha" required />
+              </label>
+            </div>
+            <label class="field">
+              <span>Email</span>
+              <input name="email" type="email" placeholder="you@company.com" required />
+            </label>
+            <label class="field">
+              <span>Phone Number</span>
+              <input name="phone" type="tel" placeholder="9876543210" required pattern="[0-9]{10,}" />
+            </label>
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="4" placeholder="Tell us about your MSME lending workflow." required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <aside class="contact-info">
+            <h2>Need something specific?</h2>
+            <p>Partner enquiries: <a href="mailto:partner@navdhan.com">partner@navdhan.com</a></p>
+            <p>Support: <a href="mailto:support@navdhan.com">support@navdhan.com</a></p>
+            <p>Media: <a href="mailto:press@navdhan.com">press@navdhan.com</a></p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .contact-page {
+    background: var(--color-background);
+  }
+
+  .contact-hero {
+    padding: calc(var(--spacing-3xl) + 2rem) 0 var(--spacing-2xl);
+    background: linear-gradient(135deg, rgba(31, 76, 242, 0.2), rgba(245, 158, 11, 0.15));
+  }
+
+  .contact-hero h1 {
+    font-size: clamp(2.5rem, 4vw, 3.25rem);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-hero p {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 640px;
+  }
+
+  .contact-form {
+    padding: var(--spacing-3xl) 0 var(--spacing-3xl);
+  }
+
+  .form-card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-2xl);
+    padding: var(--spacing-2xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+  }
+
+  form {
+    display: grid;
+    gap: var(--spacing-lg);
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .field span {
+    font-size: 0.95rem;
+    color: var(--color-text-primary);
+  }
+
+  input,
+  textarea {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(31, 76, 242, 0.25);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  button[type="submit"] {
+    justify-self: flex-start;
+  }
+
+  .contact-info {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: var(--spacing-xl);
+  }
+
+  .contact-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-info p {
+    color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .contact-info a {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 960px) {
+    .form-card {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+      order: -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
