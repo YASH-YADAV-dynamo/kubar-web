@@ -1,0 +1,53 @@
+[
+    {
+      "title": "Holistic Data Collection",
+      "headline": "Kubar Protocol helps organize all your business details, even handwritten notes, to understand your finances better",
+      "content": [
+            "Ingests structured data from transactions, financial records, and formal documents",
+            "Captures unstructured inputs including handwritten notes and informal business documents",
+            "Transforms fragmented raw inputs into standardised quantitative insights"
+        ],
+      "image": "/images/features/feature1.svg"
+    },
+    {
+      "title": "Embedded Integrations",
+      "headline": "Kubar Protocol Connects With Your Existing Business Systems So You Can Find The Right Loan At The Right Time, Without Extra Effort",
+      "content": [
+            "Seamlessly integrates within MSME platforms and business management systems",
+            "Eliminates traditional borrower acquisition costs and friction",
+            "Creates borrower sourcing channels directly at point of business operations"
+        ],
+      "image": "/images/features/feature5.svg"
+    },
+    {
+      "title": "Agentic Direct Selling Agent",
+      "headline": "Kubar Protocol uses smart tools to get a complete picture of your business's strength for loan decisions",
+      "content": [
+            "Applies NLP contextualisation layer to quantitative data",
+            "Conducts efficient 15-minute qualitative assessments",
+            "Blends quantitative rigor with qualitative depth"
+        ],
+      "image": "/images/features/feature3.svg"
+    },
+    {
+      "title": "Sector-Specific Intelligence",
+      "headline": "Your business isn't like every other. We show lenders how your industry works so you get loans that actually fit your needs",
+      "content": [
+            "Replaces one-size-fits-all lending with industry-tailored assessment models",
+            "Incorporates specialized parameters for diverse sectors (textile vs. ball bearing manufacturing)",
+            "Analyses sector-specific cash flow patterns, supply chain dynamics, and growth metrics"
+        ],
+      "image": "/images/features/feature4.svg"
+    },
+    {
+      "title": "Workflow Automation",
+      "headline": "Kubar Protocol uses technology to manage your loan smoothly, from agreement to automatic payments and even alerts for any issues",
+      "content": [
+            "Digitises and executes agreements via DLT-powered smart contracts",
+            "Streamlines fund movements through e-NACH mandates and UPl auto-debit",
+            "Monitors asset performance with Account Aggregator integrations"
+        ],
+      "image": "/images/features/feature2.svg"
+    }
+]
+
