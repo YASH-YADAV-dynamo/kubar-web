@@ -1,11 +1,53 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container">
+        <div className="footer-badges-section">
+          <div className="footer-badges">
+            <motion.div 
+              className="footer-badge-image"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ scale: 1.05, y: -3 }}
+            >
+              <Image 
+                src="/acheivements-footer/img1.png" 
+                alt="WTFund top 25 startup" 
+                width={320} 
+                height={80}
+                className="achievement-image"
+                priority
+              />
+            </motion.div>
+
+            <motion.div 
+              className="footer-badge-image"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ scale: 1.05, y: -3 }}
+            >
+              <Image 
+                src="/acheivements-footer/img2.png" 
+                alt="F6S selected" 
+                width={320} 
+                height={80}
+                className="achievement-image"
+                priority
+              />
+            </motion.div>
+          </div>
+        </div>
+
         <div className="footer-grid">
           <div className="footer-brand">
             <h3 className="footer-logo">Kubar Labs</h3>
@@ -78,6 +120,7 @@ export default function Footer() {
           padding: var(--spacing-3xl) 0 var(--spacing-xl);
           margin-top: var(--spacing-3xl);
           position: relative;
+          overflow: visible;
         }
 
         .footer::before {
@@ -117,6 +160,40 @@ export default function Footer() {
           line-height: 1.7;
         }
 
+        .footer-badges-section {
+          padding-bottom: var(--spacing-2xl);
+          margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-badges {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: var(--spacing-xl);
+          flex-wrap: wrap;
+        }
+
+        .footer-badge-image {
+          position: relative;
+          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+          filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .footer-badge-image:hover {
+          filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+        }
+
+        .achievement-image {
+          width: auto;
+          height: auto;
+          max-width: 280px;
+          max-height: 110px;
+          object-fit: contain;
+          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+
         .footer-social {
           display: flex;
           gap: var(--spacing-sm);
@@ -141,6 +218,47 @@ export default function Footer() {
           color: #ffffff;
           transform: translateY(-3px);
           box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
+        }
+
+        @media (max-width: 768px) {
+          .footer-badges-section {
+            padding-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+          }
+
+          .footer-badges {
+            flex-direction: row;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          
+          .achievement-image {
+            max-width: 180px;
+            max-height: 80px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .footer-badges {
+            gap: var(--spacing-sm);
+          }
+          
+          .achievement-image {
+            max-width: 150px;
+            max-height: 70px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .footer-badges {
+            gap: var(--spacing-xs);
+          }
+          
+          .achievement-image {
+            max-width: 130px;
+            max-height: 60px;
+          }
         }
 
         .footer-links {
