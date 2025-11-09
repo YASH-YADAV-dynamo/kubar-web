@@ -18,8 +18,8 @@ export default function Home() {
       <main className="home-page">
         <Hero />
         <TextSlider />
-        <KubarForMSME />
         <AboutUs />
+        <KubarForMSME />
         <VerticalScrollSections />
       </main>
       <Footer />

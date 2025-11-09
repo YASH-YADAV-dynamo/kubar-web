@@ -6,30 +6,13 @@ import msmeData from '../data/kubarForMSME.json';
 
 export default function KubarForMSME() {
   const [index, setIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const next = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setIndex((prev) => (prev + 1) % msmeData.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
-
-  const prev = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setIndex((prev) => (prev - 1 + msmeData.length) % msmeData.length);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isAnimating) {
-        setIndex((prev) => (prev + 1) % msmeData.length);
-      }
+      setIndex((prev) => (prev + 1) % msmeData.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, [isAnimating]);
+  }, []);
 
   const getPrevIndex = (idx: number) => (idx - 1 + msmeData.length) % msmeData.length;
   const getNextIndex = (idx: number) => (idx + 1) % msmeData.length;
@@ -41,15 +24,6 @@ export default function KubarForMSME() {
           <h2 className="msme-title">Kubar for MSMEs</h2>
           
           <div className="msme-carousel">
-            {/* Left controls */}
-            <div className="carousel-controls">
-              <button onClick={prev} className="control-btn" aria-label="Previous">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 15l-6-6-6 6"/>
-                </svg>
-              </button>
-            </div>
-
             {/* Center image stack */}
             <div className="carousel-image-stack">
               {/* Previous image */}
@@ -89,15 +63,6 @@ export default function KubarForMSME() {
                 <h3 className="text-title">{msmeData[index].text}</h3>
               </div>
             </div>
-
-            {/* Bottom controls */}
-            <div className="carousel-controls-bottom">
-              <button onClick={next} className="control-btn" aria-label="Next">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M6 9l6 6 6-6"/>
-                </svg>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -122,48 +87,12 @@ export default function KubarForMSME() {
 
         .msme-carousel {
           display: grid;
-          grid-template-columns: auto 1fr auto;
-          grid-template-rows: 1fr auto;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto;
           gap: var(--spacing-xl);
           align-items: center;
+          justify-items: center;
           min-height: 300px;
-        }
-
-        .carousel-controls {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--spacing-lg);
-        }
-
-        .carousel-controls-bottom {
-          display: none;
-        }
-
-        .control-btn {
-          background: var(--color-surface-elevated);
-          border: 1.5px solid rgba(31, 76, 242, 0.3);
-          border-radius: 12px;
-          width: 48px;
-          height: 48px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-primary);
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .control-btn:hover {
-          background: var(--color-primary);
-          color: #ffffff;
-          border-color: var(--color-primary);
-          transform: scale(1.1);
-          box-shadow: 0 4px 20px rgba(31, 76, 242, 0.4);
-        }
-
-        .control-btn:active {
-          transform: scale(0.95);
         }
 
         .carousel-image-stack {
@@ -207,12 +136,12 @@ export default function KubarForMSME() {
         }
 
         .carousel-text {
-          grid-column: 1 / -1;
           text-align: center;
           min-height: 80px;
           display: flex;
           align-items: center;
           justify-content: center;
+          width: 100%;
         }
 
         .text-content {
@@ -239,43 +168,19 @@ export default function KubarForMSME() {
 
         @media (min-width: 769px) {
           .msme-carousel {
-            grid-template-columns: auto 200px 1fr;
+            grid-template-columns: 200px 1fr;
             grid-template-rows: 1fr;
+            gap: var(--spacing-2xl);
           }
 
           .carousel-text {
-            grid-column: 3;
             text-align: left;
-          }
-
-          .carousel-controls-bottom {
-            display: none;
           }
         }
 
         @media (max-width: 768px) {
           .msme-carousel {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto 200px auto auto;
             gap: var(--spacing-lg);
-          }
-
-          .carousel-controls {
-            display: none;
-          }
-
-          .carousel-controls-bottom {
-            display: flex;
-            justify-content: center;
-            grid-column: 1;
-          }
-
-          .carousel-text {
-            grid-column: 1;
-          }
-
-          .text-title {
-            text-align: center;
           }
         }
       `}</style>
