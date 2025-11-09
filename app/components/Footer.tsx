@@ -140,7 +140,7 @@ export default function Footer() {
           border-color: var(--color-primary);
           color: #ffffff;
           transform: translateY(-3px);
-          box-shadow: 0 4px 12px rgba(31, 76, 242, 0.3);
+          box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
         }
 
         .footer-links {

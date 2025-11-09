@@ -128,6 +128,7 @@ export default function Products() {
         .products {
           background: var(--color-background);
           padding: calc(var(--spacing-3xl) + 2rem) 0 var(--spacing-3xl);
+          color: var(--color-text-primary);
         }
 
         .products-hero {
@@ -154,6 +155,7 @@ export default function Products() {
         .products-hero h1 {
           font-size: clamp(2.5rem, 5vw, 3.5rem);
           margin-bottom: var(--spacing-lg);
+          color: var(--color-text-primary);
         }
 
         .products-hero p {
@@ -170,6 +172,33 @@ export default function Products() {
           flex-wrap: wrap;
         }
 
+        .actions :global(.btn-primary) {
+          background: #FF8C00;
+          color: #FFFFFF;
+          border: none;
+          box-shadow: 0 4px 20px rgba(255, 140, 0, 0.4);
+        }
+
+        .actions :global(.btn-primary:hover) {
+          background: #FF9F1A;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 30px rgba(255, 140, 0, 0.5);
+        }
+
+        .actions :global(.btn-secondary) {
+          background: #00B85E;
+          color: #FFFFFF;
+          border: none;
+          box-shadow: 0 4px 20px rgba(0, 184, 94, 0.4);
+        }
+
+        .actions :global(.btn-secondary:hover) {
+          background: #00D670;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 30px rgba(0, 184, 94, 0.5);
+        }
+
+
         .usecases {
           margin-bottom: var(--spacing-3xl);
         }
@@ -180,6 +209,7 @@ export default function Products() {
           font-size: clamp(2rem, 4vw, 2.75rem);
           text-align: center;
           margin-bottom: var(--spacing-2xl);
+          color: var(--color-text-primary);
         }
 
         .usecase-grid {
@@ -199,7 +229,7 @@ export default function Products() {
 
         .usecase-card:hover {
           transform: translateY(-6px);
-          border-color: rgba(31, 76, 242, 0.35);
+          border-color: var(--color-primary);
         }
 
         .icon {
@@ -218,6 +248,7 @@ export default function Products() {
         .usecase-card h3 {
           font-size: 1.5rem;
           margin-bottom: var(--spacing-sm);
+          color: var(--color-text-primary);
         }
 
         .usecase-card p {
@@ -253,10 +284,11 @@ export default function Products() {
           width: 28px;
           height: 28px;
           border-radius: 50%;
-          background: rgba(31, 76, 242, 0.15);
-          border: 1px solid rgba(31, 76, 242, 0.25);
+          background: rgba(163, 230, 53, 0.15);
+          border: 1px solid rgba(163, 230, 53, 0.25);
           color: var(--color-primary);
           font-weight: 700;
+          flex-shrink: 0;
         }
 
         .list-item p {
@@ -283,6 +315,7 @@ export default function Products() {
         .integration-card h3 {
           font-size: 1.5rem;
           margin-bottom: var(--spacing-md);
+          color: var(--color-text-primary);
         }
 
         .integration-card ul {

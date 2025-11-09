@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import LearnWithKubar from '../components/LearnWithKubar';
 
 export default function BlogPage() {
   useEffect(() => {
@@ -59,6 +60,8 @@ export default function BlogPage() {
             </div>
           </div>
         </section>
+
+        <LearnWithKubar />
       </main>
       <Footer />
     </>

@@ -25,7 +25,7 @@ export default function Hero() {
           <h1 className="hero-title">Kubar Labs</h1>
 
           <div className="hero-tagline">
-            <p>We are building the Kubar Protocol — a smart, secure way to connect MSMEs with the right banks and NBFCs.</p>
+            <p>We are building the Kubar Labs — a smart, secure way to connect MSMEs with the right banks and NBFCs.</p>
           </div>
 
           <div className="hero-actions">
@@ -86,8 +86,11 @@ export default function Hero() {
 
         .logo-image {
           width: 120px;
-          height: 120px;
+          height: auto;
+          max-height: 120px;
           object-fit: contain;
+          object-position: center;
+          aspect-ratio: 1 / 1;
           filter: drop-shadow(0 10px 30px rgba(31, 76, 242, 0.3));
           transition: transform 0.3s ease;
         }
@@ -123,6 +126,25 @@ export default function Hero() {
           animation: fadeInUp 1.2s ease-out 1.4s both;
         }
 
+        .hero-actions :global(.btn-primary) {
+          background: linear-gradient(135deg, rgba(31, 76, 242, 0.9) 0%, rgba(31, 76, 242, 0.7) 100%);
+          border: 2px solid rgba(31, 76, 242, 0.5);
+          color: #ffffff;
+          box-shadow: 0 4px 20px rgba(31, 76, 242, 0.4), 0 2px 8px rgba(31, 76, 242, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-actions :global(.btn-primary:hover) {
+          background: linear-gradient(135deg, rgba(31, 76, 242, 1) 0%, rgba(31, 76, 242, 0.85) 100%);
+          border-color: rgba(31, 76, 242, 0.7);
+          box-shadow: 0 6px 25px rgba(31, 76, 242, 0.5), 0 3px 10px rgba(31, 76, 242, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+          transform: translateY(-2px);
+        }
+
+        .hero-actions :global(.btn-primary:active) {
+          transform: translateY(0);
+          box-shadow: 0 2px 10px rgba(31, 76, 242, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
         @keyframes logoFloat {
           0%, 100% {
             transform: translateY(0px);
@@ -153,10 +175,11 @@ export default function Hero() {
             margin-bottom: var(--spacing-lg);
           }
 
-          .logo-image {
-            width: 100px;
-            height: 100px;
-          }
+                .logo-image {
+                  width: 100px;
+                  height: auto;
+                  max-height: 100px;
+                }
 
           .hero-title {
             font-size: 2.5rem;

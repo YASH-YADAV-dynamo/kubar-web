@@ -100,20 +100,6 @@ export default function Header() {
                 <span className="dropdown-title">NavDhan</span>
                 <span className="dropdown-subtext">India's first MSME Credit Hub</span>
               </Link>
-              <div className="dropdown-link is-disabled" aria-disabled="true">
-                <div className="dropdown-title">
-                  BRE
-                  <span className="dropdown-badge">Coming Soon</span>
-                </div>
-                <span className="dropdown-subtext">No-code engine for credit policies</span>
-              </div>
-              <div className="dropdown-link is-disabled" aria-disabled="true">
-                <div className="dropdown-title">
-                  Underwriting Engine
-                  <span className="dropdown-badge">Coming Soon</span>
-                </div>
-                <span className="dropdown-subtext">Holistic Sector-Specific Risk Profiling</span>
-              </div>
             </div>
           </div>
 
@@ -161,7 +147,7 @@ export default function Header() {
           backdrop-filter: blur(28px) saturate(180%);
           -webkit-backdrop-filter: blur(28px) saturate(180%);
           border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 4px 16px rgba(31, 76, 242, 0.1);
+          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset, 0 4px 16px rgba(163, 230, 53, 0.1);
         }
 
         .header.scrolled::before {
@@ -319,6 +305,13 @@ export default function Header() {
           border: none;
           cursor: pointer;
           padding-right: 0.25rem;
+          color: var(--color-primary);
+          font-weight: 500;
+        }
+
+        .dropdown-toggle:hover {
+          color: #FF8C00;
+          opacity: 1;
         }
 
         .dropdown-toggle:focus-visible {
@@ -422,14 +415,44 @@ export default function Header() {
         }
 
         .nav-link-cta {
-          background: linear-gradient(135deg, rgba(31, 76, 242, 0.2) 0%, rgba(31, 76, 242, 0.1) 100%);
-          border: 1.5px solid rgba(31, 76, 242, 0.3);
-          padding: 0.625rem 1.5rem;
-          border-radius: 10px;
-          color: var(--color-text-primary);
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
+          background: var(--color-primary);
+          border: none;
+          padding: 0.875rem 2.25rem;
+          border-radius: 8px;
+          color: #000000;
+          font-weight: 700;
+          font-size: 0.95rem;
+          letter-spacing: 0.01em;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          position: relative;
+          overflow: hidden;
+          box-shadow: 
+            0 4px 14px rgba(163, 230, 53, 0.4),
+            0 2px 4px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          text-decoration: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          cursor: pointer;
+          font-family: inherit;
+        }
+
+        .nav-link-cta::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+
+        .nav-link-cta:hover::before {
+          opacity: 1;
         }
 
         .nav-link-cta::after {
@@ -437,10 +460,26 @@ export default function Header() {
         }
 
         .nav-link-cta:hover {
-          background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-          border-color: var(--color-primary);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 20px rgba(31, 76, 242, 0.4);
+          background: #b8f048;
+          color: #000000;
+          transform: translateY(-1px);
+          box-shadow: 
+            0 6px 20px rgba(163, 230, 53, 0.5),
+            0 3px 6px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-link-cta:active {
+          transform: translateY(0);
+          box-shadow: 
+            0 2px 8px rgba(163, 230, 53, 0.4),
+            0 1px 2px rgba(0, 0, 0, 0.2),
+            inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link-cta:focus-visible {
+          outline: 2px solid var(--color-primary);
+          outline-offset: 3px;
         }
 
         .mobile-menu-toggle {

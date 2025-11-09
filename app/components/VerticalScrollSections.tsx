@@ -69,14 +69,18 @@ export default function VerticalScrollSections() {
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     className="wheel-item-active"
                   >
-                    <img
-                      src={sections[activeIndex].image}
-                      alt={sections[activeIndex].title}
-                      className="wheel-image"
-                    />
-                    <span className="wheel-title">
-                      {sections[activeIndex].title}
-                    </span>
+                    <div className="wheel-image-wrapper">
+                      <img
+                        src={sections[activeIndex].image}
+                        alt={sections[activeIndex].title}
+                        className="wheel-image"
+                      />
+                    </div>
+                    <div className="wheel-title-wrapper">
+                      <span className="wheel-title">
+                        {sections[activeIndex].title}
+                      </span>
+                    </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -112,8 +116,8 @@ export default function VerticalScrollSections() {
         .vertical-scroll-section {
           background: var(--color-background);
           color: var(--color-text-primary);
-          padding: var(--spacing-3xl) 0;
-          min-height: 100vh;
+          padding: var(--spacing-2xl) 0;
+          min-height: auto;
           display: flex;
           align-items: center;
         }
@@ -122,13 +126,13 @@ export default function VerticalScrollSections() {
           display: flex;
           flex-direction: column;
           width: 100%;
-          gap: var(--spacing-lg);
+          gap: var(--spacing-md);
         }
 
         @media (min-width: 768px) {
           .vertical-scroll-wrapper {
             flex-direction: row;
-            gap: var(--spacing-xl);
+            gap: var(--spacing-lg);
           }
         }
 
@@ -210,7 +214,7 @@ export default function VerticalScrollSections() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: var(--spacing-xl);
+          gap: var(--spacing-lg);
           width: 100%;
         }
 
@@ -218,15 +222,16 @@ export default function VerticalScrollSections() {
           .main-content {
             flex-direction: row;
             align-items: center;
-            gap: var(--spacing-2xl);
+            gap: var(--spacing-xl);
           }
         }
 
         .wheel-container {
           width: 100%;
-          height: 280px;
+          height: auto;
+          min-height: 200px;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -235,27 +240,38 @@ export default function VerticalScrollSections() {
 
         @media (min-width: 768px) {
           .wheel-container {
-            width: 280px;
-            height: 450px;
+            width: 200px;
+            height: auto;
+            min-height: 300px;
           }
         }
 
         .wheel-inner {
           position: relative;
-          height: 100%;
+          height: auto;
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-direction: column;
         }
 
         .wheel-item-active {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           text-align: center;
           gap: var(--spacing-md);
+          width: 100%;
+        }
+
+        .wheel-image-wrapper {
+          display: flex;
+          align-items: center;
           justify-content: center;
+          width: 100%;
+          order: 1;
         }
 
         .wheel-image {
@@ -272,6 +288,14 @@ export default function VerticalScrollSections() {
           }
         }
 
+        .wheel-title-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          order: 2;
+        }
+
         .wheel-title {
           font-size: 1.1rem;
           font-weight: 600;
@@ -279,6 +303,9 @@ export default function VerticalScrollSections() {
           font-family: var(--font-heading);
           line-height: 1.4;
           color: #a3e635;
+          text-align: center;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
         }
 
         @media (min-width: 768px) {
@@ -296,35 +323,40 @@ export default function VerticalScrollSections() {
 
         @media (min-width: 768px) {
           .content-panel {
-            max-width: 600px;
-            padding-left: var(--spacing-xl);
+            max-width: 650px;
+            padding-left: var(--spacing-lg);
           }
         }
 
         .content-wrapper {
           display: flex;
           flex-direction: column;
-          gap: var(--spacing-xl);
+          gap: var(--spacing-md);
         }
 
         .content-headline {
-          font-size: clamp(1.5rem, 3vw, 2.25rem);
+          font-size: clamp(1.1rem, 2.2vw, 1.5rem);
           font-weight: 700;
-          line-height: 1.4;
+          line-height: 1.35;
           color: var(--color-text-primary);
           font-family: var(--font-heading);
           letter-spacing: -0.01em;
-          margin-bottom: var(--spacing-sm);
+          margin-bottom: var(--spacing-xs);
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          hyphens: auto;
+          max-width: 100%;
+          text-align: left;
         }
 
         .content-list {
           display: grid;
           grid-template-columns: 1fr;
-          gap: var(--spacing-lg);
+          gap: var(--spacing-sm);
           color: var(--color-text-secondary);
           text-align: left;
-          font-size: 1.05rem;
-          line-height: 1.8;
+          font-size: 0.95rem;
+          line-height: 1.6;
           list-style: none;
           padding: 0;
         }
@@ -332,25 +364,25 @@ export default function VerticalScrollSections() {
         @media (min-width: 768px) {
           .content-list {
             grid-template-columns: repeat(2, 1fr);
-            font-size: 1.125rem;
-            gap: var(--spacing-xl);
+            font-size: 1rem;
+            gap: var(--spacing-md);
           }
         }
 
         .content-list li {
           position: relative;
-          padding-left: var(--spacing-xl);
-          padding-top: var(--spacing-xs);
+          padding-left: var(--spacing-lg);
+          padding-top: 0;
         }
 
         .content-list li::before {
           content: "•";
           position: absolute;
           left: 0;
-          top: var(--spacing-xs);
+          top: 0;
           color: #a3e635;
-          font-size: 1.75rem;
-          line-height: 1;
+          font-size: 1.5rem;
+          line-height: 1.6;
           font-weight: 700;
         }
 
