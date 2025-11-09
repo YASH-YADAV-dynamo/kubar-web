@@ -16,8 +16,8 @@ export default function Hero() {
             <Image 
               src="/logo.png" 
               alt="Kubar Labs Logo" 
-              width={120} 
-              height={120} 
+              width={100} 
+              height={80} 
               className="logo-image"
               priority
             />
@@ -85,9 +85,9 @@ export default function Hero() {
         }
 
         .logo-image {
-          width: 120px;
+          width: 100px;
           height: auto;
-          max-height: 120px;
+          max-height: 100px;
           object-fit: contain;
           object-position: center;
           aspect-ratio: 1 / 1;
@@ -176,9 +176,9 @@ export default function Hero() {
           }
 
                 .logo-image {
-                  width: 100px;
+                  width: 80px;
                   height: auto;
-                  max-height: 100px;
+                  max-height: 80px;
                 }
 
           .hero-title {

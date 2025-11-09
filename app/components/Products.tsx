@@ -47,6 +47,14 @@ export default function Products() {
   return (
     <section className="products">
       <div className="container">
+        <div className="back-button-container">
+          <Link href="/" className="back-button" aria-label="Back to Home">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <path d="M14 8L10 12L14 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </Link>
+        </div>
         <header className="products-hero">
           <div className="logo-container">
             <Image
@@ -139,6 +147,39 @@ export default function Products() {
           background: var(--color-background);
           padding: calc(var(--spacing-3xl) + 2rem) 0 var(--spacing-3xl);
           color: var(--color-text-primary);
+        }
+
+        .back-button-container {
+          margin-bottom: var(--spacing-xl);
+        }
+
+        .back-button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          background: transparent;
+          border: none;
+          border-radius: 50%;
+          color: #ffffff;
+          text-decoration: none;
+          transition: all var(--transition-base);
+          cursor: pointer;
+        }
+
+        .back-button:hover {
+          background: rgba(255, 255, 255, 0.1);
+          transform: translateX(-4px);
+        }
+
+        .back-button:active {
+          transform: translateX(-2px);
+        }
+
+        .back-button svg {
+          width: 24px;
+          height: 24px;
         }
 
         .products-hero {
