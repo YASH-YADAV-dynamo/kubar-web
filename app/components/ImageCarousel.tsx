@@ -41,6 +41,7 @@ export default function ImageCarousel() {
   return (
     <section className="awards-section">
       <div className="container">
+        <h2 className="awards-heading">Product Showcase</h2>
         <div
           className="awards-carousel-container"
           onMouseEnter={() => setIsPaused(true)}
@@ -107,6 +108,15 @@ export default function ImageCarousel() {
           width: 100%;
           padding: var(--spacing-3xl) 0;
           background: var(--color-background);
+        }
+
+        .awards-heading {
+          font-size: clamp(2rem, 4vw, 2.75rem);
+          font-weight: 700;
+          text-align: center;
+          margin-bottom: var(--spacing-2xl);
+          color: var(--color-text-primary);
+          font-family: var(--font-heading);
         }
 
         .awards-carousel-container {

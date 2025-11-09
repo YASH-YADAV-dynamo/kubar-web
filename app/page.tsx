@@ -2,7 +2,6 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import ExpandBussiness from './components/ExpandBussiness';
-import KubarForNBFCAndMSME from './components/KubarForNBFCAndMSME';
 import ImageCarousel from './components/ImageCarousel';
 import VerticalScrollSections from './components/VerticalScrollSections';
 import ProductCTA from './components/ProductCTA';
@@ -22,7 +21,6 @@ export default function Home() {
         <AboutUs />
         <VerticalScrollSections />
         <ExpandBussiness />
-        <KubarForNBFCAndMSME />
         <ImageCarousel />
         <ProductCTA />
       </main>

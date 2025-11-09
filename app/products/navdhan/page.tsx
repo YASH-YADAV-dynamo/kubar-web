@@ -1,6 +1,7 @@
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Products from '../../components/Products';
+import KubarForNBFCAndMSME from '../../components/KubarForNBFCAndMSME';
 
 export const metadata = {
   title: "NavDhan — Kubar Labs",
@@ -13,6 +14,7 @@ export default function NavDhanPage() {
       <Header />
       <main>
         <Products />
+        <KubarForNBFCAndMSME />
       </main>
       <Footer />
     </>

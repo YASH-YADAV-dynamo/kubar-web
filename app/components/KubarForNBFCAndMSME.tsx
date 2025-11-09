@@ -9,7 +9,7 @@ export default function KubarForNBFCAndMSME() {
     <section className="kubar-sections">
       {/* Kubar for NBFCs Section */}
       <div className="kubar-section">
-        <h2 className="kubar-section-title">Kubar for NBFCs</h2>
+        <h2 className="kubar-section-title">NavDhan for NBFCs</h2>
         <div className="kubar-features">
           {nbfcData.map((feature, index) => (
             <div
@@ -33,7 +33,7 @@ export default function KubarForNBFCAndMSME() {
 
       {/* Kubar for MSMEs Section */}
       <div className="kubar-section">
-        <h2 className="kubar-section-title">Kubar for MSMEs</h2>
+        <h2 className="kubar-section-title">NavDhan for MSMEs</h2>
         <div className="kubar-features">
           {msmeData.map((feature, index) => (
             <div
