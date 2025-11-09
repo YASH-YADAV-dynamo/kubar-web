@@ -25,6 +25,12 @@ export const metadata: Metadata = {
   description: "NavDhan by Kubar Labs delivers lender-grade API workflows that help NBFCs and banks serve MSMEs with faster, data-rich credit.",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -32,6 +38,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} ${orbitron.variable}`} style={{ fontFamily: 'var(--font-body)' }}>
         {children}
       </body>

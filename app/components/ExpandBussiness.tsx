@@ -166,9 +166,33 @@ export default function ExpandBussiness() {
         }
 
         @media (max-width: 767px) {
+          .expand-heading {
+            margin-bottom: var(--spacing-lg);
+          }
+
+          .expand-images {
+            gap: var(--spacing-sm);
+          }
+
+          .expand-image-item {
+            min-width: 150px;
+            height: 200px;
+          }
+
           .expand-gradient {
-            width: 100px;
+            width: 60px;
             height: 100%;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .expand-image-item {
+            min-width: 120px;
+            height: 180px;
+          }
+
+          .expand-gradient {
+            width: 40px;
           }
         }
       `}</style>

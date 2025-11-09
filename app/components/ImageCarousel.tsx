@@ -1,261 +1,186 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-
-// Assuming images are named img1.jpg, img2.jpg, etc. or img1.png, img2.png, etc.
-// You can adjust the extension and count as needed
-const getImagePaths = () => {
-  const images = [];
-  const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
-  
-  // Try to detect available images (you can also hardcode the count)
-  // For now, let's assume we have images from img1 to img10
-  for (let i = 1; i <= 10; i++) {
-    // Try different extensions
-    for (const ext of extensions) {
-      images.push(`/carousel/img${i}${ext}`);
-    }
-  }
-  
-  return images;
-};
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [images, setImages] = useState<string[]>([]);
   const [isPaused, setIsPaused] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const images = [
+    '/awards/img1.jpg',
+    '/awards/img2.jpg',
+    '/awards/img3.jpg',
+    '/awards/img4.jpg',
+    '/awards/img5.jpg',
+  ];
 
   useEffect(() => {
-    // Try to load images - adjust the count based on your actual images
-    // The component will work with however many images you have
-    const imagePaths: string[] = [];
-    const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
-    
-    // Try to detect images (you can adjust the max count)
-    for (let i = 1; i <= 20; i++) {
-      for (const ext of extensions) {
-        imagePaths.push(`/carousel/img${i}${ext}`);
-      }
-    }
-    
-    // For now, use a default set - replace with actual image detection if needed
-    const defaultImages = [
-      '/carousel/img1.jpg',
-      '/carousel/img2.jpg',
-      '/carousel/img3.jpg',
-      '/carousel/img4.jpg',
-      '/carousel/img5.jpg',
-      '/carousel/img6.jpg',
-    ];
-    
-    setImages(defaultImages);
-  }, []);
-
-  useEffect(() => {
-    if (images.length === 0 || isPaused) return;
+    if (isPaused) return;
 
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => {
-        const next = prev + 1;
-        // When we reach the end, loop back to 0 seamlessly
-        if (next >= images.length) {
-          return 0;
-        }
-        return next;
-      });
-    }, 4000); // Change image every 4 seconds
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [images.length, isPaused]);
+  }, [isPaused, images.length]);
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  if (images.length === 0) {
-    return null; // Don't render if no images
-  }
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
 
   return (
-    <section className="image-carousel-section">
-      <div className="carousel-container" ref={carouselRef}>
+    <section className="awards-section">
+      <div className="container">
         <div
-          className="carousel-track"
-          style={{
-            transform: `translateX(-${currentIndex * 100}%) translateZ(0)`,
-          }}
+          className="awards-carousel-container"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {images.map((src, index) => {
-            const offset = index - currentIndex;
-            const absOffset = Math.abs(offset);
-            const isActive = offset === 0;
-            const isNext = offset === 1 || (offset === -(images.length - 1));
-            const isPrev = offset === -1 || (offset === images.length - 1);
-            
-            let transform = '';
-            let opacity = 1;
-            let zIndex = images.length - absOffset;
-            let scale = 1;
-            let filter = 'brightness(1)';
-            
-            if (isActive) {
-              transform = 'translateZ(0px) scale(1)';
-              scale = 1;
-              opacity = 1;
-              filter = 'brightness(1)';
-            } else if (isNext || isPrev) {
-              const translateZ = -200;
-              const scale3d = 0.85;
-              const translateX = offset * 50;
-              transform = `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale3d})`;
-              scale = scale3d;
-              opacity = 0.7;
-              filter = 'brightness(0.7) blur(2px)';
-            } else {
-              const translateZ = -400;
-              const scale3d = 0.7;
-              const translateX = offset * 30;
-              transform = `translateX(${translateX}px) translateZ(${translateZ}px) scale(${scale3d})`;
-              scale = scale3d;
-              opacity = 0.4;
-              filter = 'brightness(0.5) blur(4px)';
-            }
-            
-            return (
-              <div
+          <div
+            className="awards-carousel-track"
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+            }}
+          >
+            {images.map((src, index) => {
+              const isVertical = src.includes('img4.jpg');
+              return (
+                <div key={index} className="award-slide">
+                  <div className={`award-image-wrapper ${isVertical ? 'vertical-image' : ''}`}>
+                    <Image
+                      src={src}
+                      alt={`Award ${index + 1}`}
+                      width={800}
+                      height={600}
+                      className={`award-image ${isVertical ? 'vertical' : 'horizontal'}`}
+                      priority={index === 0}
+                      unoptimized
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            className="award-carousel-nav award-carousel-nav-prev"
+            onClick={prevSlide}
+            aria-label="Previous award"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            className="award-carousel-nav award-carousel-nav-next"
+            onClick={nextSlide}
+            aria-label="Next award"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          {/* Navigation Dots */}
+          <div className="award-carousel-dots">
+            {images.map((_, index) => (
+              <button
                 key={index}
-                className="carousel-slide"
-                style={{
-                  transform,
-                  opacity,
-                  zIndex,
-                  filter,
-                }}
-              >
-                <Image
-                  src={src}
-                  alt={`Carousel image ${index + 1}`}
-                  width={1200}
-                  height={600}
-                  className="carousel-image"
-                  priority={index === 0}
-                  unoptimized
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Navigation Arrows */}
-        <button
-          className="carousel-nav carousel-nav-prev"
-          onClick={prevSlide}
-          aria-label="Previous image"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        <button
-          className="carousel-nav carousel-nav-next"
-          onClick={nextSlide}
-          aria-label="Next image"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-
-        {/* Dots Indicator */}
-        <div className="carousel-dots">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
-              onClick={() => goToSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+                className={`award-carousel-dot ${index === currentIndex ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+                aria-label={`Go to award ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
-        .image-carousel-section {
+        .awards-section {
           width: 100%;
           padding: var(--spacing-3xl) 0;
           background: var(--color-background);
-          position: relative;
-          overflow: visible;
         }
 
-        .carousel-container {
+        .awards-carousel-container {
           position: relative;
-          max-width: 1400px;
+          max-width: 1200px;
+          width: 100%;
           margin: 0 auto;
           padding: 0 var(--content-padding);
-          perspective: 1500px;
-          perspective-origin: center center;
-          height: 500px;
-          display: flex;
-          align-items: center;
           overflow: hidden;
         }
 
-        .carousel-track {
+        .awards-carousel-track {
           display: flex;
-          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: transform;
-          transform-style: preserve-3d;
           width: 100%;
-          height: 100%;
-          align-items: center;
         }
 
-        .carousel-slide {
+        .award-slide {
           min-width: 100%;
+          width: 100%;
           flex-shrink: 0;
-          position: relative;
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-          transform-style: preserve-3d;
-          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease, filter 0.8s ease;
-          will-change: transform, opacity, filter;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 var(--spacing-sm);
+          box-sizing: border-box;
         }
 
-        .carousel-image {
+        .award-image-wrapper {
+          width: 100%;
+          max-width: 100%;
+          position: relative;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+          background: var(--color-surface);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 400px;
+          max-height: 600px;
+        }
+
+        .award-image-wrapper.vertical-image {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .award-image {
           width: 100%;
           height: auto;
+          max-height: 600px;
           object-fit: cover;
+          object-position: center;
           display: block;
-          border-radius: 20px;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
         }
 
-        .carousel-nav {
+        .award-image.vertical {
+          object-fit: contain;
+          max-height: 600px;
+        }
+
+        .award-carousel-nav {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          background: rgba(0, 0, 0, 0.6);
+          background: rgba(0, 0, 0, 0.7);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 50%;
-          width: 48px;
-          height: 48px;
+          width: 40px;
+          height: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -265,32 +190,32 @@ export default function ImageCarousel() {
           z-index: 10;
         }
 
-        .carousel-nav:hover {
-          background: rgba(0, 0, 0, 0.8);
+        .award-carousel-nav:hover {
+          background: rgba(0, 0, 0, 0.9);
           transform: translateY(-50%) scale(1.1);
           border-color: var(--color-primary);
         }
 
-        .carousel-nav-prev {
-          left: var(--content-padding);
+        .award-carousel-nav-prev {
+          left: var(--spacing-md);
         }
 
-        .carousel-nav-next {
-          right: var(--content-padding);
+        .award-carousel-nav-next {
+          right: var(--spacing-md);
         }
 
-        .carousel-dots {
+        .award-carousel-dots {
           display: flex;
           justify-content: center;
           align-items: center;
           gap: var(--spacing-sm);
-          margin-top: var(--spacing-xl);
+          margin-top: var(--spacing-lg);
           padding: 0 var(--content-padding);
         }
 
-        .carousel-dot {
-          width: 12px;
-          height: 12px;
+        .award-carousel-dot {
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
           background: rgba(255, 255, 255, 0.3);
           border: 2px solid transparent;
@@ -299,12 +224,12 @@ export default function ImageCarousel() {
           padding: 0;
         }
 
-        .carousel-dot:hover {
+        .award-carousel-dot:hover {
           background: rgba(255, 255, 255, 0.5);
           transform: scale(1.2);
         }
 
-        .carousel-dot.active {
+        .award-carousel-dot.active {
           background: var(--color-primary);
           border-color: var(--color-primary);
           transform: scale(1.3);
@@ -312,60 +237,109 @@ export default function ImageCarousel() {
         }
 
         @media (max-width: 768px) {
-          .image-carousel-section {
+          .awards-section {
             padding: var(--spacing-2xl) 0;
-            overflow: hidden;
           }
 
-          .carousel-container {
+          .awards-carousel-container {
             padding: 0 var(--content-padding);
-            height: 400px;
-            perspective: 1000px;
           }
 
-          .carousel-slide {
-            border-radius: 16px;
+          .award-slide {
+            padding: 0;
           }
 
-          .carousel-image {
-            border-radius: 16px;
+          .award-image-wrapper {
+            width: 100%;
+            max-width: 100%;
+            min-height: auto;
+            max-height: calc(100vh - 200px);
+            border-radius: 12px;
           }
 
-          .carousel-nav {
-            width: 40px;
-            height: 40px;
+          .award-image-wrapper.vertical-image {
+            max-width: 100%;
+            max-height: calc(100vh - 200px);
           }
 
-          .carousel-nav-prev {
-            left: 1rem;
+          .award-image {
+            width: 100%;
+            height: auto;
+            max-height: calc(100vh - 200px);
+            object-fit: contain;
           }
 
-          .carousel-nav-next {
-            right: 1rem;
+          .award-image.vertical {
+            object-fit: contain;
+            max-height: calc(100vh - 200px);
           }
 
-          .carousel-dots {
-            margin-top: var(--spacing-lg);
-          }
-        }
-
-        @media (max-width: 480px) {
-          .carousel-nav {
+          .award-carousel-nav {
             width: 36px;
             height: 36px;
           }
 
-          .carousel-nav svg {
-            width: 18px;
-            height: 18px;
+          .award-carousel-nav-prev {
+            left: var(--spacing-xs);
           }
 
-          .carousel-nav-prev {
+          .award-carousel-nav-next {
+            right: var(--spacing-xs);
+          }
+
+          .award-carousel-dots {
+            margin-top: var(--spacing-md);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .awards-section {
+            padding: var(--spacing-xl) 0;
+          }
+
+          .award-image-wrapper {
+            max-height: calc(100vh - 180px);
+            border-radius: 10px;
+          }
+
+          .award-image-wrapper.vertical-image {
+            max-height: calc(100vh - 180px);
+          }
+
+          .award-image {
+            max-height: calc(100vh - 180px);
+          }
+
+          .award-image.vertical {
+            max-height: calc(100vh - 180px);
+          }
+
+          .award-carousel-nav {
+            width: 32px;
+            height: 32px;
+          }
+
+          .award-carousel-nav svg {
+            width: 16px;
+            height: 16px;
+          }
+
+          .award-carousel-nav-prev {
             left: 0.5rem;
           }
 
-          .carousel-nav-next {
+          .award-carousel-nav-next {
             right: 0.5rem;
+          }
+
+          .award-carousel-dots {
+            margin-top: var(--spacing-sm);
+            gap: 0.5rem;
+          }
+
+          .award-carousel-dot {
+            width: 8px;
+            height: 8px;
           }
         }
       `}</style>
