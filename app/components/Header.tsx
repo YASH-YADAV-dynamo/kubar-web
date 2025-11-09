@@ -14,6 +14,18 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    updateWindowWidth();
+    window.addEventListener('resize', updateWindowWidth);
+    return () => window.removeEventListener('resize', updateWindowWidth);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,10 +138,42 @@ export default function Header() {
           <div className="nav-cta-wrapper">
             <Link 
               href="/contact#contact-form" 
-              className="nav-link-cta-button"
               onClick={closeMenu}
+              onMouseEnter={() => setIsButtonHovered(true)}
+              onMouseLeave={() => setIsButtonHovered(false)}
+              style={{
+                background: 'transparent',
+                border: '2px solid #a3e635',
+                padding: windowWidth >= 769 ? '0.875rem 2.5rem' : '0.875rem 1.5rem',
+                borderRadius: '14px',
+                color: '#a3e635',
+                fontWeight: '700',
+                fontSize: windowWidth >= 769 ? '0.95rem' : '0.9rem',
+                letterSpacing: '0.03em',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative',
+                overflow: 'hidden',
+                boxShadow: isButtonHovered && windowWidth >= 769 
+                  ? '0 8px 24px rgba(163, 230, 53, 0.4), 0 4px 12px rgba(163, 230, 53, 0.2)'
+                  : '0 0 0 0 rgba(163, 230, 53, 0)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                whiteSpace: 'nowrap',
+                cursor: 'pointer',
+                fontFamily: 'inherit',
+                zIndex: 1,
+                isolation: 'isolate',
+                transform: isButtonHovered && windowWidth >= 769 ? 'translateY(-3px) scale(1.02)' : 'translateZ(0)',
+                width: windowWidth >= 769 ? 'auto' : '100%',
+                margin: 0,
+                appearance: 'none',
+                WebkitAppearance: 'none',
+                MozAppearance: 'none'
+              }}
             >
-              <span>Book a Demo</span>
+              <span style={{ position: 'relative', zIndex: 2 }}>Book a Demo</span>
             </Link>
           </div>
         </div>
@@ -473,36 +517,42 @@ export default function Header() {
         }
 
         .nav-link-cta-button {
-          background: linear-gradient(135deg, rgba(163, 230, 53, 0.2) 0%, rgba(163, 230, 53, 0.15) 50%, rgba(163, 230, 53, 0.1) 100%);
-          border: 2px solid var(--color-primary);
-          padding: 0.875rem 1.5rem;
-          border-radius: 14px;
-          color: var(--color-primary);
-          font-weight: 700;
-          font-size: 0.9rem;
-          letter-spacing: 0.03em;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          position: relative;
-          overflow: hidden;
-          box-shadow: 
-            0 6px 24px rgba(163, 230, 53, 0.3),
-            0 3px 10px rgba(163, 230, 53, 0.2),
-            inset 0 1px 0 rgba(163, 230, 53, 0.3),
-            inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-            0 0 0 0 rgba(163, 230, 53, 0.4);
-          text-decoration: none;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          white-space: nowrap;
-          cursor: pointer;
-          font-family: inherit;
-          z-index: 1;
-          isolation: isolate;
-          transform: translateZ(0);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-          width: 100%;
+          background: transparent;
+          border: 2px solid var(--color-primary) !important;
+          padding: 0.875rem 1.5rem !important;
+          border-radius: 14px !important;
+          color: var(--color-primary) !important;
+          font-weight: 700 !important;
+          font-size: 0.9rem !important;
+          letter-spacing: 0.03em !important;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+          position: relative !important;
+          overflow: hidden !important;
+          box-shadow: 0 0 0 0 rgba(163, 230, 53, 0) !important;
+          text-decoration: none !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          white-space: nowrap !important;
+          cursor: pointer !important;
+          font-family: inherit !important;
+          z-index: 1 !important;
+          isolation: isolate !important;
+          transform: translateZ(0) !important;
+          width: 100% !important;
+          margin: 0 !important;
+          appearance: none !important;
+          -webkit-appearance: none !important;
+          -moz-appearance: none !important;
+        }
+        
+        .nav-link-cta-button,
+        .nav-link-cta-button:link,
+        .nav-link-cta-button:visited {
+          background: transparent !important;
+          border: 2px solid var(--color-primary) !important;
+          color: var(--color-primary) !important;
+          text-decoration: none !important;
         }
 
         @media (min-width: 769px) {
@@ -518,22 +568,6 @@ export default function Header() {
           z-index: 2;
         }
 
-        .nav-link-cta-button::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(163, 230, 53, 0.4) 0%, rgba(163, 230, 53, 0.25) 50%, rgba(163, 230, 53, 0.15) 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          z-index: 1;
-        }
-
-        .nav-link-cta-button:hover::before {
-          opacity: 1;
-        }
 
         .nav-link-cta-button::after {
           content: '';
@@ -556,35 +590,33 @@ export default function Header() {
           }
 
           .nav-link-cta-button:hover {
-            background: linear-gradient(135deg, rgba(163, 230, 53, 0.3) 0%, rgba(163, 230, 53, 0.25) 50%, rgba(163, 230, 53, 0.2) 100%);
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-            transform: translateY(-3px) scale(1.02);
+            background: transparent !important;
+            border-color: var(--color-primary) !important;
+            color: var(--color-primary) !important;
+            transform: translateY(-3px) scale(1.02) !important;
             box-shadow: 
-              0 12px 40px rgba(163, 230, 53, 0.5),
-              0 6px 16px rgba(163, 230, 53, 0.3),
-              inset 0 1px 0 rgba(163, 230, 53, 0.4),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.2),
-              0 0 0 6px rgba(163, 230, 53, 0.2);
+              0 8px 24px rgba(163, 230, 53, 0.4),
+              0 4px 12px rgba(163, 230, 53, 0.2) !important;
+            text-decoration: none !important;
           }
         }
 
         .nav-link-cta-button:active {
-          transform: translateY(0);
+          transform: translateY(0) !important;
           box-shadow: 
-            0 4px 15px rgba(163, 230, 53, 0.5),
-            0 2px 6px rgba(163, 230, 53, 0.3),
-            inset 0 1px 2px rgba(0, 0, 0, 0.15);
+            0 4px 15px rgba(163, 230, 53, 0.3),
+            0 2px 6px rgba(163, 230, 53, 0.2) !important;
+          background: transparent !important;
+          border-color: var(--color-primary) !important;
+          color: var(--color-primary) !important;
         }
 
         .nav-link-cta-button:focus-visible {
           outline: 3px solid var(--color-primary);
           outline-offset: 4px;
           box-shadow: 
-            0 4px 20px rgba(163, 230, 53, 0.5),
-            0 2px 8px rgba(163, 230, 53, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.3),
-            0 0 0 4px rgba(163, 230, 53, 0.3);
+            0 4px 20px rgba(163, 230, 53, 0.4),
+            0 2px 8px rgba(163, 230, 53, 0.2);
         }
 
         .mobile-menu-toggle {
@@ -664,11 +696,15 @@ export default function Header() {
           }
 
           .nav-link-cta-button {
-            margin-top: 0.5rem;
-            padding: 0.875rem 1rem;
-            text-align: center;
-            width: 100%;
-            font-size: 0.9rem;
+            margin-top: 0.5rem !important;
+            padding: 0.875rem 1rem !important;
+            text-align: center !important;
+            width: 100% !important;
+            font-size: 0.9rem !important;
+            background: transparent !important;
+            border: 2px solid var(--color-primary) !important;
+            color: var(--color-primary) !important;
+            text-decoration: none !important;
           }
 
           .nav-cta-wrapper {
