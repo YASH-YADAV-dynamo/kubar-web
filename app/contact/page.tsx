@@ -1,14 +1,63 @@
 'use client';
 
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default function ContactPage() {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form submission logic can be added here
-    alert('Form submitted! (This is a demo - form submission needs to be implemented)');
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      email: formData.get('email') as string,
+      phoneNumber: formData.get('phone') as string,
+      message: formData.get('message') as string,
+    };
+
+    try {
+      const response = await fetch('/api/demo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your demo request has been submitted successfully. Our team will reach out to you soon.',
+        });
+        // Reset form
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Failed to submit your request. Please try again.',
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'An error occurred while submitting your request. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -42,13 +91,22 @@ export default function ContactPage() {
                 </label>
                 <label className="field">
                   <span>Phone Number</span>
-                  <input name="phone" type="tel" placeholder="9876543210" required pattern="[0-9]{10,}" />
+                  <input name="phone" type="tel" placeholder="9876543210" pattern="[0-9]{10,}" />
                 </label>
                 <label className="field">
                   <span>Message</span>
-                  <textarea name="message" rows={4} placeholder="Tell us about your MSME lending workflow." required></textarea>
+                  <textarea name="message" rows={4} placeholder="Tell us about your MSME lending workflow."></textarea>
                 </label>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                
+                {submitStatus.type && (
+                  <div className={`form-message ${submitStatus.type === 'success' ? 'success' : 'error'}`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </button>
               </form>
               <aside className="contact-info">
                 <h2>Need something specific?</h2>

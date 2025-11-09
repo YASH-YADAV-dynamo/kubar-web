@@ -35,7 +35,7 @@ export default function Hero() {
                 <path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-            <Link href="/products" className="btn btn-secondary">View NavDhan</Link>
+                  <Link href="/products/navdhan" className="btn btn-secondary">View NavDhan</Link>
           </div>
         </div>
       </div>

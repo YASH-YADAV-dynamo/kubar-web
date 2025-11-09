@@ -35,9 +35,9 @@ export default function Footer() {
             <div className="footer-column">
               <h4 className="footer-heading">Product</h4>
               <ul className="footer-list">
-                <li><Link href="/products">NavDhan Overview</Link></li>
-                <li><Link href="/products#usecases">Use Cases</Link></li>
-                <li><Link href="/products#integrations">Integrations</Link></li>
+                <li><Link href="/products/navdhan">NavDhan Overview</Link></li>
+                <li><Link href="/products/navdhan#usecases">Use Cases</Link></li>
+                <li><Link href="/products/navdhan#integrations">Integrations</Link></li>
                 <li><Link href="/contact#contact-form">Book a Demo</Link></li>
               </ul>
             </div>

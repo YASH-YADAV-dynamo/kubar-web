@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const useCases = [
   {
@@ -47,7 +48,16 @@ export default function Products() {
     <section className="products">
       <div className="container">
         <header className="products-hero">
-          <div className="badge">NavDhan</div>
+          <div className="logo-container">
+            <Image
+              src="/navdhan_logo.png"
+              alt="NavDhan Logo"
+              width={200}
+              height={80}
+              className="navdhan-logo"
+              priority
+            />
+          </div>
           <h1>Credit Intelligence Service for MSME Lenders</h1>
           <p>
             NavDhan is Kubar Labs' credit intelligence service that embeds MSME underwriting, decisioning, and servicing inside the apps your
@@ -137,19 +147,19 @@ export default function Products() {
           margin: 0 auto var(--spacing-3xl);
         }
 
-        .badge {
-          display: inline-flex;
+        .logo-container {
+          display: flex;
+          justify-content: center;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.5rem 1.25rem;
-          border-radius: 999px;
-          border: 1px solid var(--color-border);
-          color: var(--color-text-secondary);
-          font-weight: 600;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          margin-bottom: var(--spacing-md);
-          background: var(--color-surface);
+          margin-bottom: var(--spacing-lg);
+        }
+
+        .navdhan-logo {
+          height: auto;
+          width: auto;
+          max-width: 200px;
+          max-height: 80px;
+          object-fit: contain;
         }
 
         .products-hero h1 {

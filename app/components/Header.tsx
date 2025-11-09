@@ -96,7 +96,7 @@ export default function Header() {
               </svg>
             </button>
             <div className={`dropdown-menu ${isDropdownOpen ? 'is-open' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <Link className="dropdown-link" href="/products" onClick={closeMenu}>
+                    <Link className="dropdown-link" href="/products/navdhan" onClick={closeMenu}>
                 <span className="dropdown-title">NavDhan</span>
                 <span className="dropdown-subtext">India's first MSME Credit Hub</span>
               </Link>
