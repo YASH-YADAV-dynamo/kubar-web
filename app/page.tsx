@@ -1,6 +1,5 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
-import AboutUs from './components/AboutUs';
 import ExpandBussiness from './components/ExpandBussiness';
 import ImageCarousel from './components/ImageCarousel';
 import VerticalScrollSections from './components/VerticalScrollSections';
@@ -18,7 +17,6 @@ export default function Home() {
       <Header />
       <main className="home-page">
         <Hero />
-        <AboutUs />
         <VerticalScrollSections />
         <ExpandBussiness />
         <ImageCarousel />

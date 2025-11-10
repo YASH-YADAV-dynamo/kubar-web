@@ -1,7 +1,8 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import NavDhanHeader from '../../components/NavDhanHeader';
+import NavDhanFooter from '../../components/NavDhanFooter';
 import Products from '../../components/Products';
 import KubarForNBFCAndMSME from '../../components/KubarForNBFCAndMSME';
+import NavDhanWrapper from './NavDhanWrapper';
 
 export const metadata = {
   title: "NavDhan — Kubar Labs",
@@ -10,14 +11,16 @@ export const metadata = {
 
 export default function NavDhanPage() {
   return (
-    <>
-      <Header />
-      <main>
-        <Products />
-        <KubarForNBFCAndMSME />
-      </main>
-      <Footer />
-    </>
+    <NavDhanWrapper>
+      <div data-page="navdhan">
+        <NavDhanHeader />
+        <main style={{ background: '#ffffff' }}>
+          <Products />
+          <KubarForNBFCAndMSME />
+        </main>
+        <NavDhanFooter />
+      </div>
+    </NavDhanWrapper>
   );
 }
 

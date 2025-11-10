@@ -209,8 +209,8 @@ export default function AwardsCarousel() {
         }
 
         .awards-carousel-dot.active {
-          background: var(--color-primary);
-          border-color: var(--color-primary);
+          background: #ffd700;
+          border-color: #ffd700;
           transform: scale(1.3);
           box-shadow: 0 0 12px rgba(163, 230, 53, 0.5);
         }

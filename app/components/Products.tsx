@@ -77,35 +77,19 @@ export default function Products() {
           </div>
         </header>
 
+        <div className="navdhan-hero-image">
+          <img 
+            src="https://cdn.discordapp.com/attachments/1414510618521632771/1437482917617074176/NavDhan_by_Kubar_Labs.png?ex=691367ca&is=6912164a&hm=e1f0d235a5decba3106459ec18b02ffbaf8760da17fae304adf85cf8a72b63cc"
+            alt="NavDhan by Kubar Labs"
+            className="navdhan-image"
+          />
+        </div>
+
         <section className="usecases" id="usecases">
           <h2>Use Cases</h2>
           <div className="usecase-grid">
             {useCases.map((item) => (
               <article key={item.key} className="usecase-card">
-                <div className="icon" aria-hidden="true">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    {item.key === 'cash' ? (
-                      <>
-                        <path d="M12 2L2 7l10 5 10-5-10-5Z" />
-                        <path d="M3 7v5l9 4.5L21 12V7" />
-                        <path d="M9 11h6" />
-                      </>
-                    ) : item.key === 'invoice' ? (
-                      <>
-                        <path d="M6 2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z" />
-                        <path d="M15 2v5h5" />
-                        <path d="M8 13h8" />
-                        <path d="M8 17h6" />
-                      </>
-                    ) : (
-                      <>
-                        <path d="M3 5h2l1 7h11l1-5H6" />
-                        <circle cx="9" cy="17" r="1" />
-                        <circle cx="17" cy="17" r="1" />
-                      </>
-                    )}
-                  </svg>
-                </div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
@@ -209,11 +193,19 @@ export default function Products() {
           color: var(--color-text-primary);
         }
 
+        [data-page="navdhan"] .products-hero h1 {
+          color: #000000 !important;
+        }
+
         .products-hero p {
           font-size: 1.25rem;
           color: var(--color-text-secondary);
           line-height: 1.8;
           margin-bottom: var(--spacing-2xl);
+        }
+
+        [data-page="navdhan"] .products-hero p {
+          color: #333333 !important;
         }
 
         .actions {
@@ -250,6 +242,38 @@ export default function Products() {
         }
 
 
+        .navdhan-hero-image {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto var(--spacing-3xl);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .navdhan-image {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+          object-fit: contain;
+          border-radius: 20px;
+        }
+
+        [data-page="navdhan"] .navdhan-hero-image {
+          margin-bottom: var(--spacing-3xl);
+        }
+
+        @media (max-width: 768px) {
+          .navdhan-hero-image {
+            margin-bottom: var(--spacing-2xl);
+            padding: 0 var(--content-padding);
+          }
+
+          .navdhan-image {
+            border-radius: 16px;
+          }
+        }
+
         .usecases {
           margin-bottom: var(--spacing-3xl);
         }
@@ -280,7 +304,7 @@ export default function Products() {
 
         .usecase-card:hover {
           transform: translateY(-6px);
-          border-color: var(--color-primary);
+          border-color: #ffd700;
         }
 
         .icon {
@@ -289,7 +313,7 @@ export default function Products() {
           border-radius: 16px;
           background: var(--color-surface-elevated);
           border: 1px solid var(--color-border);
-          color: var(--color-primary);
+          color: #ffd700;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -337,7 +361,7 @@ export default function Products() {
           border-radius: 50%;
           background: rgba(163, 230, 53, 0.15);
           border: 1px solid rgba(163, 230, 53, 0.25);
-          color: var(--color-primary);
+          color: #ffd700;
           font-weight: 700;
           flex-shrink: 0;
         }
@@ -390,6 +414,89 @@ export default function Products() {
           .products-hero p {
             font-size: 1.125rem;
           }
+        }
+
+        [data-page="navdhan"] .products {
+          background: #fefefe !important;
+          color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .products .back-button {
+          color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .products .back-button:hover {
+          background: rgba(255, 165, 0, 0.1) !important;
+          color: #ff8c00 !important;
+        }
+
+        [data-page="navdhan"] .products .usecase-grid {
+          background: transparent !important;
+        }
+
+        [data-page="navdhan"] .products .usecase-card,
+        [data-page="navdhan"] .products .list-item,
+        [data-page="navdhan"] .products .integration-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(255, 165, 0, 0.2) !important;
+          box-shadow: 0 2px 8px rgba(255, 165, 0, 0.05) !important;
+        }
+
+        [data-page="navdhan"] .products .usecase-card:hover {
+          border-color: rgba(255, 165, 0, 0.5) !important;
+          background: #fffef9 !important;
+          box-shadow: 0 4px 16px rgba(255, 165, 0, 0.15) !important;
+          transform: translateY(-2px) !important;
+        }
+
+        [data-page="navdhan"] .products .icon {
+          background: #ffffff !important;
+          border-color: rgba(255, 165, 0, 0.3) !important;
+          color: #ff8c00 !important;
+        }
+
+        [data-page="navdhan"] .products .icon svg {
+          color: #ff8c00 !important;
+          stroke: #ff8c00 !important;
+        }
+
+        [data-page="navdhan"] .products .icon svg * {
+          stroke: #ff8c00 !important;
+        }
+
+        [data-page="navdhan"] .products .usecase-card h3,
+        [data-page="navdhan"] .products .integration-card h3 {
+          color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .products .usecase-card p,
+        [data-page="navdhan"] .products .list-item p,
+        [data-page="navdhan"] .products .integration-card ul {
+          color: #555555 !important;
+        }
+
+        [data-page="navdhan"] .products .integration-card li {
+          color: #555555 !important;
+        }
+
+        [data-page="navdhan"] .products .usecases,
+        [data-page="navdhan"] .products .differentiators,
+        [data-page="navdhan"] .products .integrations {
+          background: transparent !important;
+        }
+
+        [data-page="navdhan"] .products .check {
+          background: rgba(255, 165, 0, 0.15) !important;
+          border-color: rgba(255, 165, 0, 0.3) !important;
+          color: #ff8c00 !important;
+        }
+
+        [data-page="navdhan"] .products .actions .btn-primary {
+          display: none !important;
+        }
+
+        [data-page="navdhan"] .products .actions {
+          justify-content: center !important;
         }
       `}</style>
     </section>

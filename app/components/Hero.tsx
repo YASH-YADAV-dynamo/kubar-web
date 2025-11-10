@@ -102,6 +102,7 @@ export default function Hero() {
         .hero-title {
           margin-bottom: var(--spacing-lg);
           animation: fadeInUp 1.2s ease-out 0.6s both;
+          color: #ffffff !important;
         }
 
         .hero-tagline {

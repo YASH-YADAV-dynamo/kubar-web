@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
 
 const secondaryNavItems = [
   { label: "About Us", href: "/about" },
@@ -11,7 +10,7 @@ const secondaryNavItems = [
   { label: "Team", href: "/team" }
 ];
 
-export default function Header() {
+export default function NavDhanHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,44 +83,18 @@ export default function Header() {
   };
 
   return (
-    <motion.header 
-      className={`header ${isScrolled ? 'scrolled' : ''}`}
-      layout
-      transition={{
-        type: "spring",
-        stiffness: 400,
-        damping: 35,
-        mass: 0.7
-      }}
-      animate={{
-        width: isScrolled && windowWidth >= 769 ? 'calc(100% - 4rem)' : 'calc(100% - 4rem)',
-        maxWidth: isScrolled && windowWidth >= 769 ? 1200 : undefined,
-        borderRadius: 999,
-        marginTop: windowWidth >= 769 ? 16 : 0,
-        left: isScrolled && windowWidth >= 769 ? '50%' : '50%',
-        right: isScrolled && windowWidth >= 769 ? 'auto' : 'auto',
-        x: isScrolled && windowWidth >= 769 ? '-50%' : '-50%',
-        backgroundColor: isScrolled && windowWidth >= 769 
-          ? 'rgba(255, 255, 255, 0.12)' 
-          : 'rgba(255, 255, 255, 0.15)',
-        zIndex: isScrolled ? 10000 : 1000,
-      }}
-      style={{
-        position: 'fixed',
-        top: 0,
-      }}
-    >
-      <nav className="nav container" aria-label="Primary">
-        <div className="nav-brand">
-          <Link href="/" className="logo logo-button">
-            <Image src="/logo.png" alt="Kubar Labs" width={44} height={44} className="logo-icon" />
+    <header className={`navdhan-header ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className="navdhan-nav container" aria-label="Primary">
+        <div className="navdhan-nav-brand">
+          <Link href="/" className="navdhan-logo navdhan-logo-button">
+            <Image src="/logo.png" alt="Kubar Labs" width={44} height={44} className="navdhan-logo-icon" />
           </Link>
         </div>
 
-        <div className={`nav-links ${isMenuOpen ? 'is-open' : ''}`} id="primary-navigation">
-          <div className={`nav-item dropdown ${isDropdownOpen ? 'is-open' : ''}`} data-dropdown>
+        <div className={`navdhan-nav-links ${isMenuOpen ? 'is-open' : ''}`} id="primary-navigation">
+          <div className={`navdhan-nav-item navdhan-dropdown ${isDropdownOpen ? 'is-open' : ''}`} data-dropdown>
             <button
-              className="nav-link dropdown-toggle"
+              className="navdhan-nav-link navdhan-dropdown-toggle"
               type="button"
               onClick={(e) => {
                 e.stopPropagation();
@@ -134,70 +107,47 @@ export default function Header() {
                 <path d="M4.5 6L8 9.5L11.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <div className={`dropdown-menu ${isDropdownOpen ? 'is-open' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <Link className="dropdown-link" href="/products/navdhan" onClick={closeMenu}>
-                <span className="dropdown-title">NavDhan</span>
-                <span className="dropdown-subtext">India's first MSME Credit Hub</span>
+            <div className={`navdhan-dropdown-menu ${isDropdownOpen ? 'is-open' : ''}`} onClick={(e) => e.stopPropagation()}>
+              <Link className="navdhan-dropdown-link" href="/products/navdhan" onClick={closeMenu}>
+                <span className="navdhan-dropdown-title">NavDhan</span>
+                <span className="navdhan-dropdown-subtext">India's first MSME Credit Hub</span>
               </Link>
-              <div className="dropdown-link is-disabled" aria-disabled="true">
-                <div className="dropdown-title">
+              <div className="navdhan-dropdown-link is-disabled" aria-disabled="true">
+                <div className="navdhan-dropdown-title">
                   BRE
-                  <span className="dropdown-badge">Coming Soon</span>
+                  <span className="navdhan-dropdown-badge">Coming Soon</span>
                 </div>
-                <span className="dropdown-subtext">No-code engine for credit policies</span>
+                <span className="navdhan-dropdown-subtext">No-code engine for credit policies</span>
               </div>
-              <div className="dropdown-link is-disabled" aria-disabled="true">
-                <div className="dropdown-title">
+              <div className="navdhan-dropdown-link is-disabled" aria-disabled="true">
+                <div className="navdhan-dropdown-title">
                   Underwriting Engine
-                  <span className="dropdown-badge">Coming Soon</span>
+                  <span className="navdhan-dropdown-badge">Coming Soon</span>
                 </div>
-                <span className="dropdown-subtext">Holistic Sector-Specific Risk Profiling</span>
+                <span className="navdhan-dropdown-subtext">Holistic Sector-Specific Risk Profiling</span>
               </div>
             </div>
           </div>
 
           {secondaryNavItems.map((item) => (
-            <Link key={item.href} href={item.href} className="nav-link" onClick={closeMenu}>
+            <Link key={item.href} href={item.href} className="navdhan-nav-link" onClick={closeMenu}>
               {item.label}
             </Link>
           ))}
 
-          <div className="nav-cta-wrapper">
+          <div className="navdhan-nav-cta-wrapper">
             <Link 
               href="/contact#contact-form" 
               onClick={closeMenu}
               onMouseEnter={() => setIsButtonHovered(true)}
               onMouseLeave={() => setIsButtonHovered(false)}
+              className="navdhan-nav-cta-button"
               style={{
-                background: 'transparent',
-                border: '2px solid #a3e635',
                 padding: windowWidth >= 769 ? '0.875rem 2.5rem' : '0.875rem 1.5rem',
-                borderRadius: '14px',
-                color: '#a3e635',
-                fontWeight: '700',
                 fontSize: windowWidth >= 769 ? '0.95rem' : '0.9rem',
-                letterSpacing: '0.03em',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'relative',
-                overflow: 'hidden',
                 boxShadow: isButtonHovered && windowWidth >= 769 
-                  ? '0 8px 24px rgba(163, 230, 53, 0.4), 0 4px 12px rgba(163, 230, 53, 0.2)'
-                  : '0 0 0 0 rgba(163, 230, 53, 0)',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                whiteSpace: 'nowrap',
-                cursor: 'pointer',
-                fontFamily: 'inherit',
-                zIndex: 1,
-                isolation: 'isolate',
-                transform: isButtonHovered && windowWidth >= 769 ? 'translateY(-3px) scale(1.02)' : 'translateZ(0)',
-                width: windowWidth >= 769 ? 'auto' : '100%',
-                margin: 0,
-                appearance: 'none',
-                WebkitAppearance: 'none',
-                MozAppearance: 'none'
+                  ? '0 8px 24px rgba(255, 140, 0, 0.4), 0 4px 12px rgba(255, 140, 0, 0.2)'
+                  : '0 0 0 0 rgba(255, 140, 0, 0)',
               }}
             >
               <span style={{ position: 'relative', zIndex: 2 }}>Book a Demo</span>
@@ -206,7 +156,7 @@ export default function Header() {
         </div>
 
         <button
-          className="mobile-menu-toggle"
+          className="navdhan-mobile-menu-toggle"
           type="button"
           aria-expanded={isMenuOpen}
           aria-controls="primary-navigation"
@@ -220,128 +170,82 @@ export default function Header() {
       </nav>
 
       <style jsx>{`
-        .header {
+        .navdhan-header {
           position: fixed;
           top: 0;
           z-index: 1000;
-          background: rgba(10, 10, 10, 0.3);
-          backdrop-filter: blur(0px);
-          -webkit-backdrop-filter: blur(0px);
-          border-bottom: 1px solid transparent;
-          opacity: 0;
-        }
-
-        .header.scrolled {
-          z-index: 10000;
-        }
-
-        @media (min-width: 769px) {
-          .header {
-            opacity: 1;
-          }
-        }
-
-        .header.scrolled {
+          background: linear-gradient(135deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 200, 100, 0.1) 50%, rgba(255, 255, 255, 0.98) 100%);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           opacity: 1;
-          background: rgba(255, 255, 255, 0.1);
-          backdrop-filter: blur(80px) saturate(180%);
-          -webkit-backdrop-filter: blur(80px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 
-            0 12px 48px rgba(0, 0, 0, 0.3), 
-            0 0 0 1px rgba(255, 255, 255, 0.1) inset, 
-            0 4px 16px rgba(163, 230, 53, 0.1),
-            -2px 0 0 rgba(255, 215, 0, 0.5),
-            2px 0 0 rgba(31, 76, 242, 0.5);
-          position: relative;
+          width: 100%;
         }
 
-        .header.scrolled::before {
+        .navdhan-header.scrolled {
+          opacity: 1;
+          background: linear-gradient(135deg, rgba(255, 165, 0, 0.2) 0%, rgba(255, 200, 100, 0.15) 50%, rgba(255, 255, 255, 1) 100%);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255, 165, 0, 0.25);
+          box-shadow: 0 4px 20px rgba(255, 165, 0, 0.1);
+        }
+
+        .navdhan-header.scrolled::before {
           content: '';
           position: absolute;
+          top: 0;
           left: 0;
-          top: 0;
-          bottom: 0;
-          width: 2px;
-          background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(31, 76, 242, 0.8), rgba(255, 215, 0, 0.8));
-          pointer-events: none;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
         }
 
-        .header.scrolled::after {
+        .navdhan-header.scrolled::after {
           content: '';
           position: absolute;
-          right: 0;
-          top: 0;
           bottom: 0;
-          width: 2px;
-          background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(31, 76, 242, 0.8), rgba(255, 215, 0, 0.8));
-          pointer-events: none;
+          left: 1rem;
+          right: 1rem;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
         }
-
 
         @media (min-width: 769px) {
-          .header {
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(60px) saturate(180%);
-            -webkit-backdrop-filter: blur(60px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            border-radius: 999px;
+          .navdhan-header {
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: calc(100% - 4rem);
+            max-width: 1200px;
+            border-radius: 24px;
             margin: 1rem auto 0;
           }
 
-          .header.scrolled {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(80px) saturate(180%);
-            -webkit-backdrop-filter: blur(80px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 999px;
-            box-shadow: 
-              0 12px 48px rgba(0, 0, 0, 0.25), 
-              0 0 0 1px rgba(255, 255, 255, 0.1) inset, 
-              0 4px 16px rgba(163, 230, 53, 0.1),
-              -2px 0 0 rgba(255, 215, 0, 0.5),
-              2px 0 0 rgba(31, 76, 242, 0.5);
-            position: relative;
+          .navdhan-header.scrolled {
+            margin: 1rem auto 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(0);
+            width: calc(100% - 4rem);
+            max-width: 1200px;
+            border-radius: 24px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
           }
 
-          .header.scrolled::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(31, 76, 242, 0.8), rgba(255, 215, 0, 0.8));
-            border-radius: 24px 0 0 24px;
-            pointer-events: none;
+          .navdhan-header.scrolled::after {
+            left: 2rem;
+            right: 2rem;
           }
-
-          .header.scrolled::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(31, 76, 242, 0.8), rgba(255, 215, 0, 0.8));
-            border-radius: 0 24px 24px 0;
-            pointer-events: none;
-          }
-
         }
 
         @media (max-width: 768px) {
-          .header {
+          .navdhan-header {
             left: 0;
             right: 0;
-            transform: translateY(-100%);
+            transform: translateY(0);
           }
 
-          .header.scrolled {
+          .navdhan-header.scrolled {
             margin: 0;
             left: 0;
             right: 0;
@@ -351,85 +255,85 @@ export default function Header() {
           }
         }
 
-        .nav {
+        .navdhan-nav {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0.75rem var(--content-padding);
+          padding: 1rem var(--content-padding);
           max-width: 1400px;
           margin: 0 auto;
         }
 
-        .header.scrolled .nav {
-          padding: 0.625rem 2rem;
+        .navdhan-header.scrolled .navdhan-nav {
+          padding: 0.75rem 2rem;
         }
 
         @media (max-width: 768px) {
-          .header.scrolled .nav {
-            padding: 0.75rem var(--content-padding);
+          .navdhan-header.scrolled .navdhan-nav {
+            padding: 0.875rem var(--content-padding);
           }
         }
 
-        .nav-brand {
+        .navdhan-nav-brand {
           z-index: 2;
         }
 
-        .logo {
+        .navdhan-logo {
           display: flex;
           align-items: center;
           gap: 0.75rem;
           font-family: var(--font-heading);
           font-size: 1.25rem;
           font-weight: 700;
-          color: var(--color-text-primary);
+          color: #000000;
           text-decoration: none;
           transition: all 0.3s ease;
           padding: 0.5rem;
           border-radius: 12px;
         }
 
-        .logo-button {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+        .navdhan-logo-button {
+          background: rgba(255, 255, 255, 0.3);
+          border: 1px solid rgba(0, 0, 0, 0.1);
           padding: 0.5rem 0.75rem;
           border-radius: 12px;
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
         }
 
-        .logo-button:hover {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+        .navdhan-logo-button:hover {
+          background: rgba(255, 255, 255, 0.5);
+          border-color: rgba(0, 0, 0, 0.2);
           opacity: 1;
           transform: scale(1.05);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .logo-icon {
+        .navdhan-logo-icon {
           max-height: 44px;
           width: auto;
           border-radius: 12px;
           transition: transform 0.3s ease;
         }
 
-        .logo:hover .logo-icon {
+        .navdhan-logo:hover .navdhan-logo-icon {
           transform: rotate(5deg);
         }
 
-        .nav-links {
+        .navdhan-nav-links {
           display: flex;
           align-items: center;
           gap: 1.5rem;
           transition: opacity var(--transition-base), transform var(--transition-base);
         }
 
-        .nav-cta-wrapper {
+        .navdhan-nav-cta-wrapper {
           position: relative;
           margin-left: 1.5rem;
           padding-left: 1.5rem;
         }
 
-        .nav-cta-wrapper::before {
+        .navdhan-nav-cta-wrapper::before {
           content: '';
           position: absolute;
           left: 0;
@@ -437,42 +341,39 @@ export default function Header() {
           transform: translateY(-50%);
           width: 1px;
           height: 24px;
-          background: rgba(255, 255, 255, 0.15);
+          background: rgba(0, 0, 0, 0.2);
         }
 
-        .nav-link-cta {
-          position: relative;
-        }
-
-        .nav-link {
+        .navdhan-nav-link {
           position: relative;
           font-size: 0.95rem;
           font-weight: 500;
-          color: var(--color-text-secondary);
+          color: #333333;
           transition: color var(--transition-fast);
           padding: 0.5rem 0;
+          text-decoration: none;
         }
 
-        .nav-link::after {
+        .navdhan-nav-link::after {
           content: '';
           position: absolute;
           bottom: 0.25rem;
           left: 0;
           right: 0;
           height: 2px;
-          background: #ffd700;
+          background: #ff8c00;
           transform: scaleX(0);
           transform-origin: left;
           transition: transform var(--transition-base);
         }
 
-        .nav-item {
+        .navdhan-nav-item {
           position: relative;
           display: flex;
           align-items: center;
         }
 
-        .dropdown-toggle {
+        .navdhan-dropdown-toggle {
           display: inline-flex;
           align-items: center;
           gap: 0.35rem;
@@ -480,29 +381,30 @@ export default function Header() {
           border: none;
           cursor: pointer;
           padding-right: 0.25rem;
-          color: #ffd700;
+          color: #ff8c00;
           font-weight: 500;
+          font-size: 0.95rem;
         }
 
-        .dropdown-toggle:hover {
-          color: #ffd700;
+        .navdhan-dropdown-toggle:hover {
+          color: #ff8c00;
           opacity: 1;
         }
 
-        .dropdown-toggle:focus-visible {
-          outline: 2px solid #ffd700;
+        .navdhan-dropdown-toggle:focus-visible {
+          outline: 2px solid #ff8c00;
           outline-offset: 4px;
         }
 
-        .dropdown-toggle svg {
+        .navdhan-dropdown-toggle svg {
           transition: transform var(--transition-fast);
         }
 
-        .dropdown.is-open .dropdown-toggle svg {
+        .navdhan-dropdown.is-open .navdhan-dropdown-toggle svg {
           transform: rotate(180deg);
         }
 
-        .dropdown-menu {
+        .navdhan-dropdown-menu {
           position: absolute;
           top: calc(100% + 0.75rem);
           left: 0;
@@ -511,38 +413,38 @@ export default function Header() {
           gap: 0.75rem;
           min-width: 340px;
           padding: 0.75rem;
-          background: rgba(16, 16, 16, 0.95);
+          background: rgba(255, 255, 255, 0.98);
           backdrop-filter: blur(24px) saturate(180%);
           -webkit-backdrop-filter: blur(24px) saturate(180%);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 16px;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
           z-index: 10;
         }
 
-        .dropdown-menu.is-open {
+        .navdhan-dropdown-menu.is-open {
           display: flex;
         }
 
-        .dropdown-link {
+        .navdhan-dropdown-link {
           display: flex;
           flex-direction: column;
           gap: 0.35rem;
           padding: 1rem;
           border-radius: 12px;
-          color: var(--color-text-primary);
+          color: #000000;
           text-decoration: none;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           background: transparent;
           border: 1px solid transparent;
         }
 
-        .dropdown-link:hover {
-          background: var(--color-surface-elevated);
+        .navdhan-dropdown-link:hover {
+          background: rgba(0, 0, 0, 0.05);
           transform: translateY(-1px);
         }
 
-        .dropdown-title {
+        .navdhan-dropdown-title {
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -550,14 +452,15 @@ export default function Header() {
           font-weight: 600;
           font-size: 1rem;
           flex-wrap: wrap;
+          color: #000000;
         }
 
-        .dropdown-subtext {
+        .navdhan-dropdown-subtext {
           font-size: 0.9rem;
-          color: var(--color-text-secondary);
+          color: #666666;
         }
 
-        .dropdown-badge {
+        .navdhan-dropdown-badge {
           display: inline-flex !important;
           align-items: center;
           padding: 0.25rem 0.65rem;
@@ -566,47 +469,46 @@ export default function Header() {
           text-transform: uppercase;
           letter-spacing: 0.06em;
           border-radius: 999px;
-          background: #ffd700;
-          color: #000000;
+          background: #ff8c00;
+          color: #ffffff;
           margin-left: 0.5rem;
           white-space: nowrap;
           opacity: 1;
           visibility: visible;
         }
 
-        .dropdown-link.is-disabled {
+        .navdhan-dropdown-link.is-disabled {
           opacity: 0.55;
           cursor: not-allowed;
           pointer-events: none;
-          background: var(--color-surface);
-          border: 1px solid var(--color-border);
+          background: rgba(0, 0, 0, 0.03);
+          border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .dropdown-link.is-disabled:hover {
+        .navdhan-dropdown-link.is-disabled:hover {
           transform: none;
         }
 
-        .nav-link:hover {
-          color: var(--color-text-primary);
+        .navdhan-nav-link:hover {
+          color: #000000;
         }
 
-        .nav-link:hover::after {
+        .navdhan-nav-link:hover::after {
           transform: scaleX(1);
         }
 
-        .nav-link-cta-button {
-          background: transparent;
-          border: 2px solid #ffd700 !important;
-          padding: 0.875rem 1.5rem !important;
+        .navdhan-nav-cta-button {
+          background: transparent !important;
+          border: 2px solid #ff8c00 !important;
+          padding: 0.875rem 2.5rem !important;
           border-radius: 14px !important;
-          color: #ffd700 !important;
+          color: #ff8c00 !important;
           font-weight: 700 !important;
-          font-size: 0.9rem !important;
+          font-size: 0.95rem !important;
           letter-spacing: 0.03em !important;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
           position: relative !important;
           overflow: hidden !important;
-          box-shadow: 0 0 0 0 rgba(163, 230, 53, 0) !important;
           text-decoration: none !important;
           display: inline-flex !important;
           align-items: center !important;
@@ -617,37 +519,19 @@ export default function Header() {
           z-index: 1 !important;
           isolation: isolate !important;
           transform: translateZ(0) !important;
-          width: 100% !important;
+          width: auto !important;
           margin: 0 !important;
           appearance: none !important;
           -webkit-appearance: none !important;
           -moz-appearance: none !important;
         }
-        
-        .nav-link-cta-button,
-        .nav-link-cta-button:link,
-        .nav-link-cta-button:visited {
-          background: transparent !important;
-          border: 2px solid #ffd700 !important;
-          color: #ffd700 !important;
-          text-decoration: none !important;
-        }
 
-        @media (min-width: 769px) {
-          .nav-link-cta-button {
-            padding: 0.875rem 2.5rem;
-            font-size: 0.95rem;
-            width: auto;
-          }
-        }
-
-        .nav-link-cta-button > span {
+        .navdhan-nav-cta-button > span {
           position: relative;
           z-index: 2;
         }
 
-
-        .nav-link-cta-button::after {
+        .navdhan-nav-cta-button::after {
           content: '';
           position: absolute;
           top: 50%;
@@ -655,49 +539,49 @@ export default function Header() {
           width: 0;
           height: 0;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
+          background: rgba(255, 140, 0, 0.1);
           transform: translate(-50%, -50%);
           transition: width 0.6s ease, height 0.6s ease;
           z-index: 1;
         }
 
         @media (min-width: 769px) {
-          .nav-link-cta-button:hover::after {
+          .navdhan-nav-cta-button:hover::after {
             width: 300px;
             height: 300px;
           }
 
-          .nav-link-cta-button:hover {
+          .navdhan-nav-cta-button:hover {
             background: transparent !important;
-            border-color: #ffd700 !important;
-            color: #ffd700 !important;
+            border-color: #ff8c00 !important;
+            color: #ff8c00 !important;
             transform: translateY(-3px) scale(1.02) !important;
             box-shadow: 
-              0 8px 24px rgba(163, 230, 53, 0.4),
-              0 4px 12px rgba(163, 230, 53, 0.2) !important;
+              0 8px 24px rgba(255, 140, 0, 0.4),
+              0 4px 12px rgba(255, 140, 0, 0.2) !important;
             text-decoration: none !important;
           }
         }
 
-        .nav-link-cta-button:active {
+        .navdhan-nav-cta-button:active {
           transform: translateY(0) !important;
           box-shadow: 
-            0 4px 15px rgba(163, 230, 53, 0.3),
-            0 2px 6px rgba(163, 230, 53, 0.2) !important;
+            0 4px 15px rgba(255, 140, 0, 0.3),
+            0 2px 6px rgba(255, 140, 0, 0.2) !important;
           background: transparent !important;
-          border-color: var(--color-primary) !important;
-          color: #ffd700 !important;
+          border-color: #ff8c00 !important;
+          color: #ff8c00 !important;
         }
 
-        .nav-link-cta-button:focus-visible {
-          outline: 3px solid #ffd700;
+        .navdhan-nav-cta-button:focus-visible {
+          outline: 3px solid #ff8c00;
           outline-offset: 4px;
           box-shadow: 
-            0 4px 20px rgba(163, 230, 53, 0.4),
-            0 2px 8px rgba(163, 230, 53, 0.2);
+            0 4px 20px rgba(255, 140, 0, 0.4),
+            0 2px 8px rgba(255, 140, 0, 0.2);
         }
 
-        .mobile-menu-toggle {
+        .navdhan-mobile-menu-toggle {
           display: none;
           flex-direction: column;
           gap: 5px;
@@ -708,32 +592,32 @@ export default function Header() {
           z-index: 2;
         }
 
-        .mobile-menu-toggle span {
+        .navdhan-mobile-menu-toggle span {
           width: 24px;
           height: 2px;
-          background: var(--color-text-primary);
+          background: #000000;
           border-radius: 2px;
           transition: all var(--transition-base);
         }
 
-        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
+        .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
           transform: translateY(7px) rotate(45deg);
         }
 
-        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
+        .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
           opacity: 0;
         }
 
-        .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
+        .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
           transform: translateY(-7px) rotate(-45deg);
         }
 
         @media (max-width: 768px) {
-          .nav {
+          .navdhan-nav {
             position: relative;
           }
 
-          .nav-links {
+          .navdhan-nav-links {
             position: absolute;
             top: calc(100% + 0.75rem);
             right: var(--content-padding);
@@ -741,71 +625,71 @@ export default function Header() {
             flex-direction: column;
             align-items: stretch;
             gap: 0;
-            background: rgba(16, 16, 16, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(24px) saturate(180%);
             -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 20px;
             padding: 0.75rem;
             opacity: 0;
             transform: translateY(-1rem);
             pointer-events: none;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
           }
 
-          .nav-links.is-open {
+          .navdhan-nav-links.is-open {
             opacity: 1;
             transform: translateY(0);
             pointer-events: auto;
           }
 
-          .nav-link {
+          .navdhan-nav-link {
             padding: 0.875rem 1rem;
             border-radius: 12px;
             transition: all var(--transition-fast);
           }
 
-          .nav-link::after {
+          .navdhan-nav-link::after {
             display: none;
           }
 
-          .nav-link:hover {
-            background: var(--color-surface-elevated);
+          .navdhan-nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
           }
 
-          .nav-link-cta-button {
+          .navdhan-nav-cta-button {
             margin-top: 0.5rem !important;
             padding: 0.875rem 1rem !important;
             text-align: center !important;
             width: 100% !important;
             font-size: 0.9rem !important;
             background: transparent !important;
-            border: 2px solid #ffd700 !important;
-            color: #ffd700 !important;
+            border: 2px solid #ff8c00 !important;
+            color: #ff8c00 !important;
             text-decoration: none !important;
           }
 
-          .nav-cta-wrapper {
+          .navdhan-nav-cta-wrapper {
             margin-left: 0;
             padding-left: 0;
           }
 
-          .nav-cta-wrapper::before {
+          .navdhan-nav-cta-wrapper::before {
             display: none;
           }
 
-          .dropdown {
+          .navdhan-dropdown {
             width: 100%;
           }
 
-          .dropdown-toggle {
+          .navdhan-dropdown-toggle {
             width: 100%;
             justify-content: space-between;
             padding: 0.875rem 1rem;
             border-radius: 12px;
           }
 
-          .dropdown-menu {
+          .navdhan-dropdown-menu {
             position: static;
             margin-top: 0.5rem;
             box-shadow: none;
@@ -814,21 +698,21 @@ export default function Header() {
             display: none;
           }
 
-          .dropdown-menu.is-open {
+          .navdhan-dropdown-menu.is-open {
             display: flex;
           }
 
-          .dropdown-link {
+          .navdhan-dropdown-link {
             padding: 0.75rem;
             border: none;
           }
 
-          .mobile-menu-toggle {
+          .navdhan-mobile-menu-toggle {
             display: flex;
           }
         }
       `}</style>
-    </motion.header>
+    </header>
   );
 }
 

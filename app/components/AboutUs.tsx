@@ -101,7 +101,7 @@ export default function AboutUs() {
           padding: 0.375rem 0.875rem;
           background: var(--color-surface-elevated);
           border: 1px solid var(--color-border);
-          color: var(--color-primary);
+          color: #ffd700;
           border-radius: 6px;
           font-size: 0.8rem;
           font-weight: 600;
@@ -181,7 +181,7 @@ export default function AboutUs() {
           background: var(--color-surface-elevated);
           border: 1px solid var(--color-border);
           border-radius: 10px;
-          color: var(--color-primary);
+          color: #ffd700;
           margin-bottom: var(--spacing-md);
         }
 
@@ -242,7 +242,7 @@ export default function AboutUs() {
           background: rgba(74, 158, 255, 0.15);
           border: 1px solid rgba(74, 158, 255, 0.3);
           border-radius: 50%;
-          color: var(--color-primary);
+          color: #ffd700;
           font-weight: 600;
           flex-shrink: 0;
         }

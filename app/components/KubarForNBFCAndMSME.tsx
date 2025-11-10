@@ -163,6 +163,35 @@ export default function KubarForNBFCAndMSME() {
             padding: var(--spacing-md);
           }
         }
+
+        [data-page="navdhan"] .kubar-sections {
+          background: #fefefe !important;
+          color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .kubar-section {
+          background: transparent !important;
+        }
+
+        [data-page="navdhan"] .kubar-feature {
+          background: transparent !important;
+        }
+
+        [data-page="navdhan"] .kubar-section-title {
+          color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .kubar-feature-text {
+          color: #555555 !important;
+        }
+
+        [data-page="navdhan"] .kubar-feature.has-separator::after {
+          background: rgba(255, 165, 0, 0.2) !important;
+        }
+
+        [data-page="navdhan"] .kubar-icon {
+          filter: none !important;
+        }
       `}</style>
     </section>
   );

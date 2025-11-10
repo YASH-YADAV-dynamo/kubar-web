@@ -31,10 +31,10 @@
   --color-text-primary: #f7f7f7;
   --color-text-secondary: #cccccc;
   --color-text-tertiary: #9c9c9c;
-  --color-primary: #a3e635;
-  --color-primary-dark: #84cc16;
-  --color-accent: #f59e0b;
-  --color-accent-subtle: rgba(245, 158, 11, 0.12);
+  --color-primary: #ffd700;
+  --color-primary-dark: #ffed4e;
+  --color-accent: #ffd700;
+  --color-accent-subtle: rgba(255, 215, 0, 0.12);
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
   --spacing-md: 1.25rem;
@@ -82,7 +82,7 @@ main {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid #ffd700;
   outline-offset: 2px;
 }
 
@@ -96,6 +96,7 @@ h6 {
   line-height: 1.2;
   font-weight: 600;
   letter-spacing: -0.02em;
+  color: #ffd700;
 }
 
 h1 {
@@ -118,13 +119,13 @@ p {
 }
 
 a {
-  color: var(--color-primary);
+  color: #ffd700;
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent);
+  color: #ffed4e;
 }
 
 .container {
@@ -1049,5 +1050,60 @@ a:hover {
   .member-card {
     padding: var(--spacing-lg);
   }
+}
+
+/* NavDhan page - white background for all components */
+body.navdhan-page {
+  background: #ffffff !important;
+  color: #000000;
+}
+
+body.navdhan-page main {
+  background: #ffffff !important;
+}
+
+[data-page="navdhan"] {
+  background: #fefefe !important;
+  color: #333333;
+  min-height: 100vh;
+}
+
+[data-page="navdhan"] main {
+  background: #fefefe !important;
+}
+
+[data-page="navdhan"] section {
+  background: transparent !important;
+}
+
+[data-page="navdhan"] .container {
+  background: transparent !important;
+}
+
+[data-page="navdhan"] h1,
+[data-page="navdhan"] h2,
+[data-page="navdhan"] h3,
+[data-page="navdhan"] h4,
+[data-page="navdhan"] h5,
+[data-page="navdhan"] h6 {
+  color: #333333 !important;
+}
+
+[data-page="navdhan"] p {
+  color: #555555 !important;
+}
+
+[data-page="navdhan"] .usecase-card,
+[data-page="navdhan"] .list-item,
+[data-page="navdhan"] .integration-card,
+[data-page="navdhan"] .usecase-grid,
+[data-page="navdhan"] .integration-grid {
+  background: #ffffff !important;
+}
+
+[data-page="navdhan"] .usecase-card *,
+[data-page="navdhan"] .list-item *,
+[data-page="navdhan"] .integration-card * {
+  color: #000000 !important;
 }
 
