@@ -2,26 +2,32 @@
   "advisors": [
     {
       "name": "Debayan Gupta",
-      "role": "Professor, CS — MIT, Ashoka University",
+      "role": "Professor, CS - MIT, Ashoka University",
       "image": "/images/team/debayan.png",
       "accentColor": "#f59e0b"
     },
     {
+      "name": "Sandeep Juneja",
+      "role": "Director, Centre for Data - Ashoka University | Expert in AI & financial mathematics",
+      "image": "/images/team/sandeep.png",
+      "accentColor": "#0ea76f"
+    },
+    {
+      "name": "Amit Sagar",
+      "role": "Lead System Architect at Bank of England | BOE CBDC Architecture Contributor",
+      "image": "/images/team/amit.png",
+      "accentColor": "#f97316"
+    },
+    {
       "name": "Shridhar Sethuram",
-      "role": "Private Equity Veteran, 25+ years",
+      "role": "Seasoned finance veteran, 25+ years in Private Equity",
       "image": "/images/team/shridhar.png",
       "accentColor": "#0ea76f"
     },
     {
       "name": "Tushar Jaruhar",
-      "role": "Former Pricing Actuary, Zurich Insurance Co.",
+      "role": "Ex-Pricing Actuary at Zurich Insurance Co.",
       "image": "/images/team/tushar.png",
-      "accentColor": "#f97316"
-    },
-    {
-      "name": "Dr. James Lei",
-      "role": "Director, ASTRI Blockchain; HKUST",
-      "image": "/images/team/james.png",
       "accentColor": "#a855f7"
     }
   ],
