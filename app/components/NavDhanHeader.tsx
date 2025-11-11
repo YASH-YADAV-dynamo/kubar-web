@@ -93,7 +93,9 @@ export default function NavDhanHeader() {
         zIndex: 1000,
         width: '100%',
         opacity: 1,
-        boxShadow: isScrolled ? '0 4px 20px rgba(255, 140, 0, 0.15)' : 'none',
+        boxShadow: isScrolled 
+          ? '0 20px 60px rgba(255, 140, 0, 0.25), 0 8px 24px rgba(255, 140, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 1px 3px rgba(255, 255, 255, 0.3) inset, 0 -2px 8px rgba(0, 0, 0, 0.15) inset, -15px -15px 40px rgba(255, 140, 0, 0.3), 15px -15px 40px rgba(255, 140, 0, 0.3), 0 0 60px rgba(255, 140, 0, 0.2)'
+          : '0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 1px 3px rgba(255, 255, 255, 0.3) inset, 0 -2px 8px rgba(0, 0, 0, 0.1) inset, -15px -15px 40px rgba(255, 140, 0, 0.25), 15px -15px 40px rgba(255, 140, 0, 0.25), 0 0 50px rgba(255, 140, 0, 0.15)',
         backdropFilter: 'none',
         WebkitBackdropFilter: 'none'
       }}
@@ -259,13 +261,33 @@ export default function NavDhanHeader() {
             background: #ffe4b5 !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
-            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.15) !important;
+            box-shadow: 
+              0 20px 60px rgba(255, 140, 0, 0.25),
+              0 8px 24px rgba(255, 140, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 1px 3px rgba(255, 255, 255, 0.3) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.15) inset,
+              -15px -15px 40px rgba(255, 140, 0, 0.3),
+              15px -15px 40px rgba(255, 140, 0, 0.3),
+              0 0 60px rgba(255, 140, 0, 0.2) !important;
           }
 
           .navdhan-header.scrolled::after {
             left: 2rem;
             right: 2rem;
           }
+
+          .navdhan-header {
+            position: relative;
+            box-shadow: 
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 1px 3px rgba(255, 255, 255, 0.3) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
+              -15px -15px 40px rgba(255, 140, 0, 0.25),
+              15px -15px 40px rgba(255, 140, 0, 0.25),
+              0 0 50px rgba(255, 140, 0, 0.15);
+          }
+
         }
 
         @media (max-width: 768px) {
@@ -282,6 +304,18 @@ export default function NavDhanHeader() {
             width: 100%;
             border-radius: 0 0 20px 20px;
             transform: translateY(0);
+          }
+
+          .navdhan-header.scrolled {
+            box-shadow: 
+              0 16px 50px rgba(255, 140, 0, 0.3),
+              0 6px 20px rgba(255, 140, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 1px 3px rgba(255, 255, 255, 0.3) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.15) inset,
+              -10px -10px 30px rgba(255, 140, 0, 0.3),
+              10px -10px 30px rgba(255, 140, 0, 0.3),
+              0 0 50px rgba(255, 140, 0, 0.2) !important;
           }
         }
 

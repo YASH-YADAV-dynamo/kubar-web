@@ -41,7 +41,7 @@ export default function ImageCarousel() {
   return (
     <section className="awards-section">
       <div className="container">
-        <h2 className="awards-heading">Product Showcase</h2>
+        <h2 className="awards-heading" style={{ color: '#ffd700' }}>Product Showcase</h2>
         <div
           className="awards-carousel-container"
           onMouseEnter={() => setIsPaused(true)}
@@ -115,7 +115,7 @@ export default function ImageCarousel() {
           font-weight: 700;
           text-align: center;
           margin-bottom: var(--spacing-2xl);
-          color: var(--color-text-primary);
+          color: #ffd700 !important;
           font-family: var(--font-heading);
         }
 

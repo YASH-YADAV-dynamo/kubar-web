@@ -6,7 +6,7 @@ export default function ExpandBussiness() {
   return (
     <section className="expand-business-section">
       {/* Main Heading */}
-      <h1 className="expand-heading">
+      <h1 className="expand-heading" style={{ color: '#ffd700' }}>
         Expand Your Business with Kubar
       </h1>
 
@@ -94,7 +94,7 @@ export default function ExpandBussiness() {
           font-weight: 700;
           text-align: center;
           margin-bottom: var(--spacing-2xl);
-          color: var(--color-text-primary);
+          color: #ffd700 !important;
           font-family: var(--font-heading);
           padding: 0 var(--content-padding);
         }

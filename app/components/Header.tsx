@@ -169,20 +169,24 @@ export default function Header() {
               onMouseEnter={() => setIsButtonHovered(true)}
               onMouseLeave={() => setIsButtonHovered(false)}
               style={{
-                background: 'transparent',
-                border: '2px solid #a3e635',
+                background: isButtonHovered && windowWidth >= 769 
+                  ? 'linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffcc00 100%)'
+                  : 'linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%)',
+                border: 'none',
+                borderTop: '2px solid rgba(255, 255, 255, 0.3)',
+                borderBottom: '2px solid rgba(0, 0, 0, 0.2)',
                 padding: windowWidth >= 769 ? '0.875rem 2.5rem' : '0.875rem 1.5rem',
-                borderRadius: '14px',
-                color: '#a3e635',
+                borderRadius: windowWidth >= 769 ? '999px' : '16px',
+                color: '#000000',
                 fontWeight: '700',
                 fontSize: windowWidth >= 769 ? '0.95rem' : '0.9rem',
-                letterSpacing: '0.03em',
+                letterSpacing: '0.05em',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 position: 'relative',
-                overflow: 'hidden',
+                overflow: 'visible',
                 boxShadow: isButtonHovered && windowWidth >= 769 
-                  ? '0 8px 24px rgba(163, 230, 53, 0.4), 0 4px 12px rgba(163, 230, 53, 0.2)'
-                  : '0 0 0 0 rgba(163, 230, 53, 0)',
+                  ? '0 10px 25px rgba(255, 215, 0, 0.5), 0 5px 15px rgba(255, 204, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.1)'
+                  : '0 6px 15px rgba(255, 215, 0, 0.4), 0 3px 8px rgba(255, 204, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.15)',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -191,13 +195,13 @@ export default function Header() {
                 cursor: 'pointer',
                 fontFamily: 'inherit',
                 zIndex: 1,
-                isolation: 'isolate',
                 transform: isButtonHovered && windowWidth >= 769 ? 'translateY(-3px) scale(1.02)' : 'translateZ(0)',
                 width: windowWidth >= 769 ? 'auto' : '100%',
                 margin: 0,
                 appearance: 'none',
                 WebkitAppearance: 'none',
-                MozAppearance: 'none'
+                MozAppearance: 'none',
+                textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)'
               }}
             >
               <span style={{ position: 'relative', zIndex: 2 }}>Book a Demo</span>
@@ -300,11 +304,17 @@ export default function Header() {
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 999px;
             box-shadow: 
-              0 12px 48px rgba(0, 0, 0, 0.25), 
-              0 0 0 1px rgba(255, 255, 255, 0.1) inset, 
-              0 4px 16px rgba(163, 230, 53, 0.1),
+              0 20px 60px rgba(0, 0, 0, 0.3),
+              0 8px 24px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+              0 1px 3px rgba(255, 255, 255, 0.2) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
+              0 4px 16px rgba(163, 230, 53, 0.15),
               -2px 0 0 rgba(255, 215, 0, 0.5),
-              2px 0 0 rgba(31, 76, 242, 0.5);
+              2px 0 0 rgba(31, 76, 242, 0.5),
+              -15px -15px 40px rgba(255, 215, 0, 0.3),
+              15px -15px 40px rgba(255, 215, 0, 0.3),
+              0 0 60px rgba(255, 215, 0, 0.15);
             position: relative;
           }
 
@@ -332,6 +342,17 @@ export default function Header() {
             pointer-events: none;
           }
 
+          .header {
+            position: relative;
+            box-shadow: 
+              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+              0 1px 3px rgba(255, 255, 255, 0.2) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
+              -15px -15px 40px rgba(255, 215, 0, 0.25),
+              15px -15px 40px rgba(255, 215, 0, 0.25),
+              0 0 50px rgba(255, 215, 0, 0.12);
+          }
+
         }
 
         @media (max-width: 768px) {
@@ -348,6 +369,18 @@ export default function Header() {
             width: 100%;
             border-radius: 0 0 20px 20px;
             transform: translateY(0);
+          }
+
+          .header.scrolled {
+            box-shadow: 
+              0 16px 50px rgba(0, 0, 0, 0.35),
+              0 6px 20px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+              0 1px 3px rgba(255, 255, 255, 0.2) inset,
+              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
+              -10px -10px 30px rgba(255, 215, 0, 0.3),
+              10px -10px 30px rgba(255, 215, 0, 0.3),
+              0 0 50px rgba(255, 215, 0, 0.15);
           }
         }
 
@@ -597,18 +630,20 @@ export default function Header() {
         }
 
         .nav-link-cta-button {
-          background: transparent;
-          border: 2px solid #ffd700 !important;
+          background: linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%) !important;
+          border: none !important;
+          border-top: 2px solid rgba(255, 255, 255, 0.3) !important;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important;
           padding: 0.875rem 1.5rem !important;
           border-radius: 14px !important;
-          color: #ffd700 !important;
+          color: #000000 !important;
           font-weight: 700 !important;
           font-size: 0.9rem !important;
           letter-spacing: 0.03em !important;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
           position: relative !important;
-          overflow: hidden !important;
-          box-shadow: 0 0 0 0 rgba(163, 230, 53, 0) !important;
+          overflow: visible !important;
+          box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4), 0 3px 8px rgba(255, 204, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.15) !important;
           text-decoration: none !important;
           display: inline-flex !important;
           align-items: center !important;
@@ -624,14 +659,17 @@ export default function Header() {
           appearance: none !important;
           -webkit-appearance: none !important;
           -moz-appearance: none !important;
+          text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3) !important;
         }
         
         .nav-link-cta-button,
         .nav-link-cta-button:link,
         .nav-link-cta-button:visited {
-          background: transparent !important;
-          border: 2px solid #ffd700 !important;
-          color: #ffd700 !important;
+          background: linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%) !important;
+          border: none !important;
+          border-top: 2px solid rgba(255, 255, 255, 0.3) !important;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.2) !important;
+          color: #000000 !important;
           text-decoration: none !important;
         }
 
@@ -649,46 +687,33 @@ export default function Header() {
         }
 
 
-        .nav-link-cta-button::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 0;
-          height: 0;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
-          transform: translate(-50%, -50%);
-          transition: width 0.6s ease, height 0.6s ease;
-          z-index: 1;
-        }
-
         @media (min-width: 769px) {
-          .nav-link-cta-button:hover::after {
-            width: 300px;
-            height: 300px;
-          }
-
           .nav-link-cta-button:hover {
-            background: transparent !important;
-            border-color: #ffd700 !important;
-            color: #ffd700 !important;
+            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffcc00 100%) !important;
+            border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.15) !important;
+            color: #000000 !important;
             transform: translateY(-3px) scale(1.02) !important;
             box-shadow: 
-              0 8px 24px rgba(163, 230, 53, 0.4),
-              0 4px 12px rgba(163, 230, 53, 0.2) !important;
+              0 10px 25px rgba(255, 215, 0, 0.5),
+              0 5px 15px rgba(255, 204, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4),
+              inset 0 -2px 0 rgba(0, 0, 0, 0.1) !important;
             text-decoration: none !important;
           }
         }
 
         .nav-link-cta-button:active {
-          transform: translateY(0) !important;
+          transform: translateY(1px) scale(0.98) !important;
           box-shadow: 
-            0 4px 15px rgba(163, 230, 53, 0.3),
-            0 2px 6px rgba(163, 230, 53, 0.2) !important;
-          background: transparent !important;
-          border-color: var(--color-primary) !important;
-          color: #ffd700 !important;
+            0 2px 8px rgba(255, 215, 0, 0.3),
+            0 1px 4px rgba(255, 204, 0, 0.2),
+            inset 0 2px 4px rgba(0, 0, 0, 0.2),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.2) !important;
+          background: linear-gradient(135deg, #ffcc00 0%, #ffd700 50%, #ffcc00 100%) !important;
+          border-top: 2px solid rgba(255, 255, 255, 0.2) !important;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.25) !important;
+          color: #000000 !important;
         }
 
         .nav-link-cta-button:focus-visible {
