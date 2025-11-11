@@ -451,7 +451,8 @@ export default function NavDhanHeader() {
           justify-content: flex-start;
           font-weight: 600;
           font-size: 1rem;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
+          white-space: nowrap;
           color: #000000;
         }
 
@@ -475,6 +476,7 @@ export default function NavDhanHeader() {
           white-space: nowrap;
           opacity: 1;
           visibility: visible;
+          flex-shrink: 0;
         }
 
         .navdhan-dropdown-link.is-disabled {

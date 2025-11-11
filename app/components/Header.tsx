@@ -549,7 +549,8 @@ export default function Header() {
           justify-content: flex-start;
           font-weight: 600;
           font-size: 1rem;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
+          white-space: nowrap;
         }
 
         .dropdown-subtext {
@@ -572,6 +573,7 @@ export default function Header() {
           white-space: nowrap;
           opacity: 1;
           visibility: visible;
+          flex-shrink: 0;
         }
 
         .dropdown-link.is-disabled {
