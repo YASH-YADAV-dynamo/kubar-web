@@ -47,7 +47,7 @@ export default function NavDhanFooter() {
               <ul className="footer-list">
                 <li><Link href="/about" style={{ color: '#000000' }}>About Us</Link></li>
                 <li><Link href="/team" style={{ color: '#000000' }}>Team</Link></li>
-                <li><Link href="/blog" style={{ color: '#000000' }}>Blog</Link></li>
+                <li><Link href="/blog" style={{ color: '#000000' }}>Resources</Link></li>
                 <li><Link href="/contact" style={{ color: '#000000' }}>Contact</Link></li>
               </ul>
             </div>

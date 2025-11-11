@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import Image from 'next/image';
 import nbfcData from '../data/kubarForNBFC.json';
 import msmeData from '../data/kubarForMSME.json';
@@ -9,7 +10,10 @@ export default function KubarForNBFCAndMSME() {
     <section className="kubar-sections">
       {/* Kubar for NBFCs Section */}
       <div className="kubar-section">
-        <h2 className="kubar-section-title">NavDhan for NBFCs</h2>
+        <h2 className="kubar-section-title">NavDhan for Banks and NBFCs</h2>
+        <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-2xl)', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', padding: '0 var(--content-padding)' }}>
+          A better way to reach, assess, and serve MSME borrowers. Meet MSMEs exactly where business happens with verified, structured business data.
+        </p>
         <div className="kubar-features">
           {nbfcData.map((feature, index) => (
             <div
@@ -29,11 +33,22 @@ export default function KubarForNBFCAndMSME() {
             </div>
           ))}
         </div>
+        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)', padding: '0 var(--content-padding)' }}>
+          <p style={{ fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-lg)', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+            We help you move from reactive lending to data-driven, relationship-first MSME financing.
+          </p>
+          <Link href="/contact#contact-form" style={{ display: 'inline-block', background: '#FF8C00', color: '#FFFFFF', padding: '0.875rem 2.5rem', borderRadius: '14px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', transition: 'all 0.3s ease' }}>
+            Schedule a Partner Briefing
+          </Link>
+        </div>
       </div>
 
       {/* Kubar for MSMEs Section */}
       <div className="kubar-section">
         <h2 className="kubar-section-title">NavDhan for MSMEs</h2>
+        <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-2xl)', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto', padding: '0 var(--content-padding)' }}>
+          Get the right loan at the right time, automatically. NavDhan works behind the scenes to match you with lenders that trust your data. No brokers, no endless forms.
+        </p>
         <div className="kubar-features">
           {msmeData.map((feature, index) => (
             <div
@@ -52,6 +67,14 @@ export default function KubarForNBFCAndMSME() {
               <p className="kubar-feature-text">{feature.text}</p>
             </div>
           ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)', padding: '0 var(--content-padding)' }}>
+          <Link href="/contact#contact-form" style={{ display: 'inline-block', background: '#00B85E', color: '#FFFFFF', padding: '0.875rem 2.5rem', borderRadius: '14px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', marginRight: 'var(--spacing-md)', transition: 'all 0.3s ease' }}>
+            Join Our Whatsapp Community
+          </Link>
+          <Link href="/contact#contact-form" style={{ display: 'inline-block', background: 'transparent', border: '2px solid #00B85E', color: '#00B85E', padding: '0.875rem 2.5rem', borderRadius: '14px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', transition: 'all 0.3s ease' }}>
+            Join the Waitlist
+          </Link>
         </div>
       </div>
 
@@ -142,12 +165,18 @@ export default function KubarForNBFCAndMSME() {
         }
 
         .kubar-feature-text {
-          font-size: clamp(1rem, 1.5vw, 1.125rem);
+          font-size: clamp(0.95rem, 1.4vw, 1.05rem);
           font-weight: 500;
-          line-height: 1.6;
+          line-height: 1.5;
           color: var(--color-text-primary);
           max-width: 100%;
           margin: 0;
+          text-align: center;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          min-height: 3em;
         }
 
         @media (max-width: 767px) {
@@ -161,6 +190,12 @@ export default function KubarForNBFCAndMSME() {
 
           .kubar-feature {
             padding: var(--spacing-md);
+          }
+
+          .kubar-feature-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            min-height: 2.8em;
           }
         }
 

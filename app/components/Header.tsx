@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const secondaryNavItems = [
   { label: "About Us", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  { label: "Resources", href: "/blog" },
   { label: "Team", href: "/team" }
 ];
 
@@ -15,7 +15,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
@@ -166,45 +165,195 @@ export default function Header() {
             <Link 
               href="/contact#contact-form" 
               onClick={closeMenu}
-              onMouseEnter={() => setIsButtonHovered(true)}
-              onMouseLeave={() => setIsButtonHovered(false)}
+              className="premium-cta-button"
               style={{
-                background: isButtonHovered && windowWidth >= 769 
-                  ? 'linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffcc00 100%)'
-                  : 'linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%)',
+                position: 'relative',
+                background: 'linear-gradient(135deg, #ffd700 0%, #ffcc00 25%, #ffd700 50%, #ffcc00 75%, #ffd700 100%)',
+                backgroundSize: '300% 300%',
                 border: 'none',
-                borderTop: '2px solid rgba(255, 255, 255, 0.3)',
-                borderBottom: '2px solid rgba(0, 0, 0, 0.2)',
-                padding: windowWidth >= 769 ? '0.875rem 2.5rem' : '0.875rem 1.5rem',
+                padding: windowWidth >= 769 ? '1rem 2.75rem' : '0.875rem 1.5rem',
                 borderRadius: windowWidth >= 769 ? '999px' : '16px',
                 color: '#000000',
                 fontWeight: '700',
-                fontSize: windowWidth >= 769 ? '0.95rem' : '0.9rem',
-                letterSpacing: '0.05em',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                position: 'relative',
-                overflow: 'visible',
-                boxShadow: isButtonHovered && windowWidth >= 769 
-                  ? '0 10px 25px rgba(255, 215, 0, 0.5), 0 5px 15px rgba(255, 204, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.1)'
-                  : '0 6px 15px rgba(255, 215, 0, 0.4), 0 3px 8px rgba(255, 204, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -2px 0 rgba(0, 0, 0, 0.15)',
+                fontSize: windowWidth >= 769 ? '0.9375rem' : '0.9rem',
+                letterSpacing: '0.02em',
+                fontFamily: 'var(--font-heading)',
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 whiteSpace: 'nowrap',
                 cursor: 'pointer',
-                fontFamily: 'inherit',
+                transition: 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                overflow: 'hidden',
+                boxShadow: 'inset 0 3px 0 rgba(255, 255, 255, 0.8), inset 0 -4px 0 rgba(0, 0, 0, 0.3), inset 0 0 50px rgba(255, 255, 255, 0.15)',
+                transform: 'translateZ(0)',
                 zIndex: 1,
-                transform: isButtonHovered && windowWidth >= 769 ? 'translateY(-3px) scale(1.02)' : 'translateZ(0)',
                 width: windowWidth >= 769 ? 'auto' : '100%',
                 margin: 0,
                 appearance: 'none',
                 WebkitAppearance: 'none',
                 MozAppearance: 'none',
-                textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)'
+                isolation: 'isolate',
+                filter: 'brightness(1) saturate(1.1)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #ffed4e 0%, #ffd700 25%, #ffed4e 50%, #ffd700 75%, #ffed4e 100%)';
+                e.currentTarget.style.backgroundPosition = '100% 50%';
+                e.currentTarget.style.transform = 'translateY(-5px) scale(1.05)';
+                e.currentTarget.style.boxShadow = 'inset 0 3px 0 rgba(255, 255, 255, 0.9), inset 0 -4px 0 rgba(0, 0, 0, 0.25), inset 0 0 60px rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.filter = 'brightness(1.2) saturate(1.15)';
+                const arrow = e.currentTarget.querySelector('svg') as SVGSVGElement | null;
+                if (arrow && windowWidth >= 769) {
+                  arrow.style.transform = 'translateX(5px) scale(1.15)';
+                }
+                const shine = e.currentTarget.querySelector('.button-shine') as HTMLElement;
+                if (shine) {
+                  shine.style.left = '100%';
+                  shine.style.transition = 'left 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
+                const glow = e.currentTarget.querySelector('.button-glow') as HTMLElement;
+                if (glow) {
+                  glow.style.width = '250px';
+                  glow.style.height = '250px';
+                  glow.style.opacity = '1';
+                }
+                const particles = e.currentTarget.querySelectorAll('.button-particle');
+                particles.forEach((particle, index: number) => {
+                  setTimeout(() => {
+                    const el = particle as HTMLElement;
+                    el.style.opacity = '1';
+                    el.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) scale(1)`;
+                  }, index * 50);
+                });
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, #ffd700 0%, #ffcc00 25%, #ffd700 50%, #ffcc00 75%, #ffd700 100%)';
+                e.currentTarget.style.backgroundPosition = '0% 50%';
+                e.currentTarget.style.transform = 'translateZ(0) scale(1)';
+                e.currentTarget.style.boxShadow = 'inset 0 3px 0 rgba(255, 255, 255, 0.8), inset 0 -4px 0 rgba(0, 0, 0, 0.3), inset 0 0 50px rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.filter = 'brightness(1) saturate(1.1)';
+                const arrow = e.currentTarget.querySelector('svg') as SVGSVGElement | null;
+                if (arrow) {
+                  arrow.style.transform = 'translateX(0) scale(1)';
+                }
+                const shine = e.currentTarget.querySelector('.button-shine') as HTMLElement;
+                if (shine) {
+                  shine.style.left = '-100%';
+                }
+                const glow = e.currentTarget.querySelector('.button-glow') as HTMLElement;
+                if (glow) {
+                  glow.style.width = '0';
+                  glow.style.height = '0';
+                  glow.style.opacity = '0';
+                }
+                const particles = e.currentTarget.querySelectorAll('.button-particle');
+                particles.forEach((particle) => {
+                  const el = particle as HTMLElement;
+                  el.style.opacity = '0';
+                  el.style.transform = 'translate(0, 0) scale(0)';
+                });
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px) scale(0.97)';
+                e.currentTarget.style.boxShadow = 'inset 0 4px 8px rgba(0, 0, 0, 0.35), inset 0 -2px 0 rgba(255, 255, 255, 0.5)';
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px) scale(1.05)';
+                e.currentTarget.style.boxShadow = 'inset 0 3px 0 rgba(255, 255, 255, 0.9), inset 0 -4px 0 rgba(0, 0, 0, 0.25), inset 0 0 60px rgba(255, 255, 255, 0.2)';
               }}
             >
-              <span style={{ position: 'relative', zIndex: 2 }}>Book a Demo</span>
+              <span 
+                className="button-shine"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: '-100%',
+                  width: '100%',
+                  height: '100%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent)',
+                  transition: 'left 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: 'none',
+                  zIndex: 1,
+                  transform: 'skewX(-20deg)'
+                }}
+              />
+              <span 
+                className="button-glow"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  width: '0',
+                  height: '0',
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(255, 215, 0, 0.5), rgba(255, 204, 0, 0.3), transparent)',
+                  transform: 'translate(-50%, -50%)',
+                  transition: 'width 0.5s ease, height 0.5s ease, opacity 0.5s ease',
+                  pointerEvents: 'none',
+                  zIndex: 0,
+                  opacity: 0
+                }}
+              />
+              {[...Array(6)].map((_, i) => (
+                <span
+                  key={i}
+                  className="button-particle"
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    width: '4px',
+                    height: '4px',
+                    borderRadius: '50%',
+                    background: 'rgba(255, 255, 255, 0.8)',
+                    transform: 'translate(-50%, -50%) scale(0)',
+                    transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    pointerEvents: 'none',
+                    zIndex: 1,
+                    opacity: 0,
+                    boxShadow: '0 0 8px rgba(255, 255, 255, 0.6)'
+                  }}
+                />
+              ))}
+              <span 
+                className="button-highlight"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '50%',
+                  background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent)',
+                  borderRadius: 'inherit',
+                  pointerEvents: 'none',
+                  zIndex: 1
+                }}
+              />
+              <span style={{
+                position: 'relative',
+                zIndex: 3,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                fontWeight: '700',
+                color: '#000000',
+                fontFamily: 'var(--font-heading)'
+              }}>
+                <span>Book a Demo</span>
+                <svg 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 16 16" 
+                  fill="none"
+                  style={{
+                    transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                    transform: 'translateX(0) scale(1)'
+                  }}
+                >
+                  <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </Link>
           </div>
         </div>
@@ -252,9 +401,13 @@ export default function Header() {
           -webkit-backdrop-filter: blur(80px) saturate(180%);
           border: 1px solid rgba(255, 255, 255, 0.2);
           box-shadow: 
-            0 12px 48px rgba(0, 0, 0, 0.3), 
-            0 0 0 1px rgba(255, 255, 255, 0.1) inset, 
-            0 4px 16px rgba(163, 230, 53, 0.1),
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 12px 40px rgba(0, 0, 0, 0.3),
+            0 6px 20px rgba(0, 0, 0, 0.25),
+            0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+            0 2px 4px rgba(255, 255, 255, 0.1) inset,
+            0 -4px 12px rgba(0, 0, 0, 0.2) inset,
+            0 4px 16px rgba(163, 230, 53, 0.15),
             -2px 0 0 rgba(255, 215, 0, 0.5),
             2px 0 0 rgba(31, 76, 242, 0.5);
           position: relative;
@@ -304,17 +457,19 @@ export default function Header() {
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 999px;
             box-shadow: 
-              0 20px 60px rgba(0, 0, 0, 0.3),
-              0 8px 24px rgba(0, 0, 0, 0.2),
-              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-              0 1px 3px rgba(255, 255, 255, 0.2) inset,
-              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
-              0 4px 16px rgba(163, 230, 53, 0.15),
-              -2px 0 0 rgba(255, 215, 0, 0.5),
-              2px 0 0 rgba(31, 76, 242, 0.5),
-              -15px -15px 40px rgba(255, 215, 0, 0.3),
-              15px -15px 40px rgba(255, 215, 0, 0.3),
-              0 0 60px rgba(255, 215, 0, 0.15);
+              0 25px 70px rgba(0, 0, 0, 0.45),
+              0 15px 45px rgba(0, 0, 0, 0.35),
+              0 8px 25px rgba(0, 0, 0, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+              0 2px 5px rgba(255, 255, 255, 0.25) inset,
+              0 -4px 12px rgba(0, 0, 0, 0.15) inset,
+              0 4px 16px rgba(163, 230, 53, 0.2),
+              -2px 0 0 rgba(255, 215, 0, 0.6),
+              2px 0 0 rgba(31, 76, 242, 0.6),
+              -15px -15px 50px rgba(255, 215, 0, 0.35),
+              15px -15px 50px rgba(255, 215, 0, 0.35),
+              0 0 80px rgba(255, 215, 0, 0.2);
             position: relative;
           }
 
@@ -345,12 +500,15 @@ export default function Header() {
           .header {
             position: relative;
             box-shadow: 
-              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-              0 1px 3px rgba(255, 255, 255, 0.2) inset,
-              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
-              -15px -15px 40px rgba(255, 215, 0, 0.25),
-              15px -15px 40px rgba(255, 215, 0, 0.25),
-              0 0 50px rgba(255, 215, 0, 0.12);
+              0 15px 45px rgba(0, 0, 0, 0.3),
+              0 8px 25px rgba(0, 0, 0, 0.25),
+              0 4px 12px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+              0 2px 4px rgba(255, 255, 255, 0.22) inset,
+              0 -3px 10px rgba(0, 0, 0, 0.12) inset,
+              -15px -15px 45px rgba(255, 215, 0, 0.28),
+              15px -15px 45px rgba(255, 215, 0, 0.28),
+              0 0 60px rgba(255, 215, 0, 0.15);
           }
 
         }
@@ -373,14 +531,15 @@ export default function Header() {
 
           .header.scrolled {
             box-shadow: 
-              0 16px 50px rgba(0, 0, 0, 0.35),
+              0 20px 60px rgba(0, 0, 0, 0.4),
+              0 12px 35px rgba(0, 0, 0, 0.3),
               0 6px 20px rgba(0, 0, 0, 0.25),
-              0 0 0 1px rgba(255, 255, 255, 0.15) inset,
-              0 1px 3px rgba(255, 255, 255, 0.2) inset,
-              0 -2px 8px rgba(0, 0, 0, 0.1) inset,
-              -10px -10px 30px rgba(255, 215, 0, 0.3),
-              10px -10px 30px rgba(255, 215, 0, 0.3),
-              0 0 50px rgba(255, 215, 0, 0.15);
+              0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+              0 2px 5px rgba(255, 255, 255, 0.22) inset,
+              0 -4px 12px rgba(0, 0, 0, 0.15) inset,
+              -10px -10px 35px rgba(255, 215, 0, 0.35),
+              10px -10px 35px rgba(255, 215, 0, 0.35),
+              0 0 60px rgba(255, 215, 0, 0.18);
           }
         }
 
@@ -714,6 +873,33 @@ export default function Header() {
           border-top: 2px solid rgba(255, 255, 255, 0.2) !important;
           border-bottom: 2px solid rgba(0, 0, 0, 0.25) !important;
           color: #000000 !important;
+        }
+
+
+        .premium-cta-button {
+          animation: gradientFlow 4s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        .premium-cta-button:hover {
+          animation: gradientFlowFast 1.5s ease infinite;
+        }
+
+        @keyframes gradientFlowFast {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
 
         .nav-link-cta-button:focus-visible {

@@ -25,7 +25,11 @@ export default function Hero() {
           <h1 className="hero-title">Kubar Labs</h1>
 
           <div className="hero-tagline">
-            <p>We are building the Kubar Labs — a smart, secure way to connect MSMEs with the right banks and NBFCs.</p>
+            <p>Building the Next Generation of MSME Finance</p>
+          </div>
+
+          <div className="hero-tagline">
+            <p>Kubar Labs connects India's small businesses with the right banks and NBFCs using data, design, and trust.</p>
           </div>
 
           <div className="hero-actions">
@@ -35,7 +39,7 @@ export default function Hero() {
                 <path d="M4.16667 10H15.8333M15.8333 10L10 4.16667M15.8333 10L10 15.8333" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-                  <Link href="/products/navdhan" className="btn btn-secondary">View NavDhan</Link>
+                  <Link href="/products/navdhan" className="btn btn-secondary">Explore NavDhan</Link>
           </div>
         </div>
       </div>

@@ -1,11 +1,5 @@
 {
-  "members": [
-    {
-      "name": "Vaibhav Sharma",
-      "role": "Founder & Credit Intelligence Lead",
-      "image": "/images/team/vaibhav.png",
-      "accentColor": "#a3e635"
-    },
+  "advisors": [
     {
       "name": "Debayan Gupta",
       "role": "Professor, CS — MIT, Ashoka University",
@@ -29,48 +23,57 @@
       "role": "Director, ASTRI Blockchain; HKUST",
       "image": "/images/team/james.png",
       "accentColor": "#a855f7"
+    }
+  ],
+  "members": [
+    {
+      "name": "Vaibhav Sharma",
+      "role": "Founder & Credit Intelligence Lead",
+      "image": "/images/team/vaibhav.png",
+      "accentColor": "#a3e635"
     },
     {
       "name": "Shauvik Roy",
-      "role": "Brand & Communications Lead",
+      "role": "Content and Copy",
+      "description": "Brand Manager | 4 YOE | Marketing and Campaigns",
       "image": "/images/team/shauvik.png",
       "accentColor": "#f97316"
     },
     {
       "name": "Agniva Ray",
-      "role": "Design & Operations",
+      "role": "Operations",
+      "description": "Design w/Ex-Gov of Goa | 4 YOE | Branding for MSMEs",
       "image": "/images/team/agniva.png",
       "accentColor": "#38bdf8"
     },
     {
-      "name": "Pankaj Chaudhary",
-      "role": "Ledger Lead, Blockchain Engineer",
-      "image": "/images/team/pankaj.png",
-      "accentColor": "#facc15"
-    },
-    {
       "name": "Ayan Gangopadhyay",
-      "role": "Data Science Lead, NLP & Deep Learning",
+      "role": "Data Science Lead",
+      "description": "NLP & Deep Learning Expert | 4 YOE | CUDA and Triton",
       "image": "/images/team/ayan.png",
       "accentColor": "#c084fc"
     },
     {
       "name": "Kavish Mahajan",
-      "role": "Creative Director, Branding",
+      "role": "Creative Director",
+      "description": "Branding and Design Expert | 5 YOE",
       "image": "/images/team/kavish.png",
       "accentColor": "#fb7185"
     },
     {
-      "name": "Onggo Wahyudi",
-      "role": "Backend Lead, MTech NUS",
-      "image": "/images/team/onggo.png",
-      "accentColor": "#f97316"
-    },
-    {
       "name": "Yash Yadav",
-      "role": "Founding Engineer, Full-stack",
+      "role": "Founding Engineer",
+      "description": "Full-stack & solutions architect | 50+ projects, blockchain & AI",
       "image": "/images/team/yash.png",
       "accentColor": "#4ade80"
+    },
+    {
+      "name": "Advita Shrivastav",
+      "role": "Founding Engineer",
+      "description": "Ex-NUS",
+      "image": "/images/team/advita.png",
+      "accentColor": "#a855f7"
+
     }
   ]
 }

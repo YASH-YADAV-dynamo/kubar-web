@@ -3,7 +3,8 @@ import Hero from './components/Hero';
 import ExpandBussiness from './components/ExpandBussiness';
 import ImageCarousel from './components/ImageCarousel';
 import VerticalScrollSections from './components/VerticalScrollSections';
-import ProductCTA from './components/ProductCTA';
+import SmarterDataSection from './components/SmarterDataSection';
+import JoinFutureCTA from './components/JoinFutureCTA';
 import Footer from './components/Footer';
 
 export const metadata = {
@@ -20,7 +21,8 @@ export default function Home() {
         <VerticalScrollSections />
         <ExpandBussiness />
         <ImageCarousel />
-        <ProductCTA />
+        <SmarterDataSection />
+        <JoinFutureCTA />
       </main>
       <Footer />
     </>

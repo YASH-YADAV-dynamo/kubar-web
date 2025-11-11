@@ -89,7 +89,7 @@ export default function Footer() {
               <ul className="footer-list">
                 <li><Link href="/about" style={{ color: '#ffffff' }}>About Us</Link></li>
                 <li><Link href="/team" style={{ color: '#ffffff' }}>Team</Link></li>
-                <li><Link href="/blog" style={{ color: '#ffffff' }}>Blog</Link></li>
+                <li><Link href="/blog" style={{ color: '#ffffff' }}>Resources</Link></li>
                 <li><Link href="/contact" style={{ color: '#ffffff' }}>Contact</Link></li>
               </ul>
             </div>

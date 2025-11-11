@@ -6,26 +6,26 @@ import Image from 'next/image';
 const useCases = [
   {
     key: 'cash',
-    title: 'Cash-flow Loans',
-    description: 'Disburse working capital in hours using live order, logistics, and payments data.'
+    title: 'Cash-Flow Loans',
+    description: 'Disburse working capital in hours using live transaction data, verified GST filings, and Account Aggregator feeds to give lenders a 360° view of every business they finance.'
   },
   {
     key: 'invoice',
-    title: 'Invoice-Based Lending',
-    description: 'Automate GST and e-invoice validation to finance MSME receivables without new paperwork.'
+    title: 'Faster, Smarter, Embedded Lending',
+    description: 'Automate GST and e-invoice validation to finance MSME receivables and reduce underwriting friction.'
   },
   {
     key: 'checkout',
     title: 'Checkout Financing',
-    description: 'Embed credit offers inside procurement and B2B commerce flows to capture higher order values.'
+    description: 'Enables lenders to assess, approve, and service MSME loans directly through the platforms where businesses already operate, like marketplaces, ERPs, supplier apps, or payment systems.'
   }
 ];
 
 const differentiators = [
-  'Holistic validation across AA, GST, and marketplace sources',
-  'Ultra-fast disbursal with automated LOS/LMS workflows',
-  'Lifecycle automation for borrower engagement and collections',
-  'Sector-specific intelligence for exports, manufacturing, and services'
+  'Unified validation from GST, Account Aggregator, and marketplace sources',
+  'Sector-specific scoring models built for manufacturing, trading, and services',
+  'Embedded disbursal flows through eNACH, UPI, and DLT-powered smart contracts',
+  'Continuous monitoring for better risk visibility and healthier portfolios'
 ];
 
 const integrations = [
@@ -66,15 +66,22 @@ export default function Products() {
               priority
             />
           </div>
-          <h1>Credit Intelligence Service for MSME Lenders</h1>
+          <h1>Smart Credit Infrastructure for India's MSMEs</h1>
           <p>
-            NavDhan is Kubar Labs' credit intelligence service that embeds MSME underwriting, decisioning, and servicing inside the apps your
-            borrowers already use. Integrate once to activate cash-flow lending, invoice financing, and checkout credit across marketplaces.
+            NavDhan by Kubar Labs powers embedded lending for the next generation of MSME finance. It connects lenders, marketplaces, and business platforms in one place to make credit flow where business actually happens.
           </p>
           <div className="actions">
             <Link className="btn btn-primary" href="/contact#contact-form">Book a Demo</Link>
-            <Link className="btn btn-secondary" href="mailto:partner@navdhan.com">Partner with Us</Link>
           </div>
+          <p style={{ marginTop: 'var(--spacing-xl)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
+            Making credit available at the right time.
+          </p>
+          <p style={{ marginTop: 'var(--spacing-md)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+            Thousands of businesses in India struggle to secure loans while working capital gradually disappears into receivables. At the same time, banks and NBFCs struggle to find the right borrowers spending months verifying data and chasing documentation.
+          </p>
+          <p style={{ marginTop: 'var(--spacing-md)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+            NavDhan makes MSME lending faster, smarter, and deeply embedded. It bridges this gap, connecting lenders and businesses through live, verified transaction data at the exact point of need.
+          </p>
         </header>
 
         <div className="navdhan-hero-image">
@@ -99,6 +106,12 @@ export default function Products() {
 
         <section className="differentiators">
           <h2>Why NavDhan Works</h2>
+          <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-xl)', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+            Traditional credit models rely on paperwork and assumptions. We rely on proof.
+          </p>
+          <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-2xl)', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+            NavDhan uses real-time signals from business operations to assess creditworthiness more accurately than any static report.
+          </p>
           <div className="list">
             {differentiators.map((line, index) => (
               <div key={index} className="list-item">
@@ -111,6 +124,9 @@ export default function Products() {
 
         <section className="integrations" id="integrations">
           <h2>Integrations at Every Layer</h2>
+          <p style={{ textAlign: 'center', fontSize: '1.125rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--spacing-xl)', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+            Integrated at every layer of the financial stack. NavDhan connects seamlessly with:
+          </p>
           <div className="integration-grid">
             {integrations.map((section, index) => (
               <article key={index} className="integration-card">

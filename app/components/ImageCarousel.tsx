@@ -159,25 +159,26 @@ export default function ImageCarousel() {
           justify-content: center;
           min-height: 400px;
           max-height: 600px;
+          aspect-ratio: 16 / 9;
         }
 
         .award-image-wrapper.vertical-image {
           max-width: 500px;
           margin: 0 auto;
+          aspect-ratio: 9 / 16;
         }
 
         .award-image {
           width: 100%;
-          height: auto;
-          max-height: 600px;
-          object-fit: cover;
+          height: 100%;
+          object-fit: contain;
           object-position: center;
           display: block;
         }
 
         .award-image.vertical {
           object-fit: contain;
-          max-height: 600px;
+          height: 100%;
         }
 
         .award-carousel-nav {
@@ -265,23 +266,24 @@ export default function ImageCarousel() {
             min-height: auto;
             max-height: calc(100vh - 200px);
             border-radius: 12px;
+            aspect-ratio: 16 / 9;
           }
 
           .award-image-wrapper.vertical-image {
             max-width: 100%;
             max-height: calc(100vh - 200px);
+            aspect-ratio: 9 / 16;
           }
 
           .award-image {
             width: 100%;
-            height: auto;
-            max-height: calc(100vh - 200px);
+            height: 100%;
             object-fit: contain;
           }
 
           .award-image.vertical {
             object-fit: contain;
-            max-height: calc(100vh - 200px);
+            height: 100%;
           }
 
           .award-carousel-nav {
@@ -310,18 +312,22 @@ export default function ImageCarousel() {
           .award-image-wrapper {
             max-height: calc(100vh - 180px);
             border-radius: 10px;
+            aspect-ratio: 16 / 9;
           }
 
           .award-image-wrapper.vertical-image {
             max-height: calc(100vh - 180px);
+            aspect-ratio: 9 / 16;
           }
 
           .award-image {
-            max-height: calc(100vh - 180px);
+            height: 100%;
+            object-fit: contain;
           }
 
           .award-image.vertical {
-            max-height: calc(100vh - 180px);
+            height: 100%;
+            object-fit: contain;
           }
 
           .award-carousel-nav {

@@ -1,53 +1,52 @@
 [
     {
-      "title": "Holistic Data Collection",
-      "headline": "Kubar Labs helps organize all your business details, even handwritten notes, to understand your finances better",
+      "title": "Understanding a Business Beyond Numbers",
+      "headline": "We help lenders see what makes businesses truly work.",
       "content": [
-            "Ingests structured data from transactions, financial records, and formal documents",
+            "Ingests structured data from invoices, GST filings, transactions, supplier payments, and formal documents",
             "Captures unstructured inputs including handwritten notes and informal business documents",
             "Transforms fragmented raw inputs into standardised quantitative insights"
         ],
       "image": "/images/features/feature1.svg"
     },
     {
-      "title": "Embedded Integrations",
-      "headline": "Kubar Labs Connects With Your Existing Business Systems So You Can Find The Right Loan At The Right Time, Without Extra Effort",
+      "title": "Connect Once, Borrow Smarter",
+      "headline": "Businesses already run on tools you trust. We simply connect with them.",
       "content": [
-            "Seamlessly integrates within MSME platforms and business management systems",
+            "Seamlessly integrates with MSME platforms, accounting systems, business management systems, and marketplaces",
             "Eliminates traditional borrower acquisition costs and friction",
             "Creates borrower sourcing channels directly at point of business operations"
         ],
       "image": "/images/features/feature5.svg"
     },
     {
-      "title": "Agentic Direct Selling Agent",
-      "headline": "Kubar Labs uses smart tools to get a complete picture of your business's strength for loan decisions",
+      "title": "Turning Information into Understanding",
+      "headline": "We make the data speak clearly.",
       "content": [
-            "Applies NLP contextualisation layer to quantitative data",
-            "Conducts efficient 15-minute qualitative assessments",
-            "Blends quantitative rigor with qualitative depth"
+            "Applies NLP contextualisation layer to quantitative data to help lenders understand what your business earns and how it operates and grows",
+            "Combines data analytics with human understanding to help lenders make fair, quick, and accurate loan decisions",
+            "Blends quantitative rigor with qualitative depth for insights that actually make sense"
         ],
       "image": "/images/features/feature3.svg"
     },
     {
-      "title": "Sector-Specific Intelligence",
-      "headline": "Your business isn't like every other. We show lenders how your industry works so you get loans that actually fit your needs",
+      "title": "Lending That Fits the Industry",
+      "headline": "Every business is different. Financing should be too.",
       "content": [
             "Replaces one-size-fits-all lending with industry-tailored assessment models",
             "Incorporates specialized parameters for diverse sectors (textile vs. ball bearing manufacturing)",
-            "Analyses sector-specific cash flow patterns, supply chain dynamics, and growth metrics"
+            "Analyses sector-specific cash flow patterns, supply chain dynamics, and growth metrics to match businesses with loans that fit industry, scale, and seasonality"
         ],
       "image": "/images/features/feature4.svg"
     },
     {
-      "title": "Workflow Automation",
-      "headline": "Kubar Labs uses technology to manage your loan smoothly, from agreement to automatic payments and even alerts for any issues",
+      "title": "Manage the Entire Loan Journey in One Place",
+      "headline": "From agreement to disbursement, we make everything work.",
       "content": [
             "Digitises and executes agreements via DLT-powered smart contracts",
-            "Streamlines fund movements through e-NACH mandates and UPl auto-debit",
+            "Streamlines fund movements through e-NACH mandates and UPI auto-debit",
             "Monitors asset performance with Account Aggregator integrations"
         ],
       "image": "/images/features/feature2.svg"
     }
 ]
-

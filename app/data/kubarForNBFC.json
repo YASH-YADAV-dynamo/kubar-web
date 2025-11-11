@@ -1,23 +1,22 @@
 [
   {
-    "title": "Credit Inclusion",
+    "title": "Real-time underwriting",
     "icon": "/images/kupnbfc_1.svg",
-    "text": "Future-Proof Your Portfolio With Smart Products"
+    "text": "Using live transaction data"
   },
   {
-    "title": "Smart Underwriting",
+    "title": "Embedded loan offers",
     "icon": "/images/kupnbfc_2.svg",
-    "text": "Bridge The MSME Credit Gap & Drive Financial Inclusion"
+    "text": "At the point of purchase or sale"
   },
   {
-    "title": "Digital Onboarding",
+    "title": "Faster disbursals",
     "icon": "/images/kupnbfc_3.svg",
-    "text": "Scale Lending Operations Efficiently And Profitably"
+    "text": "With digital KYC and LOS/LMS automation"
   },
   {
-    "title": "Portfolio Insights",
+    "title": "Rich portfolio insights",
     "icon": "/images/kupnbfc_4.svg",
-    "text": "Scale Lending Operations Efficiently And Profitably"
+    "text": "Powered by sectoral intelligence"
   }
 ]
-

@@ -1,23 +1,12 @@
 [
   {
-    "title": "Credit Inclusion",
+    "title": "Automatic loan matching",
     "icon": "/images/kupmsme_1.svg",
-    "text": "Avail The Right Loan At The Right Time"
+    "text": "Loan offers that match your business needs and cash flow cycles. No brokers, no endless forms."
   },
   {
-    "title": "Smart Underwriting",
+    "title": "Focus on growth",
     "icon": "/images/kupmsme_2.svg",
-    "text": "Get Matched With The Best Lender And Loan Product For Your Business"
-  },
-  {
-    "title": "Digital Onboarding",
-    "icon": "/images/kupmsme_3.svg",
-    "text": "Get loans Approved & Disbursed Faster"
-  },
-  {
-    "title": "Portfolio Insights",
-    "icon": "/images/kupmsme_4.svg",
-    "text": "Automate Regulatory Compliance And Security"
+    "text": "Faster access to credit means you can focus on growth instead of waiting for payments."
   }
 ]
-
