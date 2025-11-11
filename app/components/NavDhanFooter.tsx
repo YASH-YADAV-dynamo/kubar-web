@@ -35,30 +35,30 @@ export default function NavDhanFooter() {
             <div className="footer-column">
               <h4 className="footer-heading">Product</h4>
               <ul className="footer-list">
-                <li><Link href="/products/navdhan">NavDhan Overview</Link></li>
-                <li><Link href="/products/navdhan#usecases">Use Cases</Link></li>
-                <li><Link href="/products/navdhan#integrations">Integrations</Link></li>
-                <li><Link href="/contact#contact-form">Book a Demo</Link></li>
+                <li><Link href="/products/navdhan" style={{ color: '#000000' }}>NavDhan Overview</Link></li>
+                <li><Link href="/products/navdhan#usecases" style={{ color: '#000000' }}>Use Cases</Link></li>
+                <li><Link href="/products/navdhan#integrations" style={{ color: '#000000' }}>Integrations</Link></li>
+                <li><Link href="/contact#contact-form" style={{ color: '#000000' }}>Book a Demo</Link></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4 className="footer-heading">Company</h4>
               <ul className="footer-list">
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/team">Team</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/about" style={{ color: '#000000' }}>About Us</Link></li>
+                <li><Link href="/team" style={{ color: '#000000' }}>Team</Link></li>
+                <li><Link href="/blog" style={{ color: '#000000' }}>Blog</Link></li>
+                <li><Link href="/contact" style={{ color: '#000000' }}>Contact</Link></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4 className="footer-heading">Stay in Touch</h4>
               <ul className="footer-list">
-                <li><a href="https://www.linkedin.com/company/kubarlabs" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://x.com/kubarlabs" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
-                <li><a href="https://kubarlabs.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
-                <li><a href="mailto:partner@navdhan.com">Partner Enquiries</a></li>
+                <li><a href="https://www.linkedin.com/company/kubarlabs" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>LinkedIn</a></li>
+                <li><a href="https://x.com/kubarlabs" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>X (Twitter)</a></li>
+                <li><a href="https://kubarlabs.substack.com" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>Substack</a></li>
+                <li><a href="mailto:partner@navdhan.com" style={{ color: '#000000' }}>Partner Enquiries</a></li>
               </ul>
             </div>
           </div>
@@ -132,14 +132,14 @@ export default function NavDhanFooter() {
           background: rgba(0, 0, 0, 0.05);
           border: 1px solid rgba(0, 0, 0, 0.1);
           border-radius: 10px;
-          color: #333333;
+          color: #000000 !important;
           transition: all var(--transition-base);
         }
 
         .social-link:hover {
           background: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
           border-color: #ff8c00;
-          color: #ffffff;
+          color: #ffffff !important;
           transform: translateY(-3px);
           box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
         }
@@ -167,13 +167,18 @@ export default function NavDhanFooter() {
           gap: var(--spacing-md);
         }
 
-        .footer-list a {
+        .footer-list a,
+        .footer-list a:link,
+        .footer-list a:visited,
+        .footer-list a:focus,
+        .footer-list a:active {
           font-size: 0.95rem;
-          color: #333333 !important;
+          color: #000000 !important;
           transition: all var(--transition-fast);
           position: relative;
           display: inline-block;
           width: fit-content;
+          text-decoration: none;
         }
 
         .footer-list a:hover {
@@ -205,7 +210,7 @@ export default function NavDhanFooter() {
 
         .footer-copyright {
           font-size: 0.875rem;
-          color: #666666;
+          color: #000000 !important;
           text-align: center;
         }
 

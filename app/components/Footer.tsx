@@ -77,20 +77,20 @@ export default function Footer() {
             <div className="footer-column">
               <h4 className="footer-heading">Product</h4>
               <ul className="footer-list">
-                <li><Link href="/products/navdhan">NavDhan Overview</Link></li>
-                <li><Link href="/products/navdhan#usecases">Use Cases</Link></li>
-                <li><Link href="/products/navdhan#integrations">Integrations</Link></li>
-                <li><Link href="/contact#contact-form">Book a Demo</Link></li>
+                <li><Link href="/products/navdhan" style={{ color: '#ffffff' }}>NavDhan Overview</Link></li>
+                <li><Link href="/products/navdhan#usecases" style={{ color: '#ffffff' }}>Use Cases</Link></li>
+                <li><Link href="/products/navdhan#integrations" style={{ color: '#ffffff' }}>Integrations</Link></li>
+                <li><Link href="/contact#contact-form" style={{ color: '#ffffff' }}>Book a Demo</Link></li>
               </ul>
             </div>
 
             <div className="footer-column">
               <h4 className="footer-heading">Company</h4>
               <ul className="footer-list">
-                <li><Link href="/about">About Us</Link></li>
-                <li><Link href="/team">Team</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/about" style={{ color: '#ffffff' }}>About Us</Link></li>
+                <li><Link href="/team" style={{ color: '#ffffff' }}>Team</Link></li>
+                <li><Link href="/blog" style={{ color: '#ffffff' }}>Blog</Link></li>
+                <li><Link href="/contact" style={{ color: '#ffffff' }}>Contact</Link></li>
               </ul>
             </div>
 
@@ -149,13 +149,13 @@ export default function Footer() {
           font-size: 1.75rem;
           font-weight: 700;
           margin-bottom: var(--spacing-md);
-          color: var(--color-text-primary);
+          color: #ffffff;
           letter-spacing: -0.02em;
         }
 
         .footer-description {
           font-size: 1rem;
-          color: var(--color-text-secondary);
+          color: #ffffff;
           margin-bottom: var(--spacing-xl);
           line-height: 1.7;
         }
@@ -208,7 +208,7 @@ export default function Footer() {
           background: var(--color-surface-elevated);
           border: 1px solid var(--color-border);
           border-radius: 10px;
-          color: var(--color-text-secondary);
+          color: #ffffff;
           transition: all var(--transition-base);
         }
 
@@ -272,7 +272,7 @@ export default function Footer() {
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: var(--color-text-primary);
+          color: #ffd700;
           margin-bottom: var(--spacing-lg);
           font-family: var(--font-heading);
         }
@@ -284,13 +284,23 @@ export default function Footer() {
           gap: var(--spacing-md);
         }
 
-        .footer-list a {
+        .footer-list li {
+          color: #ffffff;
+        }
+
+        .footer-list a,
+        .footer-list a:link,
+        .footer-list a:visited,
+        .footer-list a:focus,
+        .footer-list a:active,
+        .footer-list a:hover {
           font-size: 0.95rem;
-          color: var(--color-text-secondary);
+          color: #ffffff !important;
           transition: all var(--transition-fast);
           position: relative;
           display: inline-block;
           width: fit-content;
+          text-decoration: none;
         }
 
         .footer-list a::after {
@@ -302,10 +312,6 @@ export default function Footer() {
           height: 1.5px;
           background: #ffd700;
           transition: width var(--transition-base);
-        }
-
-        .footer-list a:hover {
-          color: var(--color-text-primary);
         }
 
         .footer-list a:hover::after {
@@ -322,7 +328,7 @@ export default function Footer() {
 
         .footer-copyright {
           font-size: 0.875rem;
-          color: var(--color-text-tertiary);
+          color: #ffffff;
           text-align: center;
         }
 
