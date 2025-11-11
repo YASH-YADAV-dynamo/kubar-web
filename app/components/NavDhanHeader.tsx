@@ -83,10 +83,24 @@ export default function NavDhanHeader() {
   };
 
   return (
-    <header className={`navdhan-header ${isScrolled ? 'scrolled' : ''}`}>
+    <header 
+      className={`navdhan-header ${isScrolled ? 'scrolled' : ''}`} 
+      style={{ 
+        background: '#ffe4b5',
+        borderBottom: isScrolled ? '1px solid rgba(255, 140, 0, 0.3)' : '1px solid rgba(255, 140, 0, 0.25)',
+        position: 'fixed',
+        top: 0,
+        zIndex: 1000,
+        width: '100%',
+        opacity: 1,
+        boxShadow: isScrolled ? '0 4px 20px rgba(255, 140, 0, 0.15)' : 'none',
+        backdropFilter: 'none',
+        WebkitBackdropFilter: 'none'
+      }}
+    >
       <nav className="navdhan-nav container" aria-label="Primary">
         <div className="navdhan-nav-brand">
-          <Link href="/" className="navdhan-logo navdhan-logo-button">
+          <Link href="/" className="navdhan-logo navdhan-logo-button" style={{ color: '#006400' }}>
             <Image src="/logo.png" alt="Kubar Labs" width={44} height={44} className="navdhan-logo-icon" />
           </Link>
         </div>
@@ -101,6 +115,7 @@ export default function NavDhanHeader() {
                 setIsDropdownOpen(!isDropdownOpen);
               }}
               aria-expanded={isDropdownOpen}
+              style={{ color: '#006400' }}
             >
               Products
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -130,7 +145,7 @@ export default function NavDhanHeader() {
           </div>
 
           {secondaryNavItems.map((item) => (
-            <Link key={item.href} href={item.href} className="navdhan-nav-link" onClick={closeMenu}>
+            <Link key={item.href} href={item.href} className="navdhan-nav-link" onClick={closeMenu} style={{ color: '#006400' }}>
               {item.label}
             </Link>
           ))}
@@ -143,11 +158,19 @@ export default function NavDhanHeader() {
               onMouseLeave={() => setIsButtonHovered(false)}
               className="navdhan-nav-cta-button"
               style={{
+                background: 'linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%)',
+                border: '2px solid #228B22',
                 padding: windowWidth >= 769 ? '0.875rem 2.5rem' : '0.875rem 1.5rem',
+                borderRadius: '16px',
+                color: '#ffffff',
                 fontSize: windowWidth >= 769 ? '0.95rem' : '0.9rem',
+                fontWeight: '700',
+                letterSpacing: '0.05em',
                 boxShadow: isButtonHovered && windowWidth >= 769 
-                  ? '0 8px 24px rgba(255, 140, 0, 0.4), 0 4px 12px rgba(255, 140, 0, 0.2)'
-                  : '0 0 0 0 rgba(255, 140, 0, 0)',
+                  ? '0 12px 32px rgba(34, 139, 34, 0.6), 0 6px 16px rgba(50, 205, 50, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3)'
+                  : '0 6px 20px rgba(34, 139, 34, 0.4), 0 2px 8px rgba(50, 205, 50, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                transform: isButtonHovered && windowWidth >= 769 ? 'translateY(-4px) scale(1.03)' : 'translateZ(0)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               <span style={{ position: 'relative', zIndex: 2 }}>Book a Demo</span>
@@ -174,10 +197,10 @@ export default function NavDhanHeader() {
           position: fixed;
           top: 0;
           z-index: 1000;
-          background: linear-gradient(135deg, rgba(255, 165, 0, 0.15) 0%, rgba(255, 200, 100, 0.1) 50%, rgba(255, 255, 255, 0.98) 100%);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 165, 0, 0.2);
+          background: #ffe4b5 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          border-bottom: 1px solid rgba(255, 140, 0, 0.25);
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           opacity: 1;
           width: 100%;
@@ -185,11 +208,11 @@ export default function NavDhanHeader() {
 
         .navdhan-header.scrolled {
           opacity: 1;
-          background: linear-gradient(135deg, rgba(255, 165, 0, 0.2) 0%, rgba(255, 200, 100, 0.15) 50%, rgba(255, 255, 255, 1) 100%);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 165, 0, 0.25);
-          box-shadow: 0 4px 20px rgba(255, 165, 0, 0.1);
+          background: #ffe4b5 !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+          box-shadow: 0 4px 20px rgba(255, 140, 0, 0.15);
         }
 
         .navdhan-header.scrolled::before {
@@ -220,6 +243,9 @@ export default function NavDhanHeader() {
             max-width: 1200px;
             border-radius: 24px;
             margin: 1rem auto 0;
+            background: #ffe4b5 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
           }
 
           .navdhan-header.scrolled {
@@ -229,7 +255,11 @@ export default function NavDhanHeader() {
             width: calc(100% - 4rem);
             max-width: 1200px;
             border-radius: 24px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+            background: #ffe4b5 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.15) !important;
           }
 
           .navdhan-header.scrolled::after {
@@ -285,7 +315,7 @@ export default function NavDhanHeader() {
           font-family: var(--font-heading);
           font-size: 1.25rem;
           font-weight: 700;
-          color: #000000;
+          color: #006400 !important;
           text-decoration: none;
           transition: all 0.3s ease;
           padding: 0.5rem;
@@ -307,6 +337,10 @@ export default function NavDhanHeader() {
           opacity: 1;
           transform: scale(1.05);
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navdhan-logo:hover {
+          color: #000000 !important;
         }
 
         .navdhan-logo-icon {
@@ -348,7 +382,7 @@ export default function NavDhanHeader() {
           position: relative;
           font-size: 0.95rem;
           font-weight: 500;
-          color: #333333;
+          color: #006400 !important;
           transition: color var(--transition-fast);
           padding: 0.5rem 0;
           text-decoration: none;
@@ -361,7 +395,7 @@ export default function NavDhanHeader() {
           left: 0;
           right: 0;
           height: 2px;
-          background: #ff8c00;
+          background: #000000;
           transform: scaleX(0);
           transform-origin: left;
           transition: transform var(--transition-base);
@@ -381,18 +415,18 @@ export default function NavDhanHeader() {
           border: none;
           cursor: pointer;
           padding-right: 0.25rem;
-          color: #ff8c00;
+          color: #006400 !important;
           font-weight: 500;
           font-size: 0.95rem;
         }
 
         .navdhan-dropdown-toggle:hover {
-          color: #ff8c00;
+          color: #000000 !important;
           opacity: 1;
         }
 
         .navdhan-dropdown-toggle:focus-visible {
-          outline: 2px solid #ff8c00;
+          outline: 2px solid #006400;
           outline-offset: 4px;
         }
 
@@ -492,7 +526,7 @@ export default function NavDhanHeader() {
         }
 
         .navdhan-nav-link:hover {
-          color: #000000;
+          color: #000000 !important;
         }
 
         .navdhan-nav-link:hover::after {
@@ -500,14 +534,14 @@ export default function NavDhanHeader() {
         }
 
         .navdhan-nav-cta-button {
-          background: transparent !important;
-          border: 2px solid #ff8c00 !important;
+          background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%) !important;
+          border: 2px solid #228B22 !important;
           padding: 0.875rem 2.5rem !important;
-          border-radius: 14px !important;
-          color: #ff8c00 !important;
+          border-radius: 16px !important;
+          color: #ffffff !important;
           font-weight: 700 !important;
           font-size: 0.95rem !important;
-          letter-spacing: 0.03em !important;
+          letter-spacing: 0.05em !important;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
           position: relative !important;
           overflow: hidden !important;
@@ -526,6 +560,7 @@ export default function NavDhanHeader() {
           appearance: none !important;
           -webkit-appearance: none !important;
           -moz-appearance: none !important;
+          box-shadow: 0 6px 20px rgba(34, 139, 34, 0.4), 0 2px 8px rgba(50, 205, 50, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }
 
         .navdhan-nav-cta-button > span {
@@ -541,7 +576,7 @@ export default function NavDhanHeader() {
           width: 0;
           height: 0;
           border-radius: 50%;
-          background: rgba(255, 140, 0, 0.1);
+          background: rgba(255, 255, 255, 0.2);
           transform: translate(-50%, -50%);
           transition: width 0.6s ease, height 0.6s ease;
           z-index: 1;
@@ -554,33 +589,35 @@ export default function NavDhanHeader() {
           }
 
           .navdhan-nav-cta-button:hover {
-            background: transparent !important;
-            border-color: #ff8c00 !important;
-            color: #ff8c00 !important;
-            transform: translateY(-3px) scale(1.02) !important;
+            background: linear-gradient(135deg, #32CD32 0%, #228B22 50%, #32CD32 100%) !important;
+            border-color: #32CD32 !important;
+            color: #ffffff !important;
+            transform: translateY(-4px) scale(1.03) !important;
             box-shadow: 
-              0 8px 24px rgba(255, 140, 0, 0.4),
-              0 4px 12px rgba(255, 140, 0, 0.2) !important;
+              0 12px 32px rgba(34, 139, 34, 0.6),
+              0 6px 16px rgba(50, 205, 50, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
             text-decoration: none !important;
           }
         }
 
         .navdhan-nav-cta-button:active {
-          transform: translateY(0) !important;
+          transform: translateY(-1px) scale(1.01) !important;
           box-shadow: 
-            0 4px 15px rgba(255, 140, 0, 0.3),
-            0 2px 6px rgba(255, 140, 0, 0.2) !important;
-          background: transparent !important;
-          border-color: #ff8c00 !important;
-          color: #ff8c00 !important;
+            0 4px 15px rgba(34, 139, 34, 0.5),
+            0 2px 8px rgba(50, 205, 50, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+          background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%) !important;
+          border-color: #228B22 !important;
+          color: #ffffff !important;
         }
 
         .navdhan-nav-cta-button:focus-visible {
-          outline: 3px solid #ff8c00;
+          outline: 3px solid #228B22;
           outline-offset: 4px;
           box-shadow: 
-            0 4px 20px rgba(255, 140, 0, 0.4),
-            0 2px 8px rgba(255, 140, 0, 0.2);
+            0 4px 20px rgba(34, 139, 34, 0.5),
+            0 2px 8px rgba(50, 205, 50, 0.3);
         }
 
         .navdhan-mobile-menu-toggle {
@@ -665,10 +702,12 @@ export default function NavDhanHeader() {
             text-align: center !important;
             width: 100% !important;
             font-size: 0.9rem !important;
-            background: transparent !important;
-            border: 2px solid #ff8c00 !important;
-            color: #ff8c00 !important;
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%) !important;
+            border: 2px solid #228B22 !important;
+            color: #ffffff !important;
             text-decoration: none !important;
+            box-shadow: 0 6px 20px rgba(34, 139, 34, 0.4), 0 2px 8px rgba(50, 205, 50, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            border-radius: 16px !important;
           }
 
           .navdhan-nav-cta-wrapper {
