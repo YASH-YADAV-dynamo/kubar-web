@@ -39,11 +39,11 @@
       "accentColor": "#a3e635"
     },
     {
-      "name": "Shauvik Roy",
-      "role": "Content and Copy",
-      "description": "Brand Manager | 4 YOE | Marketing and Campaigns",
-      "image": "/images/team/shauvik.png",
-      "accentColor": "#f97316"
+      "name": "Ayan Gangopadhyay",
+      "role": "Data Science Lead",
+      "description": "NLP & Deep Learning Expert | 4 YOE | CUDA and Triton",
+      "image": "/images/team/ayan.png",
+      "accentColor": "#c084fc"
     },
     {
       "name": "Agniva Ray",
@@ -53,11 +53,11 @@
       "accentColor": "#38bdf8"
     },
     {
-      "name": "Ayan Gangopadhyay",
-      "role": "Data Science Lead",
-      "description": "NLP & Deep Learning Expert | 4 YOE | CUDA and Triton",
-      "image": "/images/team/ayan.png",
-      "accentColor": "#c084fc"
+      "name": "Shauvik Roy",
+      "role": "Marketing Lead",
+      "description": "Brand Manager | 4 YOE | Marketing and Campaigns",
+      "image": "/images/team/shauvik.png",
+      "accentColor": "#f97316"
     },
     {
       "name": "Kavish Mahajan",
