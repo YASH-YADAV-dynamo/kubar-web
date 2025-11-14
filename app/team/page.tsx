@@ -36,6 +36,24 @@ export default function TeamPage() {
                   <div className="founder-body">
                     <h2>{founder.name}</h2>
                     <p>{founder.role}</p>
+                    {founder.linkedin && (
+                      <a 
+                        href={founder.linkedin} 
+                        className="founder-linkedin"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label={`${founder.name} LinkedIn`}
+                        style={{ 
+                          color: founder.accentColor,
+                          borderColor: founder.accentColor
+                        }}
+                      >
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                      </a>
+                    )}
                   </div>
                 </div>
               )}
@@ -74,6 +92,24 @@ export default function TeamPage() {
                         <p className="member-role">{member.role}</p>
                         {member.description && (
                           <p className="member-description">{member.description}</p>
+                        )}
+                        {member.linkedin && (
+                          <a 
+                            href={member.linkedin} 
+                            className="member-linkedin"
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            aria-label={`${member.name} LinkedIn`}
+                            style={{ 
+                              color: member.accentColor,
+                              borderColor: member.accentColor
+                            }}
+                          >
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                          </a>
                         )}
                       </div>
                     </article>
@@ -212,6 +248,41 @@ export default function TeamPage() {
           margin: 0;
         }
 
+        .founder-linkedin {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: var(--spacing-md);
+          padding: 0.5rem 1rem;
+          border: 1.5px solid;
+          border-radius: 8px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(4px);
+        }
+
+        .founder-linkedin:hover {
+          background: rgba(255, 255, 255, 0.08);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .founder-linkedin svg {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .founder-linkedin:hover svg {
+          transform: scale(1.1);
+        }
+
+        .founder-linkedin span {
+          line-height: 1;
+        }
+
         .team-main-section {
           padding: var(--spacing-3xl) 0;
           position: relative;
@@ -315,6 +386,41 @@ export default function TeamPage() {
           color: var(--color-text-secondary);
           line-height: 1.6;
           margin: 0;
+        }
+
+        .member-linkedin {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: var(--spacing-md);
+          padding: 0.5rem 1rem;
+          border: 1.5px solid;
+          border-radius: 8px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(4px);
+        }
+
+        .member-linkedin:hover {
+          background: rgba(255, 255, 255, 0.08);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-linkedin svg {
+          flex-shrink: 0;
+          transition: transform 0.3s ease;
+        }
+
+        .member-linkedin:hover svg {
+          transform: scale(1.1);
+        }
+
+        .member-linkedin span {
+          line-height: 1;
         }
 
         .team-sidebar {

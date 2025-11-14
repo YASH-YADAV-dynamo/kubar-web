@@ -36,50 +36,56 @@
       "name": "Vaibhav Sharma",
       "role": "Founder & Credit Intelligence Lead",
       "image": "/images/team/vaibhav.png",
-      "accentColor": "#a3e635"
+      "accentColor": "#a3e635",
+      "linkedin": "https://www.linkedin.com/in/fenestbuc/"
     },
     {
       "name": "Ayan Gangopadhyay",
       "role": "Data Science Lead",
       "description": "NLP & Deep Learning Expert | 4 YOE | CUDA and Triton",
       "image": "/images/team/ayan.png",
-      "accentColor": "#c084fc"
+      "accentColor": "#c084fc",
+      "linkedin": "https://www.linkedin.com/in/ayan-gangopadhyay-426012157/"
     },
     {
       "name": "Agniva Ray",
       "role": "Operations Lead",
       "description": "Cross-Functional Executive | 5 YOE | Ex- Govt. Of Goa",
       "image": "/images/team/agniva.png",
-      "accentColor": "#38bdf8"
+      "accentColor": "#38bdf8",
+      "linkedin": "https://www.linkedin.com/in/agnivaray/"
     },
     {
       "name": "Shauvik Roy",
       "role": "Marketing Lead",
       "description": "Brand Manager | 4 YOE | Marketing and Campaigns",
       "image": "/images/team/shauvik.png",
-      "accentColor": "#f97316"
+      "accentColor": "#f97316",
+      "linkedin": "https://www.linkedin.com/in/shauvik-roy-042bba17a/"
     },
     {
       "name": "Kavish Mahajan",
       "role": "Creative Director",
       "description": "Branding and Design Expert | 5 YOE",
       "image": "/images/team/kavish.png",
-      "accentColor": "#fb7185"
+      "accentColor": "#fb7185",
+      "linkedin": "https://www.linkedin.com/in/koverner/"
     },
     {
       "name": "Yash Yadav",
       "role": "Founding Engineer",
       "description": "Full-stack & solutions architect | 50+ projects, blockchain & AI",
       "image": "/images/team/yash.png",
-      "accentColor": "#4ade80"
+      "accentColor": "#4ade80",
+      "linkedin": "https://www.linkedin.com/in/yash-yadav23/"
     },
     {
       "name": "Advita Shrivastav",
       "role": "Founding Engineer",
       "description": "Ex-NUS",
       "image": "/images/team/advita.png",
-      "accentColor": "#a855f7"
-
+      "accentColor": "#a855f7",
+      "linkedin": "https://www.linkedin.com/in/advita-shrivastava-68061b228/"
     }
   ]
 }
