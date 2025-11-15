@@ -648,6 +648,33 @@ a:hover {
   justify-self: flex-start;
 }
 
+.form-status {
+  margin-top: var(--spacing-md);
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+
+.form-status.loading {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-secondary);
+}
+
+.form-status.success {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #8de3ae;
+}
+
+.form-status.error {
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
+}
+
 .contact-info {
   background: var(--color-background);
   border: 1px solid var(--color-border);
