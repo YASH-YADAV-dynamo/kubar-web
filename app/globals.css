@@ -859,41 +859,31 @@ a:hover {
   justify-self: flex-start;
 }
 
-.contact-page button[type="submit"]:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.form-message {
-  padding: 1rem 1.25rem;
+.form-status {
+  margin-top: var(--spacing-md);
+  padding: 0.85rem 1rem;
   border-radius: 12px;
   font-size: 0.95rem;
-  line-height: 1.5;
-  animation: slideIn 0.3s ease-out;
+  line-height: 1.4;
+  border: 1px solid transparent;
 }
 
-.form-message.success {
-  background: rgba(163, 230, 53, 0.15);
-  border: 1px solid rgba(163, 230, 53, 0.3);
-  color: var(--color-primary);
+.form-status.loading {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-secondary);
 }
 
-.form-message.error {
-  background: rgba(220, 38, 38, 0.15);
-  border: 1px solid rgba(220, 38, 38, 0.3);
-  color: #f87171;
+.form-status.success {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+  color: #8de3ae;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.form-status.error {
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.3);
+  color: #fca5a5;
 }
 
 .contact-info {

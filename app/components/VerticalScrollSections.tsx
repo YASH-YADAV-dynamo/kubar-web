@@ -60,29 +60,65 @@ export default function VerticalScrollSections() {
             {/* Left: Wheel-Like Section */}
             <div className="wheel-container">
               <div className="wheel-inner">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ opacity: 0, scale: 0.8, y: isMobile ? 20 : 0, x: isMobile ? 0 : 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: isMobile ? -20 : 0, x: isMobile ? 0 : -20 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="wheel-item-active"
-                  >
-                    <div className="wheel-image-wrapper">
-                      <img
-                        src={sections[activeIndex].image}
-                        alt={sections[activeIndex].title}
-                        className="wheel-image"
-                      />
-                    </div>
-                    <div className="wheel-title-wrapper">
-                      <span className="wheel-title">
-                        {sections[activeIndex].title}
-                      </span>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  animate={controls}
+                  style={{ y, x: useMotionValue(0) }}
+                  className="wheel-items"
+                >
+                  {[getIndex(-1), getIndex(0), getIndex(1)].map((i, idx) => {
+                    const offset = idx - 1;
+                    const baseY = offset * 120;
+                    const baseX = offset * 120;
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const itemY = useTransform(
+                      y,
+                      [baseY - 120, baseY, baseY + 120],
+                      [0.6, 1, 0.6]
+                    );
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const itemX = useTransform(
+                      y,
+                      [baseX - 120, baseX, baseX + 120],
+                      [0.6, 1, 0.6]
+                    );
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const scale = useTransform(isMobile ? itemX : itemY, [0.6, 1], [0.95, 1.1]);
+                    const opacity = isMobile ? itemX : itemY;
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const color = useTransform(
+                      isMobile ? itemX : itemY, 
+                      [0.6, 1], 
+                      ["#4b5563", "#a3e635"]
+                    );
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    const filter = useTransform(
+                      isMobile ? itemX : itemY,
+                      [0.6, 1],
+                      ["grayscale(100%) brightness(0.9)", "grayscale(0%) brightness(1.1)"]
+                    );
+
+                    return (
+                      <motion.div
+                        key={`${i}-${idx}`}
+                        className="wheel-item"
+                        style={{ scale, opacity }}
+                      >
+                        <motion.img
+                          src={sections[i].image}
+                          alt={sections[i].title}
+                          className="wheel-image"
+                          style={{ filter }}
+                        />
+                        <motion.span
+                          className="wheel-title"
+                          style={{ color }}
+                        >
+                          {sections[i].title}
+                        </motion.span>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
               </div>
             </div>
 
