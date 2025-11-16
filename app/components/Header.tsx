@@ -442,7 +442,6 @@ export default function Header() {
           pointer-events: none;
         }
 
-
         @media (min-width: 769px) {
           .header {
             opacity: 1;
@@ -517,7 +516,6 @@ export default function Header() {
               15px -15px 45px rgba(255, 215, 0, 0.28),
               0 0 60px rgba(255, 215, 0, 0.15);
           }
-
         }
 
         @media (max-width: 768px) {
@@ -852,7 +850,6 @@ export default function Header() {
           z-index: 2;
         }
 
-
         @media (min-width: 769px) {
           .nav-link-cta-button:hover {
             background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffcc00 100%) !important;
@@ -881,7 +878,6 @@ export default function Header() {
           border-bottom: 2px solid rgba(0, 0, 0, 0.25) !important;
           color: #000000 !important;
         }
-
 
         .premium-cta-button {
           animation: gradientFlow 4s ease infinite;
@@ -1051,4 +1047,3 @@ export default function Header() {
     </motion.header>
   );
 }
-

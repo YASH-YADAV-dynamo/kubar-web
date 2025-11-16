@@ -2,360 +2,323 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ImageCarousel() {
+  const images = Array.from({ length: 13 }, (_, i) => i + 1);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const images = [
-    '/awards/img1.jpg',
-    '/awards/img2.jpg',
-    '/awards/img3.jpg',
-    '/awards/img4.jpg',
-    '/awards/img5.jpg',
-  ];
+  const getImagePath = (id: number) => `/showcase/img${id}.png`;
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+  };
 
   useEffect(() => {
-    if (isPaused) return;
+    if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [isPaused, images.length]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  }, [isAutoPlaying, images.length]);
 
   return (
-    <section className="awards-section">
+    <section className="showcase-section">
       <div className="container">
-        <h2 className="awards-heading" style={{ color: '#ffd700' }}>Product Showcase</h2>
-        <div
-          className="awards-carousel-container"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          <div
-            className="awards-carousel-track"
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
+        <h2 className="showcase-heading">Product Showcase</h2>
+        <div className="carousel-container">
+          <button 
+            className="carousel-button carousel-button-prev"
+            onClick={goToPrevious}
+            aria-label="Previous image"
           >
-            {images.map((src, index) => {
-              const isVertical = src.includes('img4.jpg');
-              return (
-                <div key={index} className="award-slide">
-                  <div className={`award-image-wrapper ${isVertical ? 'vertical-image' : ''}`}>
-                    <Image
-                      src={src}
-                      alt={`Award ${index + 1}`}
-                      width={800}
-                      height={600}
-                      className={`award-image ${isVertical ? 'vertical' : 'horizontal'}`}
-                      priority={index === 0}
-                      unoptimized
-                    />
-                  </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          <div className="carousel-slide-container">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                className="carousel-slide"
+                initial={{ opacity: 0, x: 100, scale: 0.8 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -100, scale: 0.8 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+              >
+                <div className="carousel-image-wrapper">
+                  <Image
+                    src={getImagePath(images[currentIndex])}
+                    alt={`Showcase ${images[currentIndex]}`}
+                    width={800}
+                    height={600}
+                    className="carousel-image"
+                    priority={currentIndex === 0}
+                    unoptimized
+                  />
                 </div>
-              );
-            })}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Navigation Arrows */}
-          <button
-            className="award-carousel-nav award-carousel-nav-prev"
-            onClick={prevSlide}
-            aria-label="Previous award"
+          <button 
+            className="carousel-button carousel-button-next"
+            onClick={goToNext}
+            aria-label="Next image"
           >
-            <ChevronLeft size={20} />
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </button>
-          <button
-            className="award-carousel-nav award-carousel-nav-next"
-            onClick={nextSlide}
-            aria-label="Next award"
-          >
-            <ChevronRight size={20} />
-          </button>
+        </div>
 
-          {/* Navigation Dots */}
-          <div className="award-carousel-dots">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                className={`award-carousel-dot ${index === currentIndex ? 'active' : ''}`}
-                onClick={() => goToSlide(index)}
-                aria-label={`Go to award ${index + 1}`}
-              />
-            ))}
-          </div>
+        <div className="carousel-indicators">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`carousel-indicator ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
 
       <style jsx>{`
-        .awards-section {
+        .showcase-section {
           width: 100%;
           padding: var(--spacing-3xl) 0;
           background: var(--color-background);
+          min-height: 80vh;
+          display: flex;
+          align-items: center;
+          position: relative;
         }
 
-        .awards-heading {
+        .showcase-heading {
           font-size: clamp(2rem, 4vw, 2.75rem);
           font-weight: 700;
           text-align: center;
-          margin-bottom: var(--spacing-2xl);
-          color: #ffd700 !important;
+          margin-bottom: var(--spacing-3xl);
+          color: #ffd700;
           font-family: var(--font-heading);
         }
 
-        .awards-carousel-container {
+        .carousel-container {
           position: relative;
+          width: 100%;
           max-width: 1200px;
-          width: 100%;
           margin: 0 auto;
-          padding: 0 var(--content-padding);
-          overflow: hidden;
-        }
-
-        .awards-carousel-track {
-          display: flex;
-          transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: transform;
-          width: 100%;
-        }
-
-        .award-slide {
-          min-width: 100%;
-          width: 100%;
-          flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 0 var(--spacing-sm);
-          box-sizing: border-box;
+          gap: 1rem;
         }
 
-        .award-image-wrapper {
-          width: 100%;
-          max-width: 100%;
+        .carousel-slide-container {
           position: relative;
-          border-radius: 16px;
+          width: 100%;
+          max-width: 900px;
+          height: 600px;
           overflow: hidden;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-          background: var(--color-surface);
+          border-radius: 20px;
+          box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.5),
+            0 8px 30px rgba(0, 0, 0, 0.4),
+            0 0 0 2px rgba(255, 255, 255, 0.1);
+        }
+
+        .carousel-slide {
+          width: 100%;
+          height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          min-height: 400px;
-          max-height: 600px;
-          aspect-ratio: 16 / 9;
         }
 
-        .award-image-wrapper.vertical-image {
-          max-width: 500px;
-          margin: 0 auto;
-          aspect-ratio: 9 / 16;
+        .carousel-image-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
         }
 
-        .award-image {
+        .carousel-image {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          object-position: center;
           display: block;
         }
 
-        .award-image.vertical {
-          object-fit: contain;
-          height: 100%;
-        }
-
-        .award-carousel-nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(0, 0, 0, 0.7);
+        .carousel-button {
+          position: relative;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          background: rgba(0, 0, 0, 0.5);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
+          color: #ffd700;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #ffffff;
-          cursor: pointer;
           transition: all 0.3s ease;
           z-index: 10;
+          flex-shrink: 0;
         }
 
-        .award-carousel-nav:hover {
-          background: rgba(0, 0, 0, 0.9);
-          transform: translateY(-50%) scale(1.1);
-          border-color: var(--color-primary);
+        .carousel-button:hover {
+          background: rgba(0, 0, 0, 0.7);
+          border-color: #ffd700;
+          transform: scale(1.1);
+          box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
         }
 
-        .award-carousel-nav-prev {
-          left: var(--spacing-md);
+        .carousel-button:active {
+          transform: scale(0.95);
         }
 
-        .award-carousel-nav-next {
-          right: var(--spacing-md);
+        .carousel-button svg {
+          width: 24px;
+          height: 24px;
         }
 
-        .award-carousel-dots {
+        .carousel-indicators {
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: var(--spacing-sm);
-          margin-top: var(--spacing-lg);
-          padding: 0 var(--content-padding);
+          gap: 0.75rem;
+          margin-top: 2rem;
+          flex-wrap: wrap;
         }
 
-        .award-carousel-dot {
-          width: 10px;
-          height: 10px;
+        .carousel-indicator {
+          width: 12px;
+          height: 12px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
-          border: 2px solid transparent;
+          border: 2px solid rgba(255, 215, 0, 0.3);
+          background: transparent;
           cursor: pointer;
           transition: all 0.3s ease;
           padding: 0;
         }
 
-        .award-carousel-dot:hover {
-          background: rgba(255, 255, 255, 0.5);
+        .carousel-indicator:hover {
+          background: rgba(255, 215, 0, 0.5);
+          border-color: rgba(255, 215, 0, 0.7);
           transform: scale(1.2);
         }
 
-        .award-carousel-dot.active {
+        .carousel-indicator.active {
           background: #ffd700;
           border-color: #ffd700;
-          transform: scale(1.3);
-          box-shadow: 0 0 12px rgba(163, 230, 53, 0.5);
+          width: 32px;
+          border-radius: 6px;
+        }
+
+        @media (max-width: 968px) {
+          .carousel-container {
+            gap: 0.5rem;
+          }
+
+          .carousel-slide-container {
+            height: 500px;
+            max-width: 100%;
+          }
+
+          .carousel-button {
+            width: 48px;
+            height: 48px;
+          }
+
+          .carousel-button svg {
+            width: 20px;
+            height: 20px;
+          }
         }
 
         @media (max-width: 768px) {
-          .awards-section {
+          .showcase-section {
             padding: var(--spacing-2xl) 0;
-          }
-
-          .awards-carousel-container {
-            padding: 0 var(--content-padding);
-          }
-
-          .award-slide {
-            padding: 0;
-          }
-
-          .award-image-wrapper {
-            width: 100%;
-            max-width: 100%;
             min-height: auto;
-            max-height: calc(100vh - 200px);
-            border-radius: 12px;
-            aspect-ratio: 16 / 9;
           }
 
-          .award-image-wrapper.vertical-image {
-            max-width: 100%;
-            max-height: calc(100vh - 200px);
-            aspect-ratio: 9 / 16;
+          .carousel-slide-container {
+            height: 400px;
+            border-radius: 16px;
           }
 
-          .award-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+          .carousel-button {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
           }
 
-          .award-image.vertical {
-            object-fit: contain;
-            height: 100%;
+          .carousel-button-prev {
+            left: 1rem;
           }
 
-          .award-carousel-nav {
-            width: 36px;
-            height: 36px;
+          .carousel-button-next {
+            right: 1rem;
           }
 
-          .award-carousel-nav-prev {
-            left: var(--spacing-xs);
+          .carousel-indicators {
+            margin-top: 1.5rem;
+            gap: 0.5rem;
           }
 
-          .award-carousel-nav-next {
-            right: var(--spacing-xs);
+          .carousel-indicator {
+            width: 10px;
+            height: 10px;
           }
 
-          .award-carousel-dots {
-            margin-top: var(--spacing-md);
+          .carousel-indicator.active {
+            width: 24px;
           }
         }
 
         @media (max-width: 480px) {
-          .awards-section {
-            padding: var(--spacing-xl) 0;
+          .carousel-slide-container {
+            height: 300px;
+            border-radius: 12px;
           }
 
-          .award-image-wrapper {
-            max-height: calc(100vh - 180px);
-            border-radius: 10px;
-            aspect-ratio: 16 / 9;
+          .carousel-button {
+            width: 36px;
+            height: 36px;
           }
 
-          .award-image-wrapper.vertical-image {
-            max-height: calc(100vh - 180px);
-            aspect-ratio: 9 / 16;
+          .carousel-button svg {
+            width: 18px;
+            height: 18px;
           }
 
-          .award-image {
-            height: 100%;
-            object-fit: contain;
-          }
-
-          .award-image.vertical {
-            height: 100%;
-            object-fit: contain;
-          }
-
-          .award-carousel-nav {
-            width: 32px;
-            height: 32px;
-          }
-
-          .award-carousel-nav svg {
-            width: 16px;
-            height: 16px;
-          }
-
-          .award-carousel-nav-prev {
+          .carousel-button-prev {
             left: 0.5rem;
           }
 
-          .award-carousel-nav-next {
+          .carousel-button-next {
             right: 0.5rem;
-          }
-
-          .award-carousel-dots {
-            margin-top: var(--spacing-sm);
-            gap: 0.5rem;
-          }
-
-          .award-carousel-dot {
-            width: 8px;
-            height: 8px;
           }
         }
       `}</style>

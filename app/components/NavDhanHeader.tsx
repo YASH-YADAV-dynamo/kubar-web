@@ -84,19 +84,7 @@ export default function NavDhanHeader() {
 
   return (
     <header 
-      className={`navdhan-header ${isScrolled ? 'scrolled' : ''}`} 
-      style={{ 
-        background: '#FF8C00',
-        borderBottom: 'none',
-        position: 'fixed',
-        top: 0,
-        zIndex: 1000,
-        width: '100%',
-        opacity: 1,
-        boxShadow: 'none',
-        backdropFilter: 'none',
-        WebkitBackdropFilter: 'none'
-      }}
+      className={`navdhan-header ${isScrolled ? 'scrolled' : ''}`}
     >
       <nav className="navdhan-nav container" aria-label="Primary">
         <div className="navdhan-nav-brand">
@@ -197,7 +185,7 @@ export default function NavDhanHeader() {
           position: fixed;
           top: 0;
           z-index: 1000;
-          background: #FF8C00 !important;
+          background: #F7941D;
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
           border-bottom: none !important;
@@ -209,7 +197,7 @@ export default function NavDhanHeader() {
 
         .navdhan-header.scrolled {
           opacity: 1;
-          background: #FF8C00 !important;
+          background: #F7941D;
           backdrop-filter: none !important;
           -webkit-backdrop-filter: none !important;
           border-bottom: none !important;
@@ -226,62 +214,55 @@ export default function NavDhanHeader() {
 
         @media (min-width: 769px) {
           .navdhan-header {
+            position: fixed;
             left: 50%;
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%);
             width: calc(100% - 4rem);
             max-width: 1200px;
             border-radius: 24px;
-            margin: 1rem auto 0;
-            background: #FF8C00 !important;
+            margin-top: 1rem;
+            background: #F7941D;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
-            box-shadow: none !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
           }
 
           .navdhan-header.scrolled {
-            margin: 1rem auto 0;
+            position: fixed;
             left: 50%;
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%);
             width: calc(100% - 4rem);
             max-width: 1200px;
             border-radius: 24px;
+            margin-top: 1rem;
             border-bottom: none !important;
-            background: #FF8C00 !important;
+            background: #F7941D;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
-            box-shadow: none !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
           }
-
-          .navdhan-header.scrolled::after {
-            left: 2rem;
-            right: 2rem;
-          }
-
-          .navdhan-header {
-            position: relative;
-            box-shadow: none !important;
-          }
-
         }
 
         @media (max-width: 768px) {
           .navdhan-header {
+            position: fixed;
             left: 0;
             right: 0;
+            width: 100%;
             transform: translateY(0);
+            border-radius: 0;
+            margin-top: 0;
           }
 
           .navdhan-header.scrolled {
-            margin: 0;
+            position: fixed;
             left: 0;
             right: 0;
             width: 100%;
             border-radius: 0 0 20px 20px;
             transform: translateY(0);
-          }
-
-          .navdhan-header.scrolled {
-            box-shadow: none !important;
+            margin-top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
           }
         }
 
