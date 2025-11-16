@@ -9,6 +9,28 @@ const SPLASH_COMPLETED_KEY = 'splash-completed';
 export default function SplashPage() {
   const router = useRouter();
   const [canNavigate, setCanNavigate] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Check if splash already completed on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const splashCompleted = localStorage.getItem(SPLASH_COMPLETED_KEY);
+      if (splashCompleted) {
+        // If already completed, redirect to home
+        router.replace('/home');
+        return;
+      }
+    }
+  }, [router]);
+
+  // Initial loader for 1.5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // Prevent scrolling when splash screen is visible
@@ -93,12 +115,20 @@ export default function SplashPage() {
     document.body.style.top = '';
     document.body.style.width = '';
     // Navigate to home route
-    router.push('/');
+    router.push('/home');
   };
 
   return (
     <div className="splash-page">
-      <LandingHero onLearnMoreClick={handleLearnMore} />
+      {isLoading ? (
+        <div className="initial-loader">
+          <div className="loader-content">
+            <div className="loader-spinner"></div>
+          </div>
+        </div>
+      ) : (
+        <LandingHero onLearnMoreClick={handleLearnMore} />
+      )}
       <style jsx>{`
         .splash-page {
           position: fixed;
@@ -109,6 +139,54 @@ export default function SplashPage() {
           z-index: 10001;
           background: var(--color-background);
           overflow: hidden;
+        }
+
+        .initial-loader {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--color-background);
+          z-index: 10002;
+          animation: fadeOut 0.3s ease-out 1.2s forwards;
+        }
+
+        .loader-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1.5rem;
+        }
+
+        .loader-spinner {
+          width: 50px;
+          height: 50px;
+          border: 4px solid rgba(255, 255, 255, 0.1);
+          border-top-color: #F7941D;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+          }
         }
       `}</style>
     </div>
