@@ -33,6 +33,11 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
 
       <div className="container">
         <div className="landing-content">
+          {/* Gradient Backgrounds Behind Box */}
+          <div className="gradient-bg gradient-bg-middle"></div>
+          <div className="gradient-bg gradient-bg-right"></div>
+          <div className="gradient-bg gradient-bg-left"></div>
+          
           {/* Central Box with Gradient Border */}
           <div className="central-box">
             <div className="central-box-inner">
@@ -135,6 +140,7 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
         }
 
         .landing-content {
+          position: relative;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -144,18 +150,59 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
           gap: 40px;
         }
 
+        /* Gradient Backgrounds Behind Box */
+        .gradient-bg {
+          position: absolute;
+          pointer-events: none;
+          z-index: 0;
+          border-radius: 50%;
+        }
+
+        .gradient-bg-middle {
+          width: 895px;
+          height: 233px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) translateY(-100px);
+          background: #0077B5;
+          opacity: 0.5;
+          filter: blur(120.7px);
+        }
+
+        .gradient-bg-right {
+          width: 238px;
+          height: 176px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) translate(480px, -80px);
+          background: #00A651;
+          opacity: 0.5;
+          filter: blur(120.7px);
+        }
+
+        .gradient-bg-left {
+          width: 238px;
+          height: 176px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) translate(-480px, -90px);
+          background: #F7941D;
+          opacity: 0.5;
+          filter: blur(120.7px);
+        }
+
         /* Central Box with Gradient Border */
         .central-box {
           position: relative;
-          width: 1050px;
-          height: 233px;
+          width: 961px;
+          height: 188px;
           border-radius: 26.07px;
           background: linear-gradient(92.08deg, #F7941D 0%, #0077B5 51.49%, #00A651 99.17%);
           padding: 4px;
           opacity: 1;
           box-sizing: border-box;
           flex-shrink: 0;
-          isolation: isolate;
+          z-index: 1;
         }
 
         .central-box::after {
@@ -230,7 +277,7 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
 
         /* Description Section */
         .description-section {
-          width: 1050px;
+          width: 961px;
           max-width: 100%;
           text-align: center;
         }
