@@ -384,6 +384,13 @@ export default function Header() {
           opacity: 0;
         }
 
+        body.splash-active .header {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+        }
+
         .header.scrolled {
           z-index: 10000;
         }

@@ -1,11 +1,6 @@
 import Header from './components/Header';
-import Hero from './components/Hero';
-import ExpandBussiness from './components/ExpandBussiness';
-import ImageCarousel from './components/ImageCarousel';
-import VerticalScrollSections from './components/VerticalScrollSections';
-import SmarterDataSection from './components/SmarterDataSection';
-import JoinFutureCTA from './components/JoinFutureCTA';
 import Footer from './components/Footer';
+import HomeClient from './HomeClient';
 
 export const metadata = {
   title: "Kubar Labs - Quick Loans for Your Growing Business",
@@ -16,14 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="home-page">
-        <Hero />
-        <VerticalScrollSections />
-        <ExpandBussiness />
-        <ImageCarousel />
-        <SmarterDataSection />
-        <JoinFutureCTA />
-      </main>
+      <HomeClient />
       <Footer />
     </>
   );

@@ -71,21 +71,21 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit}>
                 <div className="field-row">
                   <label className="field">
-                    <span>Last Name</span>
-                    <input
-                      name="lastName"
-                      type="text"
-                      placeholder="Singh"
-                      required
-                      maxLength={100}
-                    />
-                  </label>
-                  <label className="field">
                     <span>First Name</span>
                     <input
                       name="firstName"
                       type="text"
                       placeholder="Asha"
+                      required
+                      maxLength={100}
+                    />
+                  </label>
+                  <label className="field">
+                    <span>Last Name</span>
+                    <input
+                      name="lastName"
+                      type="text"
+                      placeholder="Singh"
                       required
                       maxLength={100}
                     />
