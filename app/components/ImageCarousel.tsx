@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ImageCarousel() {
-  const images = Array.from({ length: 13 }, (_, i) => i + 1);
+  const images = Array.from({ length: 5 }, (_, i) => i + 1);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const getImagePath = (id: number) => `/showcase/img${id}.png`;
+  const getImagePath = (id: number) => `/showcase/${id}.png`;
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
