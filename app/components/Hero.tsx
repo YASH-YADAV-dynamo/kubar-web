@@ -16,8 +16,8 @@ export default function Hero() {
             <Image 
               src="/logo.png" 
               alt="Kubar Labs Logo" 
-              width={70} 
-              height={60} 
+              width={105} 
+              height={90} 
               className="logo-image"
               priority
             />
@@ -85,15 +85,15 @@ export default function Hero() {
         }
 
         .logo-image {
-          width: 70px;
-          height: 70px;
-          min-width: 70px;
-          min-height: 70px;
-          max-width: 70px;
-          max-height: 70px;
+          width: 105px;
+          height: 90px;
+          min-width: 105px;
+          min-height: 90px;
+          max-width: 105px;
+          max-height: 90px;
           object-fit: contain;
           object-position: center;
-          aspect-ratio: 1 / 1;
+          aspect-ratio: 7 / 6;
           filter: drop-shadow(0 10px 30px rgba(31, 76, 242, 0.3));
           transition: transform 0.3s ease;
         }
@@ -180,12 +180,12 @@ export default function Hero() {
           }
 
                 .logo-image {
-                  width: 70px;
-                  height: 70px;
-                  min-width: 70px;
-                  min-height: 70px;
-                  max-width: 70px;
-                  max-height: 70px;
+                  width: 105px;
+                  height: 90px;
+                  min-width: 105px;
+                  min-height: 90px;
+                  max-width: 105px;
+                  max-height: 90px;
                 }
 
           .hero-title {

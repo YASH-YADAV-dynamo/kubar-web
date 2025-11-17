@@ -48,7 +48,7 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
                     src="/logo.png" 
                     alt="Kubar Labs Logo" 
                     width={50} 
-                    height={50} 
+                    height={43} 
                     className="logo-img"
                     priority
                   />
@@ -253,11 +253,11 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
 
         .logo-img {
           width: 50px;
-          height: 50px;
+          height: 43px;
           min-width: 50px;
-          min-height: 50px;
+          min-height: 43px;
           max-width: 50px;
-          max-height: 50px;
+          max-height: 43px;
           object-fit: contain;
           filter: brightness(0) invert(1);
         }
