@@ -17,6 +17,7 @@ interface Section {
 export default function VerticalScrollSections() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -30,11 +31,17 @@ export default function VerticalScrollSections() {
   }, []);
 
   useEffect(() => {
+    if (isPaused) return;
+    
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % sections.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
+
+  const togglePause = () => {
+    setIsPaused((prev) => !prev);
+  };
 
   return (
     <section className="vertical-scroll-section">
@@ -112,6 +119,25 @@ export default function VerticalScrollSections() {
         </div>
       </div>
 
+      {/* Pause Button */}
+      <button
+        onClick={togglePause}
+        className="pause-button"
+        aria-label={isPaused ? "Resume auto-scroll" : "Pause auto-scroll"}
+        type="button"
+      >
+        {isPaused ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        )}
+      </button>
+
       <style jsx>{`
         .vertical-scroll-section {
           background: var(--color-background);
@@ -120,6 +146,7 @@ export default function VerticalScrollSections() {
           min-height: auto;
           display: flex;
           align-items: center;
+          position: relative;
         }
 
         .vertical-scroll-wrapper {
@@ -402,6 +429,56 @@ export default function VerticalScrollSections() {
 
           .content-list {
             text-align: left;
+          }
+        }
+
+        .pause-button {
+          position: absolute;
+          bottom: var(--spacing-lg);
+          right: var(--spacing-lg);
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: rgba(163, 230, 53, 0.15);
+          border: 2px solid rgba(163, 230, 53, 0.4);
+          color: #a3e635;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          z-index: 10;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+
+        .pause-button:hover {
+          background: rgba(163, 230, 53, 0.25);
+          border-color: rgba(163, 230, 53, 0.6);
+          transform: scale(1.1);
+          box-shadow: 0 4px 12px rgba(163, 230, 53, 0.3);
+        }
+
+        .pause-button:active {
+          transform: scale(0.95);
+        }
+
+        .pause-button svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        @media (max-width: 767px) {
+          .pause-button {
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            width: 40px;
+            height: 40px;
+          }
+
+          .pause-button svg {
+            width: 18px;
+            height: 18px;
           }
         }
       `}</style>

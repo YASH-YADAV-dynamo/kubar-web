@@ -18,9 +18,6 @@ export default function AboutPage() {
               <div className="hero-content">
                 <h1>Our Mission</h1>
                 <p>
-                  Building the future of MSME finance, one connection at a time.
-                </p>
-                <p>
                   Kubar Labs was born out of a simple truth. Small businesses move India forward, but the system that should support them often holds them back.
                 </p>
                 <p>

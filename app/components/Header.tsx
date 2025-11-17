@@ -603,8 +603,13 @@ export default function Header() {
         }
 
         .logo-icon {
+          width: 44px;
+          height: 44px;
+          min-width: 44px;
+          min-height: 44px;
+          max-width: 44px;
           max-height: 44px;
-          width: auto;
+          object-fit: contain;
           border-radius: 12px;
           transition: transform 0.3s ease;
         }

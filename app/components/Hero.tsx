@@ -16,17 +16,13 @@ export default function Hero() {
             <Image 
               src="/logo.png" 
               alt="Kubar Labs Logo" 
-              width={100} 
+              width={80} 
               height={80} 
               className="logo-image"
               priority
             />
           </div>
           <h1 className="hero-title">Kubar Labs</h1>
-
-          <div className="hero-tagline">
-            <p>Building the Next Generation of MSME Finance</p>
-          </div>
 
           <div className="hero-tagline">
             <p>Kubar Labs connects India's small businesses with the right banks and NBFCs using data, design, and trust.</p>
@@ -89,9 +85,12 @@ export default function Hero() {
         }
 
         .logo-image {
-          width: 100px;
-          height: auto;
-          max-height: 100px;
+          width: 80px;
+          height: 80px;
+          min-width: 80px;
+          min-height: 80px;
+          max-width: 80px;
+          max-height: 80px;
           object-fit: contain;
           object-position: center;
           aspect-ratio: 1 / 1;
@@ -182,7 +181,10 @@ export default function Hero() {
 
                 .logo-image {
                   width: 80px;
-                  height: auto;
+                  height: 80px;
+                  min-width: 80px;
+                  min-height: 80px;
+                  max-width: 80px;
                   max-height: 80px;
                 }
 

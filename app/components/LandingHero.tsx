@@ -254,6 +254,10 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
         .logo-img {
           width: 60px;
           height: 60px;
+          min-width: 60px;
+          min-height: 60px;
+          max-width: 60px;
+          max-height: 60px;
           object-fit: contain;
           filter: brightness(0) invert(1);
         }

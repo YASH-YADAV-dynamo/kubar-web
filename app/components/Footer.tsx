@@ -193,6 +193,20 @@ export default function Footer() {
           transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        @media (max-width: 768px) {
+          .achievement-image {
+            max-width: 70px;
+            max-height: 30px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .achievement-image {
+            max-width: 60px;
+            max-height: 26px;
+          }
+        }
+
 
         .footer-social {
           display: flex;
@@ -232,32 +246,17 @@ export default function Footer() {
             flex-wrap: wrap;
             justify-content: center;
           }
-          
-          .achievement-image {
-            max-width: 180px;
-            max-height: 80px;
-          }
         }
 
         @media (max-width: 640px) {
           .footer-badges {
             gap: var(--spacing-sm);
           }
-          
-          .achievement-image {
-            max-width: 150px;
-            max-height: 70px;
-          }
         }
         
         @media (max-width: 480px) {
           .footer-badges {
             gap: var(--spacing-xs);
-          }
-          
-          .achievement-image {
-            max-width: 130px;
-            max-height: 60px;
           }
         }
 
