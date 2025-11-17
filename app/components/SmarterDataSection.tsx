@@ -1,9 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function SmarterDataSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const benefits = [
     {
@@ -19,6 +22,47 @@ export default function SmarterDataSection() {
       description: "Precise matching for better outcomes"
     }
   ];
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('.benefit-slide') as HTMLElement;
+      if (firstCard) {
+        const cardWidth = firstCard.offsetWidth + parseFloat(getComputedStyle(firstCard).marginRight || '0');
+        container.scrollTo({
+          left: index * cardWidth,
+          behavior: 'smooth'
+        });
+        setCurrentIndex(index);
+      }
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const firstCard = container.querySelector('.benefit-slide') as HTMLElement;
+      if (firstCard) {
+        const scrollLeft = container.scrollLeft;
+        const cardWidth = firstCard.offsetWidth + parseFloat(getComputedStyle(firstCard).marginRight || '0');
+        const newIndex = Math.round(scrollLeft / cardWidth);
+        setCurrentIndex(Math.min(newIndex, benefits.length - 1));
+      }
+    }
+  };
 
   return (
     <section className="smarter-data-section">
@@ -38,11 +82,15 @@ export default function SmarterDataSection() {
             </p>
           </div>
 
-          <div className="benefits-grid">
+          <div 
+            className={`benefits-grid ${isMobile ? 'benefits-slider' : ''}`}
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+          >
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className={`benefit-card ${hoveredCard === index ? 'hovered' : ''}`}
+                className={`benefit-card ${hoveredCard === index ? 'hovered' : ''} ${isMobile ? 'benefit-slide' : ''}`}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -62,6 +110,19 @@ export default function SmarterDataSection() {
               </div>
             ))}
           </div>
+
+          {isMobile && (
+            <div className="slider-indicators">
+              {benefits.map((_, index) => (
+                <button
+                  key={index}
+                  className={`slider-indicator ${currentIndex === index ? 'active' : ''}`}
+                  onClick={() => scrollToCard(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -278,20 +339,76 @@ export default function SmarterDataSection() {
 
         @media (max-width: 768px) {
           .smarter-data-section {
-            padding: var(--spacing-2xl) var(--content-padding);
+            padding: var(--spacing-2xl) 0;
           }
 
           .smarter-data-content {
             gap: var(--spacing-2xl);
           }
 
-          .benefits-grid {
-            grid-template-columns: 1fr;
-            gap: var(--spacing-lg);
+          .benefits-grid.benefits-slider {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            gap: 0;
+            padding: 0 var(--content-padding);
+            margin: 0;
+            max-width: 100%;
+          }
+
+          .benefits-grid.benefits-slider::-webkit-scrollbar {
+            display: none;
+          }
+
+          .benefit-card.benefit-slide {
+            min-width: calc(100% - var(--content-padding) * 2);
+            width: calc(100% - var(--content-padding) * 2);
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            margin-right: var(--spacing-lg);
+          }
+
+          .benefit-card.benefit-slide:last-child {
+            margin-right: 0;
           }
 
           .benefit-card-inner {
             padding: var(--spacing-xl);
+          }
+
+          .slider-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: var(--spacing-xl);
+            padding: 0 var(--content-padding);
+          }
+
+          .slider-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 215, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+          }
+
+          .slider-indicator:hover {
+            background: rgba(255, 215, 0, 0.5);
+            transform: scale(1.2);
+          }
+
+          .slider-indicator.active {
+            background: #ffd700;
+            width: 24px;
+            border-radius: 4px;
           }
         }
 
