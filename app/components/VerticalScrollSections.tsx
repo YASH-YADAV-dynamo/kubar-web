@@ -468,6 +468,12 @@ export default function VerticalScrollSections() {
           height: 16px;
         }
 
+        @media (min-width: 768px) {
+          .pause-button {
+            right: calc(var(--spacing-3xl) * 3 + var(--spacing-2xl));
+          }
+        }
+
         @media (max-width: 767px) {
           .pause-button {
             bottom: calc(var(--spacing-md) + 8px);

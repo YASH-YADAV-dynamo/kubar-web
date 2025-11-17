@@ -321,6 +321,13 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
           text-decoration: none;
           transition: all 0.3s ease;
           font-family: var(--font-body);
+          cursor: pointer;
+          position: relative;
+          justify-content: center;
+        }
+        
+        .learn-more-btn * {
+          pointer-events: none;
         }
 
         .learn-more-btn:hover {
@@ -339,6 +346,7 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
           justify-content: center;
           color: var(--color-background);
           flex-shrink: 0;
+          pointer-events: none;
         }
 
         .arrow-circle svg {

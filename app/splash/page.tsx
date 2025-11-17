@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import LandingHero from '../components/LandingHero';
 import { useRouter } from 'next/navigation';
 
@@ -10,6 +10,9 @@ export default function SplashPage() {
   const router = useRouter();
   const [canNavigate, setCanNavigate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const canNavigateRef = useRef(false);
+  const observerRef = useRef<MutationObserver | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Check if splash already completed on mount
   useEffect(() => {
@@ -93,7 +96,8 @@ export default function SplashPage() {
     // Monitor pathname changes
     let lastPathname = window.location.pathname;
     const checkPathname = () => {
-      if (!canNavigate && window.location.pathname !== '/splash' && window.location.pathname !== lastPathname) {
+      // Use ref for immediate check without waiting for state update
+      if (!canNavigateRef.current && window.location.pathname !== '/splash' && window.location.pathname !== lastPathname) {
         lastPathname = '/splash';
         window.history.pushState(null, '', '/splash');
         router.replace('/splash');
@@ -103,9 +107,11 @@ export default function SplashPage() {
     // Use MutationObserver to detect route changes (Next.js updates the DOM)
     const observer = new MutationObserver(checkPathname);
     observer.observe(document.body, { childList: true, subtree: true });
+    observerRef.current = observer;
     
     // Also check periodically as fallback
     const interval = setInterval(checkPathname, 200);
+    intervalRef.current = interval;
     
     return () => {
       document.body.style.overflow = '';
@@ -118,24 +124,50 @@ export default function SplashPage() {
         window.removeEventListener('keydown', preventScrollKeys);
       }
       window.removeEventListener('popstate', preventBack);
-      observer.disconnect();
-      clearInterval(interval);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
     };
   }, [canNavigate, router]);
 
-  const handleLearnMore = () => {
-    // Mark splash as completed
+  const handleLearnMore = (e?: React.MouseEvent) => {
+    // Prevent any default behavior
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    
+    // Mark splash as completed immediately
     if (typeof window !== 'undefined') {
       localStorage.setItem(SPLASH_COMPLETED_KEY, 'true');
     }
+    
+    // Set navigation flag immediately using ref for synchronous access
+    canNavigateRef.current = true;
     setCanNavigate(true);
+    
+    // Stop all navigation prevention immediately
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+      observerRef.current = null;
+    }
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    
     // Restore scroll before navigation
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.body.style.top = '';
     document.body.style.width = '';
-    // Navigate to home route
-    router.push('/home');
+    document.body.style.height = '';
+    
+    // Navigate immediately using replace for instant response
+    router.replace('/home');
   };
 
   return (
