@@ -113,7 +113,7 @@ export default function Header() {
       <nav className="nav container" aria-label="Primary">
         <div className="nav-brand">
           <Link href="/" className="logo logo-button">
-            <Image src="/logo.png" alt="Kubar Labs" width={44} height={44} className="logo-icon" />
+            <Image src="/logo.png" alt="Kubar Labs" width={38} height={32} className="logo-icon" />
           </Link>
         </div>
 
@@ -603,12 +603,12 @@ export default function Header() {
         }
 
         .logo-icon {
-          width: 44px;
-          height: 44px;
-          min-width: 44px;
-          min-height: 44px;
-          max-width: 44px;
-          max-height: 44px;
+          width: 38px;
+          height: 38px;
+          min-width: 38px;
+          min-height: 38px;
+          max-width: 38px;
+          max-height: 38px;
           object-fit: contain;
           border-radius: 12px;
           transition: transform 0.3s ease;

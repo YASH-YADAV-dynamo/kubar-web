@@ -16,8 +16,8 @@ export default function Hero() {
             <Image 
               src="/logo.png" 
               alt="Kubar Labs Logo" 
-              width={80} 
-              height={80} 
+              width={70} 
+              height={60} 
               className="logo-image"
               priority
             />
@@ -25,7 +25,7 @@ export default function Hero() {
           <h1 className="hero-title">Kubar Labs</h1>
 
           <div className="hero-tagline">
-            <p>Kubar Labs connects India's small businesses with the right banks and NBFCs using data, design, and trust.</p>
+            <p>We connect India's businesses with the right banks and NBFCs using data, design, and trust.</p>
           </div>
 
           <div className="hero-actions">
@@ -85,12 +85,12 @@ export default function Hero() {
         }
 
         .logo-image {
-          width: 80px;
-          height: 80px;
-          min-width: 80px;
-          min-height: 80px;
-          max-width: 80px;
-          max-height: 80px;
+          width: 70px;
+          height: 70px;
+          min-width: 70px;
+          min-height: 70px;
+          max-width: 70px;
+          max-height: 70px;
           object-fit: contain;
           object-position: center;
           aspect-ratio: 1 / 1;
@@ -180,12 +180,12 @@ export default function Hero() {
           }
 
                 .logo-image {
-                  width: 80px;
-                  height: 80px;
-                  min-width: 80px;
-                  min-height: 80px;
-                  max-width: 80px;
-                  max-height: 80px;
+                  width: 70px;
+                  height: 70px;
+                  min-width: 70px;
+                  min-height: 70px;
+                  max-width: 70px;
+                  max-height: 70px;
                 }
 
           .hero-title {

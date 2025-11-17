@@ -19,7 +19,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05, y: -3 }}
             >
               <Image 
-                src="/acheivements-footer/img1.png" 
+                src="/acheivements-footer/img11.png" 
                 alt="WTFund top 25 startup" 
                 width={320} 
                 height={80}
@@ -37,7 +37,7 @@ export default function Footer() {
               whileHover={{ scale: 1.05, y: -3 }}
             >
               <Image 
-                src="/acheivements-footer/img2.png" 
+                src="/acheivements-footer/img22.png" 
                 alt="F6S selected" 
                 width={320} 
                 height={80}
