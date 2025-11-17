@@ -150,45 +150,52 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
           gap: 40px;
         }
 
-        /* Gradient Backgrounds Behind Box */
+        /* Gradient Backgrounds Behind Box - Desktop Only */
         .gradient-bg {
           position: absolute;
           pointer-events: none;
           z-index: 0;
           border-radius: 50%;
+          display: none;
         }
 
-        .gradient-bg-middle {
-          width: 895px;
-          height: 233px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) translateY(-100px);
-          background: #0077B5;
-          opacity: 0.5;
-          filter: blur(120.7px);
-        }
+        @media (min-width: 769px) {
+          .gradient-bg {
+            display: block;
+          }
 
-        .gradient-bg-right {
-          width: 238px;
-          height: 176px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) translate(480px, -80px);
-          background: #00A651;
-          opacity: 0.5;
-          filter: blur(120.7px);
-        }
+          .gradient-bg-middle {
+            width: 895px;
+            height: 233px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translateY(-100px);
+            background: #0077B5;
+            opacity: 0.5;
+            filter: blur(120.7px);
+          }
 
-        .gradient-bg-left {
-          width: 238px;
-          height: 176px;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) translate(-480px, -90px);
-          background: #F7941D;
-          opacity: 0.5;
-          filter: blur(120.7px);
+          .gradient-bg-right {
+            width: 238px;
+            height: 176px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translate(480px, -80px);
+            background: #00A651;
+            opacity: 0.5;
+            filter: blur(120.7px);
+          }
+
+          .gradient-bg-left {
+            width: 238px;
+            height: 176px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) translate(-480px, -90px);
+            background: #F7941D;
+            opacity: 0.5;
+            filter: blur(120.7px);
+          }
         }
 
         /* Central Box with Gradient Border */
@@ -350,13 +357,20 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
 
         @media (max-width: 768px) {
           .landing-hero {
-            min-height: auto;
-            padding: calc(var(--spacing-3xl) + 60px) var(--content-padding) var(--spacing-3xl);
+            min-height: 100vh;
+            padding: 20px var(--content-padding);
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
 
           .landing-content {
-            padding: 40px 20px;
-            gap: 30px;
+            padding: 20px;
+            gap: 24px;
+            min-height: auto;
+            justify-content: flex-start;
+            padding-top: 40px;
+            padding-bottom: 40px;
           }
 
           .abstract-shape-green,
@@ -368,14 +382,15 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
           .central-box {
             width: 100%;
             height: auto;
-            min-height: 233px;
+            min-height: auto;
           }
 
           .central-box-inner {
             flex-direction: column;
             text-align: center;
-            padding: var(--spacing-xl) var(--spacing-lg);
-            min-height: 225px;
+            padding: var(--spacing-lg) var(--spacing-md);
+            min-height: auto;
+            gap: var(--spacing-md);
           }
 
           .branding-section {
@@ -387,14 +402,27 @@ export default function LandingHero({ onLearnMoreClick }: LandingHeroProps) {
             text-align: center;
           }
 
+          .description-section {
+            width: 100%;
+            padding: 0 10px;
+          }
+
           .description-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+
+          .cta-section {
+            width: 100%;
+            padding-top: 10px;
           }
 
           .learn-more-btn {
             width: 100%;
             justify-content: center;
-            max-width: 300px;
+            max-width: 280px;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
           }
         }
 

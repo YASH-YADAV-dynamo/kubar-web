@@ -33,18 +33,33 @@ export default function SplashPage() {
   }, []);
 
   useEffect(() => {
-    // Prevent scrolling when splash screen is visible
-    const scrollY = window.scrollY;
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
+    // Check if mobile device
+    const isMobile = window.innerWidth <= 768;
     
-    // Prevent scroll events
-    const preventScroll = (e: WheelEvent | TouchEvent) => {
+    // Prevent scrolling when splash screen is visible (desktop only)
+    if (!isMobile) {
+      const scrollY = window.scrollY;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+    } else {
+      // On mobile, just prevent body overflow, allow scrolling within splash page
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+    }
+    
+    // Prevent scroll events (desktop only)
+    const preventScroll = (e: WheelEvent) => {
       e.preventDefault();
       e.stopPropagation();
       return false;
+    };
+    
+    // On mobile, allow touch scrolling - don't prevent it
+    const preventTouchScroll = (e: TouchEvent) => {
+      // Allow all touch scrolling on mobile
+      // This handler is mainly for cleanup consistency
     };
     
     const preventScrollKeys = (e: KeyboardEvent) => {
@@ -67,9 +82,12 @@ export default function SplashPage() {
     // Push state to prevent back button initially
     window.history.pushState(null, '', '/splash');
     
-    window.addEventListener('wheel', preventScroll, { passive: false });
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-    window.addEventListener('keydown', preventScrollKeys, { passive: false });
+    // Only add desktop scroll prevention
+    if (!isMobile) {
+      window.addEventListener('wheel', preventScroll, { passive: false });
+      window.addEventListener('keydown', preventScrollKeys, { passive: false });
+    }
+    // On mobile, don't add touchmove listener - allow natural scrolling
     window.addEventListener('popstate', preventBack);
     
     // Monitor pathname changes
@@ -94,9 +112,11 @@ export default function SplashPage() {
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      window.removeEventListener('wheel', preventScroll);
-      window.removeEventListener('touchmove', preventScroll);
-      window.removeEventListener('keydown', preventScrollKeys);
+      document.body.style.height = '';
+      if (!isMobile) {
+        window.removeEventListener('wheel', preventScroll);
+        window.removeEventListener('keydown', preventScrollKeys);
+      }
       window.removeEventListener('popstate', preventBack);
       observer.disconnect();
       clearInterval(interval);
@@ -135,10 +155,18 @@ export default function SplashPage() {
           top: 0;
           left: 0;
           width: 100%;
-          height: 100%;
+          height: 100vh;
           z-index: 10001;
           background: var(--color-background);
-          overflow: hidden;
+          overflow-y: auto;
+          overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        @media (min-width: 769px) {
+          .splash-page {
+            overflow: hidden;
+          }
         }
 
         .initial-loader {
