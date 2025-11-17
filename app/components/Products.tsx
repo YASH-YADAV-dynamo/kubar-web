@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -44,6 +45,15 @@ const integrations = [
 ];
 
 export default function Products() {
+  const [imageError, setImageError] = useState(false);
+  
+  const cdnImageUrl = "https://cdn.discordapp.com/attachments/1414510618521632771/1437482917617074176/NavDhan_by_Kubar_Labs.png?ex=691bf98a&is=691aa80a&hm=c66519a564ba1ac8922ead1a0d5b48e99a05bad054cfec168109fd25f56cae0b";
+  const fallbackImageUrl = "/navdhan.png";
+  
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <section className="products">
       <div className="container">
@@ -86,9 +96,10 @@ export default function Products() {
 
         <div className="navdhan-hero-image">
           <img 
-            src="https://cdn.discordapp.com/attachments/1414510618521632771/1437482917617074176/NavDhan_by_Kubar_Labs.png?ex=691367ca&is=6912164a&hm=e1f0d235a5decba3106459ec18b02ffbaf8760da17fae304adf85cf8a72b63cc"
+            src={imageError ? fallbackImageUrl : cdnImageUrl}
             alt="NavDhan by Kubar Labs"
             className="navdhan-image"
+            onError={handleImageError}
           />
         </div>
 

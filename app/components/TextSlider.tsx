@@ -12,7 +12,7 @@ export default function TextSlider() {
       {/* Scrolling content */}
       <div className="slider-content">
         <span className="slider-text">
-          Popular Choice Award at Startup Mahakumbh 2025 • #6/2M in Top 19 Fintech Startups by F6S • Recognized by STPI Sangam • As Featured on Ashoka Uni's Blog & Reflections • People Choice Award at Startup Mahakumbh 2025 • #6/2M in Top 19 Fintech Startups by F6S • Recognized by STPI Sangam • As Featured on Ashoka Uni's Blog & Reflections
+          Popular Choice Award at Startup Mahakumbh 2025 • #6/2M in Top 19 Fintech Startups by F6S • Recognized by STPI Sangam • As Featured on Ashoka <span className="text-white">Uni</span>'s Blog & Reflections • People Choice Award at Startup Mahakumbh 2025 • #6/2M in Top 19 Fintech Startups by F6S • Recognized by STPI Sangam • As Featured on Ashoka <span className="text-white">Uni</span>'s Blog & Reflections
         </span>
       </div>
 
@@ -54,6 +54,10 @@ export default function TextSlider() {
           font-size: clamp(1.25rem, 2.5vw, 2rem);
           font-weight: 500;
           color: var(--color-text-primary);
+        }
+
+        .slider-text .text-white {
+          color: #ffffff !important;
         }
 
         @keyframes slide {
