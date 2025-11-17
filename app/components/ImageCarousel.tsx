@@ -256,61 +256,38 @@ export default function ImageCarousel() {
 
         @media (max-width: 768px) {
           .showcase-section {
-            padding: var(--spacing-2xl) 0;
+            padding: var(--spacing-xl) 0;
             min-height: auto;
           }
 
+          .showcase-heading {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+          }
+
+          .carousel-container {
+            max-width: 100%;
+            padding: 0 var(--content-padding);
+          }
+
           .carousel-slide-container {
-            height: 400px;
-            border-radius: 16px;
+            height: 200px;
+            border-radius: 12px;
+            max-width: 100%;
           }
 
           .carousel-button {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
           }
 
-          .carousel-button-prev {
-            left: 1rem;
-          }
-
-          .carousel-button-next {
-            right: 1rem;
-          }
-
-          .carousel-indicators {
-            margin-top: 1.5rem;
-            gap: 0.5rem;
-          }
-
-          .carousel-indicator {
-            width: 10px;
-            height: 10px;
-          }
-
-          .carousel-indicator.active {
-            width: 24px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .carousel-slide-container {
-            height: 300px;
-            border-radius: 12px;
-          }
-
-          .carousel-button {
-            width: 36px;
-            height: 36px;
-          }
-
           .carousel-button svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
           }
 
           .carousel-button-prev {
@@ -319,6 +296,69 @@ export default function ImageCarousel() {
 
           .carousel-button-next {
             right: 0.5rem;
+          }
+
+          .carousel-indicators {
+            margin-top: 1rem;
+            gap: 0.4rem;
+          }
+
+          .carousel-indicator {
+            width: 6px;
+            height: 6px;
+          }
+
+          .carousel-indicator.active {
+            width: 16px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .showcase-section {
+            padding: var(--spacing-lg) 0;
+          }
+
+          .showcase-heading {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+          }
+
+          .carousel-slide-container {
+            height: 180px;
+            border-radius: 10px;
+            max-width: 100%;
+          }
+
+          .carousel-button {
+            width: 28px;
+            height: 28px;
+          }
+
+          .carousel-button svg {
+            width: 14px;
+            height: 14px;
+          }
+
+          .carousel-button-prev {
+            left: 0.25rem;
+          }
+
+          .carousel-button-next {
+            right: 0.25rem;
+          }
+
+          .carousel-indicators {
+            margin-top: 0.75rem;
+            gap: 0.3rem;
+          }
+
+          .carousel-indicator {
+            width: 5px;
+            height: 5px;
+          }
+
+          .carousel-indicator.active {
+            width: 14px;
           }
         }
       `}</style>

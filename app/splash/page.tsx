@@ -23,11 +23,11 @@ export default function SplashPage() {
     }
   }, [router]);
 
-  // Initial loader for 1.5 seconds
+  // Initial loader for 0.5 seconds (hardcoded)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -180,7 +180,7 @@ export default function SplashPage() {
           justify-content: center;
           background: var(--color-background);
           z-index: 10002;
-          animation: fadeOut 0.3s ease-out 1.2s forwards;
+          animation: fadeOut 0.3s ease-out 0.2s forwards;
         }
 
         .loader-content {

@@ -434,10 +434,10 @@ export default function VerticalScrollSections() {
 
         .pause-button {
           position: absolute;
-          bottom: var(--spacing-lg);
+          bottom: calc(var(--spacing-lg) + 10px);
           right: var(--spacing-lg);
-          width: 44px;
-          height: 44px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           background: rgba(163, 230, 53, 0.15);
           border: 2px solid rgba(163, 230, 53, 0.4);
@@ -464,21 +464,21 @@ export default function VerticalScrollSections() {
         }
 
         .pause-button svg {
-          width: 20px;
-          height: 20px;
+          width: 16px;
+          height: 16px;
         }
 
         @media (max-width: 767px) {
           .pause-button {
-            bottom: var(--spacing-md);
+            bottom: calc(var(--spacing-md) + 8px);
             right: var(--spacing-md);
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
           }
 
           .pause-button svg {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
           }
         }
       `}</style>
