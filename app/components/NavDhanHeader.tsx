@@ -12,7 +12,6 @@ const secondaryNavItems = [
 
 export default function NavDhanHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
@@ -40,28 +39,31 @@ export default function NavDhanHeader() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('nav-open');
+      document.body.style.overflow = 'hidden';
     } else {
       document.body.classList.remove('nav-open');
+      document.body.style.overflow = '';
     }
 
     return () => {
       document.body.classList.remove('nav-open');
+      document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement;
-      if (isDropdownOpen && !target.closest('[data-dropdown]')) {
-        setIsDropdownOpen(false);
+      // Close mobile menu if clicking outside
+      if (isMenuOpen && window.innerWidth <= 768) {
+        if (!target.closest('.navdhan-nav-links') && !target.closest('.navdhan-mobile-menu-toggle')) {
+          setIsMenuOpen(false);
+        }
       }
     };
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        if (isDropdownOpen) {
-          setIsDropdownOpen(false);
-        }
         if (isMenuOpen) {
           setIsMenuOpen(false);
         }
@@ -75,11 +77,10 @@ export default function NavDhanHeader() {
       document.removeEventListener('click', handleClickOutside);
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [isDropdownOpen, isMenuOpen]);
+  }, [isMenuOpen]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    setIsDropdownOpen(false);
   };
 
   return (
@@ -93,52 +94,33 @@ export default function NavDhanHeader() {
           </Link>
         </div>
 
-        <div className={`navdhan-nav-links ${isMenuOpen ? 'is-open' : ''}`} id="primary-navigation">
-          <div className={`navdhan-nav-item navdhan-dropdown ${isDropdownOpen ? 'is-open' : ''}`} data-dropdown>
-            <button
-              className="navdhan-nav-link navdhan-dropdown-toggle"
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsDropdownOpen(!isDropdownOpen);
-              }}
-              aria-expanded={isDropdownOpen}
-              style={{ color: '#006400' }}
-            >
-              Products
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4.5 6L8 9.5L11.5 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            <div className={`navdhan-dropdown-menu ${isDropdownOpen ? 'is-open' : ''}`} onClick={(e) => e.stopPropagation()}>
-              <Link className="navdhan-dropdown-link" href="/products/navdhan" onClick={closeMenu}>
-                <span className="navdhan-dropdown-title">NavDhan</span>
-                <span className="navdhan-dropdown-subtext">India's first MSME Credit Hub</span>
-              </Link>
-              <div className="navdhan-dropdown-link is-disabled" aria-disabled="true">
-                <div className="navdhan-dropdown-title">
-                  BRE
-                  <span className="navdhan-dropdown-badge">Coming Soon</span>
-                </div>
-                <span className="navdhan-dropdown-subtext">No-code engine for credit policies</span>
-              </div>
-              <div className="navdhan-dropdown-link is-disabled" aria-disabled="true">
-                <div className="navdhan-dropdown-title">
-                  Underwriting Engine
-                  <span className="navdhan-dropdown-badge">Coming Soon</span>
-                </div>
-                <span className="navdhan-dropdown-subtext">Holistic Sector-Specific Risk Profiling</span>
-              </div>
-            </div>
-          </div>
+        {isMenuOpen && windowWidth <= 768 && (
+          <div 
+            className="navdhan-mobile-menu-backdrop"
+            onClick={() => setIsMenuOpen(false)}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0, 0, 0, 0.5)',
+              zIndex: 9999,
+              opacity: isMenuOpen ? 1 : 0,
+              transition: 'opacity 0.3s ease',
+              pointerEvents: isMenuOpen ? 'auto' : 'none'
+            }}
+          />
+        )}
 
+        <div className={`navdhan-nav-links ${isMenuOpen ? 'is-open' : ''}`} id="primary-navigation">
           {secondaryNavItems.map((item) => (
             <Link key={item.href} href={item.href} className="navdhan-nav-link" onClick={closeMenu} style={{ color: '#006400' }}>
               {item.label}
             </Link>
           ))}
 
-          <div className="navdhan-nav-cta-wrapper">
+          <div className="navdhan-nav-cta-wrapper navdhan-mobile-cta-wrapper">
             <Link 
               href="/contact#contact-form" 
               onClick={closeMenu}
@@ -285,6 +267,7 @@ export default function NavDhanHeader() {
           }
         }
 
+
         .navdhan-nav-brand {
           z-index: 2;
         }
@@ -367,156 +350,54 @@ export default function NavDhanHeader() {
         .navdhan-nav-link {
           position: relative;
           font-size: 0.95rem;
-          font-weight: 500;
+          font-weight: 600;
           color: #006400 !important;
-          transition: color var(--transition-fast);
-          padding: 0.5rem 0;
           text-decoration: none;
-        }
-
-        .navdhan-nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0.25rem;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: #000000;
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform var(--transition-base);
-        }
-
-        .navdhan-nav-item {
-          position: relative;
-          display: flex;
-          align-items: center;
-        }
-
-        .navdhan-dropdown-toggle {
+          padding: 0.625rem 1.25rem;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1.5px solid rgba(0, 100, 0, 0.2);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           display: inline-flex;
           align-items: center;
-          gap: 0.35rem;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding-right: 0.25rem;
-          color: #006400 !important;
-          font-weight: 500;
-          font-size: 0.95rem;
+          justify-content: center;
+          white-space: nowrap;
+          overflow: hidden;
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
         }
 
-        .navdhan-dropdown-toggle:hover {
-          color: #000000 !important;
-          opacity: 1;
-        }
-
-        .navdhan-dropdown-toggle:focus-visible {
-          outline: 2px solid #006400;
-          outline-offset: 4px;
-        }
-
-        .navdhan-dropdown-toggle svg {
-          transition: transform var(--transition-fast);
-        }
-
-        .navdhan-dropdown.is-open .navdhan-dropdown-toggle svg {
-          transform: rotate(180deg);
-        }
-
-        .navdhan-dropdown-menu {
+        .navdhan-nav-link::before {
+          content: '';
           position: absolute;
-          top: calc(100% + 0.75rem);
-          left: 0;
-          display: none;
-          flex-direction: column;
-          gap: 0.75rem;
-          min-width: 340px;
-          padding: 0.75rem;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(24px) saturate(180%);
-          -webkit-backdrop-filter: blur(24px) saturate(180%);
-          border: 1px solid rgba(0, 0, 0, 0.1);
-          border-radius: 16px;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
-          z-index: 10;
-        }
-
-        .navdhan-dropdown-menu.is-open {
-          display: flex;
-        }
-
-        .navdhan-dropdown-link {
-          display: flex;
-          flex-direction: column;
-          gap: 0.35rem;
-          padding: 1rem;
-          border-radius: 12px;
-          color: #000000;
-          text-decoration: none;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          background: transparent;
-          border: 1px solid transparent;
-        }
-
-        .navdhan-dropdown-link:hover {
-          background: rgba(0, 0, 0, 0.05);
-          transform: translateY(-1px);
-        }
-
-        .navdhan-dropdown-title {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          justify-content: flex-start;
-          font-weight: 600;
-          font-size: 1rem;
-          flex-wrap: nowrap;
-          white-space: nowrap;
-          color: #000000;
-        }
-
-        .navdhan-dropdown-subtext {
-          font-size: 0.9rem;
-          color: #666666;
-        }
-
-        .navdhan-dropdown-badge {
-          display: inline-flex !important;
-          align-items: center;
-          padding: 0.25rem 0.65rem;
-          font-size: 0.7rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-          border-radius: 999px;
-          background: #ff8c00;
-          color: #ffffff;
-          margin-left: 0.5rem;
-          white-space: nowrap;
-          opacity: 1;
-          visibility: visible;
-          flex-shrink: 0;
-        }
-
-        .navdhan-dropdown-link.is-disabled {
-          opacity: 0.55;
-          cursor: not-allowed;
-          pointer-events: none;
-          background: rgba(0, 0, 0, 0.03);
-          border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .navdhan-dropdown-link.is-disabled:hover {
-          transform: none;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          transition: left 0.5s ease;
         }
 
         .navdhan-nav-link:hover {
-          color: #000000 !important;
+          color: #ffffff !important;
+          background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%);
+          border-color: #228B22;
+          transform: translateY(-2px);
+          box-shadow: 
+            0 8px 20px rgba(34, 139, 34, 0.3),
+            0 4px 10px rgba(50, 205, 50, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
-        .navdhan-nav-link:hover::after {
-          transform: scaleX(1);
+        .navdhan-nav-link:hover::before {
+          left: 100%;
+        }
+
+        .navdhan-nav-link:active {
+          transform: translateY(0);
+          box-shadow: 
+            0 4px 12px rgba(34, 139, 34, 0.3),
+            inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .navdhan-nav-cta-button {
@@ -610,31 +491,50 @@ export default function NavDhanHeader() {
           display: none;
           flex-direction: column;
           gap: 5px;
-          background: none;
-          border: none;
+          background: linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%);
+          border: 2px solid rgba(255, 215, 0, 0.3);
           cursor: pointer;
-          padding: 0.5rem;
-          z-index: 2;
+          padding: 0.625rem;
+          z-index: 10001;
+          position: relative;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+          transition: all 0.3s ease;
+          margin-left: auto;
+        }
+
+        .navdhan-mobile-menu-toggle:hover {
+          background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffed4e 100%);
+          box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+          transform: scale(1.05);
         }
 
         .navdhan-mobile-menu-toggle span {
-          width: 24px;
-          height: 2px;
+          width: 22px;
+          height: 2.5px;
           background: #000000;
           border-radius: 2px;
-          transition: all var(--transition-base);
+          transition: all 0.3s ease;
+          display: block;
+        }
+
+        .navdhan-mobile-menu-toggle[aria-expanded="true"] {
+          background: linear-gradient(135deg, #ffd700 0%, #ffcc00 50%, #ffd700 100%);
         }
 
         .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
-          transform: translateY(7px) rotate(45deg);
+          transform: translateY(7.5px) rotate(45deg);
+          background: #000000;
         }
 
         .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
           opacity: 0;
+          transform: scale(0);
         }
 
         .navdhan-mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
-          transform: translateY(-7px) rotate(-45deg);
+          transform: translateY(-7.5px) rotate(-45deg);
+          background: #000000;
         }
 
         @media (max-width: 768px) {
@@ -643,35 +543,69 @@ export default function NavDhanHeader() {
           }
 
           .navdhan-nav-links {
-            position: absolute;
-            top: calc(100% + 0.75rem);
-            right: var(--content-padding);
-            left: var(--content-padding);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 85%;
+            max-width: 320px;
+            height: 100vh;
+            display: flex;
             flex-direction: column;
             align-items: stretch;
             gap: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            padding: 0.75rem;
+            background: #F7941D;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border: none;
+            border-left: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 0;
+            padding: calc(60px + 1rem) 1.5rem 1.5rem;
             opacity: 0;
-            transform: translateY(-1rem);
+            transform: translateX(100%);
             pointer-events: none;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+            box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            overflow-y: auto;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+            will-change: transform, opacity;
           }
 
           .navdhan-nav-links.is-open {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
             pointer-events: auto;
           }
 
           .navdhan-nav-link {
-            padding: 0.875rem 1rem;
+            padding: 1rem 1.5rem;
             border-radius: 12px;
-            transition: all var(--transition-fast);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #000000 !important;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1.5px solid rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.2);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+          }
+
+          .navdhan-nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
           }
 
           .navdhan-nav-link::after {
@@ -679,7 +613,25 @@ export default function NavDhanHeader() {
           }
 
           .navdhan-nav-link:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: linear-gradient(135deg, #228B22 0%, #32CD32 50%, #228B22 100%);
+            color: #ffffff !important;
+            border-color: #228B22;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 
+              0 8px 20px rgba(34, 139, 34, 0.4),
+              0 4px 10px rgba(50, 205, 50, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          }
+
+          .navdhan-nav-link:hover::before {
+            left: 100%;
+          }
+
+          .navdhan-nav-link:active {
+            transform: translateY(0) scale(1);
+            box-shadow: 
+              0 4px 12px rgba(34, 139, 34, 0.3),
+              inset 0 2px 4px rgba(0, 0, 0, 0.1);
           }
 
           .navdhan-nav-cta-button {
@@ -701,37 +653,14 @@ export default function NavDhanHeader() {
             padding-left: 0;
           }
 
+          .navdhan-mobile-cta-wrapper {
+            margin-top: auto;
+            padding-top: 2rem;
+            margin-bottom: 1rem;
+          }
+
           .navdhan-nav-cta-wrapper::before {
             display: none;
-          }
-
-          .navdhan-dropdown {
-            width: 100%;
-          }
-
-          .navdhan-dropdown-toggle {
-            width: 100%;
-            justify-content: space-between;
-            padding: 0.875rem 1rem;
-            border-radius: 12px;
-          }
-
-          .navdhan-dropdown-menu {
-            position: static;
-            margin-top: 0.5rem;
-            box-shadow: none;
-            border-radius: 16px;
-            border-width: 1px;
-            display: none;
-          }
-
-          .navdhan-dropdown-menu.is-open {
-            display: flex;
-          }
-
-          .navdhan-dropdown-link {
-            padding: 0.75rem;
-            border: none;
           }
 
           .navdhan-mobile-menu-toggle {
