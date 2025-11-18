@@ -260,7 +260,7 @@ export default function ImageCarousel() {
         /* Mobile styles */
         @media (max-width: 768px) {
           .showcase-section {
-            padding: var(--spacing-xl) 0;
+            padding: var(--spacing-3xl) 0;
             min-height: auto;
           }
 
@@ -339,7 +339,7 @@ export default function ImageCarousel() {
         /* Small mobile styles */
         @media (max-width: 480px) {
           .showcase-section {
-            padding: var(--spacing-lg) 0;
+            padding: var(--spacing-3xl) 0;
           }
 
           .showcase-heading {

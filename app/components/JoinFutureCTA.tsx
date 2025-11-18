@@ -188,7 +188,7 @@ export default function JoinFutureCTA() {
 
         @media (max-width: 768px) {
           .join-future-section {
-            padding: var(--spacing-2xl) var(--content-padding);
+            padding: var(--spacing-3xl) var(--content-padding);
           }
 
           .join-future-content {

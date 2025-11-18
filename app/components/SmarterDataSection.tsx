@@ -339,7 +339,7 @@ export default function SmarterDataSection() {
 
         @media (max-width: 768px) {
           .smarter-data-section {
-            padding: var(--spacing-2xl) 0;
+            padding: var(--spacing-3xl) 0;
           }
 
           .smarter-data-content {

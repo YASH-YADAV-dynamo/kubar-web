@@ -68,11 +68,42 @@ export default function KubarForNBFCAndMSME() {
             </div>
           ))}
         </div>
-        <div style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)', padding: '0 var(--content-padding)' }}>
-          <Link href="/contact#contact-form" style={{ display: 'inline-block', background: '#00B85E', color: '#FFFFFF', padding: '0.875rem 2.5rem', borderRadius: '14px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', marginRight: 'var(--spacing-md)', transition: 'all 0.3s ease' }}>
+        <div className="kubar-buttons-container" style={{ textAlign: 'center', marginTop: 'var(--spacing-2xl)', padding: '0 var(--content-padding)' }}>
+          <Link 
+            href="/contact#contact-form" 
+            className="whatsapp-btn"
+            style={{ 
+              display: 'inline-block', 
+              background: 'transparent', 
+              border: '2px solid #00B85E', 
+              color: '#00B85E', 
+              padding: '0.875rem 2.5rem', 
+              borderRadius: '14px', 
+              textDecoration: 'none', 
+              fontWeight: '700', 
+              fontSize: '0.95rem', 
+              transition: 'all 0.3s ease',
+              marginRight: 'var(--spacing-lg)'
+            }}
+          >
             Join Our Whatsapp Community
           </Link>
-          <Link href="/contact#contact-form" style={{ display: 'inline-block', background: 'transparent', border: '2px solid #00B85E', color: '#00B85E', padding: '0.875rem 2.5rem', borderRadius: '14px', textDecoration: 'none', fontWeight: '700', fontSize: '0.95rem', transition: 'all 0.3s ease' }}>
+          <Link 
+            href="/contact#contact-form" 
+            className="waitlist-btn" 
+            style={{ 
+              display: 'inline-block', 
+              background: 'transparent', 
+              border: '2px solid #00B85E', 
+              color: '#00B85E', 
+              padding: '0.875rem 2.5rem', 
+              borderRadius: '14px', 
+              textDecoration: 'none', 
+              fontWeight: '700', 
+              fontSize: '0.95rem', 
+              transition: 'all 0.3s ease' 
+            }}
+          >
             Join the Waitlist
           </Link>
         </div>
@@ -227,6 +258,38 @@ export default function KubarForNBFCAndMSME() {
         [data-page="navdhan"] .kubar-icon {
           filter: none !important;
         }
+
+        .kubar-buttons-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--spacing-lg);
+          position: relative;
+        }
+
+        @media (min-width: 768px) {
+          .kubar-buttons-container {
+            flex-direction: row;
+            justify-content: center;
+            gap: var(--spacing-lg);
+          }
+        }
+
+        .whatsapp-btn:hover,
+        .waitlist-btn:hover {
+          background: #00B85E !important;
+          color: #FFFFFF !important;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 184, 94, 0.3);
+        }
+
+        @media (max-width: 767px) {
+          .whatsapp-btn {
+            margin-right: 0 !important;
+            margin-bottom: var(--spacing-md);
+          }
+        }
+
       `}</style>
     </section>
   );

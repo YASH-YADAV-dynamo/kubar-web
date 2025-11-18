@@ -207,7 +207,6 @@ export default function ExpandBussiness() {
         .expand-business-section {
           width: 100%;
           padding: var(--spacing-3xl) 0;
-          margin-bottom: calc(var(--spacing-3xl) * 2);
           background: var(--color-background);
           position: relative;
           overflow-x: visible;

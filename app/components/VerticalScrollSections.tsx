@@ -142,7 +142,7 @@ export default function VerticalScrollSections() {
         .vertical-scroll-section {
           background: var(--color-background);
           color: var(--color-text-primary);
-          padding: var(--spacing-2xl) 0;
+          padding: var(--spacing-3xl) 0;
           min-height: auto;
           display: flex;
           align-items: center;
@@ -415,7 +415,7 @@ export default function VerticalScrollSections() {
 
         @media (max-width: 767px) {
           .vertical-scroll-section {
-            padding: var(--spacing-2xl) 0;
+            padding: var(--spacing-3xl) 0;
             min-height: auto;
           }
 
