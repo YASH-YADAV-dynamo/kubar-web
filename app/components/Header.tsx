@@ -15,29 +15,54 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const updateWindowWidth = () => {
       setWindowWidth(window.innerWidth);
     };
     
     updateWindowWidth();
-    window.addEventListener('resize', updateWindowWidth);
-    return () => window.removeEventListener('resize', updateWindowWidth);
+    
+    // Throttle resize events for better performance
+    let timeoutId: NodeJS.Timeout;
+    const throttledUpdate = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(updateWindowWidth, 150);
+    };
+    
+    window.addEventListener('resize', throttledUpdate, { passive: true });
+    return () => {
+      window.removeEventListener('resize', throttledUpdate);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Throttle scroll events for better performance
+    let ticking = false;
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY;
+          setIsScrolled(scrollPosition > 50);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
+    if (typeof document === 'undefined') return;
+    
     if (isMenuOpen) {
       document.body.classList.add('nav-open');
       document.body.style.overflow = 'hidden';
@@ -47,8 +72,10 @@ export default function Header() {
     }
 
     return () => {
-      document.body.classList.remove('nav-open');
-      document.body.style.overflow = '';
+      if (typeof document !== 'undefined') {
+        document.body.classList.remove('nav-open');
+        document.body.style.overflow = '';
+      }
     };
   }, [isMenuOpen]);
 

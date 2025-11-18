@@ -36,6 +36,8 @@ export default function SplashPage() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     // Check if mobile device
     const isMobile = window.innerWidth <= 768;
     
