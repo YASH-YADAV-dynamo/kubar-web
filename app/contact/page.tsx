@@ -137,9 +137,9 @@ export default function ContactPage() {
               </form>
               <aside className="contact-info">
                 <h2>Need something specific?</h2>
-                <p>Partner enquiries: <a href="mailto:partner@navdhan.com">partner@navdhan.com</a></p>
-                <p>Support: <a href="mailto:support@navdhan.com">support@navdhan.com</a></p>
-                <p>Media: <a href="mailto:press@navdhan.com">press@navdhan.com</a></p>
+                <p>Partner enquiries: <a href="mailto:partner@kubar.tech">partner@kubar.tech</a></p>
+                <p>Support: <a href="mailto:support@kubar.tech">support@kubar.tech</a></p>
+                <p>Media: <a href="mailto:press@kubar.tech">press@kubar.tech</a></p>
               </aside>
             </div>
           </div>

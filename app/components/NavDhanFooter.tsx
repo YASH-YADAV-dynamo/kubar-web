@@ -58,7 +58,7 @@ export default function NavDhanFooter() {
                 <li><a href="https://www.linkedin.com/company/kubarlabs" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>LinkedIn</a></li>
                 <li><a href="https://x.com/kubarlabs" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>X (Twitter)</a></li>
                 <li><a href="https://kubarlabs.substack.com" target="_blank" rel="noopener noreferrer" style={{ color: '#000000' }}>Substack</a></li>
-                <li><a href="mailto:partner@navdhan.com" style={{ color: '#000000' }}>Partner Enquiries</a></li>
+                <li><a href="mailto:partner@kubar.tech" style={{ color: '#000000' }}>Partner Enquiries</a></li>
               </ul>
             </div>
           </div>

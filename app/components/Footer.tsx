@@ -100,7 +100,7 @@ export default function Footer() {
                 <li><a href="https://www.linkedin.com/company/kubarlabs" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
                 <li><a href="https://x.com/kubarlabs" target="_blank" rel="noopener noreferrer">X (Twitter)</a></li>
                 <li><a href="https://kubarlabs.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
-                <li><a href="mailto:partner@navdhan.com">Partner Enquiries</a></li>
+                <li><a href="mailto:partner@kubar.tech">Partner Enquiries</a></li>
               </ul>
             </div>
           </div>
