@@ -21,7 +21,7 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Kubar Labs — Credit Intelligence for MSMEs",
+  title: "Kubar Labs - Credit Intelligence for MSMEs",
   description: "NavDhan by Kubar Labs delivers lender-grade API workflows that help NBFCs and banks serve MSMEs with faster, data-rich credit.",
   icons: {
     icon: '/favicon.png',
