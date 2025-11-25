@@ -76,10 +76,10 @@ export default function Products() {
           <p style={{ marginTop: 'var(--spacing-xl)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8' }}>
             Making credit available at the right time.
           </p>
-          <p style={{ marginTop: 'var(--spacing-md)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+          <p style={{ marginTop: 'var(--spacing-lg)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
             Thousands of businesses in India struggle to secure loans while working capital gradually disappears into receivables. At the same time, banks and NBFCs struggle to find the right borrowers spending months verifying data and chasing documentation.
           </p>
-          <p style={{ marginTop: 'var(--spacing-md)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
+          <p style={{ marginTop: 'var(--spacing-lg)', fontSize: '1.125rem', color: 'var(--color-text-secondary)', lineHeight: '1.8', maxWidth: '900px', marginLeft: 'auto', marginRight: 'auto' }}>
             NavDhan makes MSME lending faster, smarter, and deeply embedded. It bridges this gap, connecting lenders and businesses through live, verified transaction data at the exact point of need.
           </p>
         </header>
@@ -188,6 +188,10 @@ export default function Products() {
           margin: 0 auto var(--spacing-3xl);
         }
 
+        [data-page="navdhan"] .products-hero {
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
+        }
+
         .logo-container {
           display: flex;
           justify-content: center;
@@ -222,6 +226,10 @@ export default function Products() {
 
         [data-page="navdhan"] .products-hero p {
           color: #333333 !important;
+        }
+
+        [data-page="navdhan"] .products-hero p:first-of-type {
+          margin-bottom: var(--spacing-2xl);
         }
 
         .actions {
@@ -265,6 +273,7 @@ export default function Products() {
           display: flex;
           justify-content: center;
           align-items: center;
+          padding: 0 var(--content-padding);
         }
 
         .navdhan-image {
@@ -273,10 +282,11 @@ export default function Products() {
           max-width: 100%;
           object-fit: contain;
           border-radius: 20px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         [data-page="navdhan"] .navdhan-hero-image {
-          margin-bottom: var(--spacing-3xl);
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
         }
 
         @media (max-width: 768px) {
@@ -294,6 +304,11 @@ export default function Products() {
           margin-bottom: var(--spacing-3xl);
         }
 
+        [data-page="navdhan"] .usecases {
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
+          padding-top: var(--spacing-2xl);
+        }
+
         .usecases h2,
         .differentiators h2,
         .integrations h2 {
@@ -303,10 +318,21 @@ export default function Products() {
           color: var(--color-text-primary);
         }
 
+        [data-page="navdhan"] .usecases h2,
+        [data-page="navdhan"] .differentiators h2,
+        [data-page="navdhan"] .integrations h2 {
+          margin-bottom: var(--spacing-3xl);
+          font-weight: 700;
+        }
+
         .usecase-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
           gap: var(--spacing-xl);
+        }
+
+        [data-page="navdhan"] .usecase-grid {
+          gap: var(--spacing-2xl);
         }
 
         .usecase-card {
@@ -316,6 +342,10 @@ export default function Products() {
           padding: var(--spacing-xl);
           text-align: left;
           transition: transform var(--transition-base), border-color var(--transition-base);
+        }
+
+        [data-page="navdhan"] .usecase-card {
+          padding: var(--spacing-2xl);
         }
 
         .usecase-card:hover {
@@ -342,13 +372,28 @@ export default function Products() {
           color: var(--color-text-primary);
         }
 
+        [data-page="navdhan"] .usecase-card h3 {
+          margin-bottom: var(--spacing-md);
+          font-size: 1.625rem;
+        }
+
         .usecase-card p {
           color: var(--color-text-secondary);
           line-height: 1.6;
         }
 
+        [data-page="navdhan"] .usecase-card p {
+          line-height: 1.7;
+          font-size: 1.05rem;
+        }
+
         .differentiators {
           margin-bottom: var(--spacing-3xl);
+        }
+
+        [data-page="navdhan"] .differentiators {
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
+          padding-top: var(--spacing-2xl);
         }
 
         .list {
@@ -356,6 +401,11 @@ export default function Products() {
           margin: 0 auto;
           display: grid;
           gap: var(--spacing-md);
+        }
+
+        [data-page="navdhan"] .list {
+          gap: var(--spacing-lg);
+          max-width: 900px;
         }
 
         .list-item {
@@ -366,6 +416,11 @@ export default function Products() {
           border: 1px solid var(--color-border);
           border-radius: 16px;
           padding: var(--spacing-lg);
+        }
+
+        [data-page="navdhan"] .list-item {
+          padding: var(--spacing-xl);
+          gap: var(--spacing-md);
         }
 
         .check {
@@ -386,14 +441,28 @@ export default function Products() {
           color: var(--color-text-secondary);
         }
 
+        [data-page="navdhan"] .list-item p {
+          font-size: 1.05rem;
+          line-height: 1.7;
+        }
+
         .integrations {
           margin-bottom: 0;
+        }
+
+        [data-page="navdhan"] .integrations {
+          padding-top: var(--spacing-2xl);
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
         }
 
         .integration-grid {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
           gap: var(--spacing-xl);
+        }
+
+        [data-page="navdhan"] .integration-grid {
+          gap: var(--spacing-2xl);
         }
 
         .integration-card {
@@ -403,10 +472,19 @@ export default function Products() {
           padding: var(--spacing-xl);
         }
 
+        [data-page="navdhan"] .integration-card {
+          padding: var(--spacing-2xl);
+        }
+
         .integration-card h3 {
           font-size: 1.5rem;
           margin-bottom: var(--spacing-md);
           color: var(--color-text-primary);
+        }
+
+        [data-page="navdhan"] .integration-card h3 {
+          margin-bottom: var(--spacing-lg);
+          font-size: 1.625rem;
         }
 
         .integration-card ul {
@@ -414,6 +492,15 @@ export default function Products() {
           display: grid;
           gap: 0.75rem;
           color: var(--color-text-secondary);
+        }
+
+        [data-page="navdhan"] .integration-card ul {
+          gap: 1rem;
+        }
+
+        [data-page="navdhan"] .integration-card li {
+          font-size: 1.05rem;
+          line-height: 1.7;
         }
 
         .integration-card li::before {

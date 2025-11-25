@@ -126,6 +126,18 @@ export default function KubarForNBFCAndMSME() {
           padding-top: 0;
         }
 
+        [data-page="navdhan"] .kubar-section {
+          padding: calc(var(--spacing-3xl) + var(--spacing-xl)) 0;
+        }
+
+        [data-page="navdhan"] .kubar-section:first-child {
+          padding-top: var(--spacing-2xl);
+        }
+
+        [data-page="navdhan"] .kubar-section:last-child {
+          padding-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
+        }
+
         .kubar-section-title {
           font-size: clamp(2.5rem, 5vw, 3.5rem);
           font-weight: 700;
@@ -133,6 +145,10 @@ export default function KubarForNBFCAndMSME() {
           margin-bottom: var(--spacing-3xl);
           color: var(--color-text-primary);
           font-family: var(--font-heading);
+        }
+
+        [data-page="navdhan"] .kubar-section-title {
+          margin-bottom: calc(var(--spacing-3xl) + var(--spacing-xl));
         }
 
         .kubar-features {
@@ -162,9 +178,17 @@ export default function KubarForNBFCAndMSME() {
           position: relative;
         }
 
+        [data-page="navdhan"] .kubar-feature {
+          padding: var(--spacing-xl);
+        }
+
         @media (min-width: 768px) {
           .kubar-feature {
             padding: var(--spacing-xl) var(--spacing-lg);
+          }
+
+          [data-page="navdhan"] .kubar-feature {
+            padding: var(--spacing-2xl) var(--spacing-xl);
           }
 
           .kubar-feature.has-separator::after {
@@ -208,6 +232,11 @@ export default function KubarForNBFCAndMSME() {
           -webkit-box-orient: vertical;
           overflow: hidden;
           min-height: 3em;
+        }
+
+        [data-page="navdhan"] .kubar-feature-text {
+          font-size: clamp(1rem, 1.5vw, 1.125rem);
+          line-height: 1.6;
         }
 
         @media (max-width: 767px) {
