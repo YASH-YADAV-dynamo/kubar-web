@@ -117,7 +117,7 @@ export default function NavDhanHeader() {
       <nav className="navdhan-nav container" aria-label="Primary">
         <div className="navdhan-nav-brand">
           <Link href="/" className="navdhan-logo navdhan-logo-button" style={{ color: '#006400' }}>
-            <Image src="/logo.png" alt="Kubar Labs" width={38} height={33} className="navdhan-logo-icon" />
+            <Image src="/logo.png" alt="Kubar Labs" width={38} height={31} className="navdhan-logo-icon" />
           </Link>
         </div>
 
@@ -336,11 +336,11 @@ export default function NavDhanHeader() {
 
         .navdhan-logo-icon {
           width: 38px;
-          height: 33px;
+          height: 31px;
           min-width: 38px;
-          min-height: 33px;
+          min-height: 31px;
           max-width: 38px;
-          max-height: 33px;
+          max-height: 31px;
           object-fit: contain;
           border-radius: 12px;
           transition: transform 0.3s ease;

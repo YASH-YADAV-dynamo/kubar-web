@@ -17,7 +17,7 @@ export default function Hero() {
               src="/logo.png" 
               alt="Kubar Labs Logo" 
               width={105} 
-              height={90} 
+              height={80} 
               className="logo-image"
               priority
             />
