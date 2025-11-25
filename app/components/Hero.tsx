@@ -25,7 +25,11 @@ export default function Hero() {
           <h1 className="hero-title">Kubar Labs</h1>
 
           <div className="hero-tagline">
-            <p>We connect India's businesses with the right banks and NBFCs using data, design, and trust.</p>
+            <p>India's first MSME-focused plug-and-play embedded business-credit hub with credit intelligence solutions and complete loan lifecycle management</p>
+          </div>
+
+          <div className="hero-description">
+            <p>We deliver high-quality, pre-screened (per each FI's BRE) borrower leads directly into an FI's LOS/CBS, our key USPs are ultra-fast disbursement, deeply vertical sector-specific credit intelligence for MSMEs, and complete loan lifecycle management. We're building embedded credit infra for MSME Financing in India, empowering small and mid-size lenders (fintechs, NBFCs) to profitably scale their loan books, while reducing NPAs in this sector, through our SaaS offerings</p>
           </div>
 
           <div className="hero-actions">
@@ -121,6 +125,19 @@ export default function Hero() {
           line-height: 1.6;
         }
 
+        .hero-description {
+          max-width: 900px;
+          margin: 0 auto var(--spacing-xl);
+          animation: fadeInUp 1.2s ease-out 1.1s both;
+        }
+
+        .hero-description p {
+          font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.7;
+        }
+
         .hero-actions {
           display: flex;
           gap: var(--spacing-md);
@@ -190,6 +207,15 @@ export default function Hero() {
 
           .hero-title {
             font-size: 2.5rem;
+          }
+
+          .hero-description {
+            margin-bottom: var(--spacing-lg);
+          }
+
+          .hero-description p {
+            font-size: 0.9rem;
+            line-height: 1.6;
           }
 
           .hero-actions {
